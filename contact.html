@@ -75,78 +75,88 @@
       border-bottom: 1px solid var(--line);
     }
 
-    /* BRAND WITH BRAID LOGO */
-    #icd-site .icd-brand {
+    #icd-site .icd-logo {
       display: flex;
       align-items: center;
       gap: 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
       white-space: nowrap;
     }
 
-    #icd-site .icd-mark {
-      position: relative;
-      width: 30px;
-      height: 18px;
-      overflow: visible;
-    }
-
-    #icd-site .icd-loop {
-      position: absolute;
-      inset: 0;
+    #icd-site .icd-logo-mark {
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
-      border: 2px solid var(--accent);
-      opacity: 0.7;
-      mix-blend-mode: multiply;
+      background: var(--accent-soft-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    #icd-site .icd-loop.loop-a {
-      transform: rotate(18deg);
-      border-color: var(--accent);
-      animation: icd-orbit-a 7s linear infinite;
+    #icd-site .icd-logo-mark svg {
+      width: 22px;
+      height: 22px;
+      display: block;
     }
 
-    #icd-site .icd-loop.loop-b {
-      transform: rotate(-18deg);
-      border-color: var(--accent-light);
-      animation: icd-orbit-b 9s linear infinite;
+    #icd-site .icd-braid path {
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 52;
+      animation: icdBraidShift 6s linear infinite;
     }
 
-    #icd-site .icd-loop.loop-c {
-      transform: scale(0.85);
-      border-color: rgba(15,23,42,0.25);
-      animation: icd-orbit-c 11s linear infinite;
+    #icd-site .icd-braid path:nth-child(1) {
+      stroke: var(--accent);
+    }
+    #icd-site .icd-braid path:nth-child(2) {
+      stroke: var(--accent-light);
+      animation-delay: -2s;
+    }
+    #icd-site .icd-braid path:nth-child(3) {
+      stroke: var(--ink-soft);
+      animation-delay: -4s;
     }
 
-    @keyframes icd-orbit-a {
-      0%   { transform: rotate(18deg) translateX(0); }
-      50%  { transform: rotate(36deg) translateX(1px); }
-      100% { transform: rotate(18deg) translateX(0); }
+    @keyframes icdBraidShift {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -52; }
     }
 
-    @keyframes icd-orbit-b {
-      0%   { transform: rotate(-18deg) translateX(0); }
-      50%  { transform: rotate(-32deg) translateX(-1px); }
-      100% { transform: rotate(-18deg) translateX(0); }
+    #icd-site .icd-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
     }
 
-    @keyframes icd-orbit-c {
-      0%   { transform: scale(0.85) translateY(0); }
-      50%  { transform: scale(0.9) translateY(0.7px); }
-      100% { transform: scale(0.85) translateY(0); }
-    }
-
-    #icd-site .icd-wordmark {
+    #icd-site .icd-logo-main {
       font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
+      letter-spacing: 0.16em;
     }
 
-    #icd-site .icd-wordmark .icd-tm {
+    #icd-site .icd-tm {
       font-size: 0.55rem;
       vertical-align: top;
-      margin-left: 0.08rem;
+      margin-left: 1px;
+    }
+
+    #icd-site .icd-logo-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 420px) {
+      #icd-site .icd-logo-sub {
+        display: none;
+      }
     }
 
     #icd-site .icd-nav-toggle {
@@ -197,16 +207,6 @@
 
     #icd-site .icd-nav-drawer.open {
       transform: translateY(0);
-    }
-
-    #icd-site .icd-nav-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      opacity: 0.9;
     }
 
     #icd-site .icd-nav-drawer a {
@@ -319,116 +319,128 @@
       font-weight: 600;
     }
 
-    /* EMAIL ROW + COPY BUTTON */
-    #icd-site .contact-email-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.55rem;
+    #icd-site .contact-email {
+      margin-top: 1rem;
     }
 
-    #icd-site .copy-btn {
+    #icd-site .copy-email-btn {
       border: none;
+      background: transparent;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-sans);
+      cursor: pointer;
+    }
+
+    #icd-site .copy-email-btn .contact-link {
+      text-decoration: underline;
+      text-decoration-color: var(--accent-soft);
+      text-underline-offset: 2px;
+    }
+
+    #icd-site .copy-pill {
+      padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      padding: 0.35rem 0.85rem;
-      font-size: 0.78rem;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
+    }
+
+    /* TEMPLATE EMAILS */
+    #icd-site .templates {
+      margin-top: 2.5rem;
+    }
+
+    #icd-site .templates-heading {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    #icd-site .templates-tagline {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.2rem;
+      max-width: 520px;
+    }
+
+    #icd-site .templates-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 800px) {
+      #icd-site .templates-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    #icd-site .template-card {
+      padding: 1rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.94);
+    }
+
+    #icd-site .template-card h3 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    #icd-site .template-desc {
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.9rem;
+      line-height: 1.6;
+    }
+
+    #icd-site .template-copy {
+      border: none;
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      background: var(--accent);
+      color: #ffffff;
       cursor: pointer;
-      background: #ffffff;
-      color: var(--accent);
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
-      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
     }
 
-    #icd-site .copy-btn:hover {
-      background: var(--accent-soft);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(15,23,42,0.18);
+    #icd-site .template-copy:hover {
+      background: #0c7f76;
     }
 
-    #icd-site .copy-btn:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 8px rgba(15,23,42,0.18);
-    }
-
-    /* TOAST */
+    /* COPY TOAST */
     #icd-site .copy-toast {
       position: fixed;
       left: 50%;
-      bottom: 1.4rem;
+      bottom: 1.2rem;
       transform: translateX(-50%) translateY(20px);
-      padding: 0.6rem 1.2rem;
+      padding: 0.5rem 1rem;
       border-radius: 999px;
-      background: rgba(15,23,42,0.94);
-      color: #f9fafb;
+      background: rgba(15,23,42,0.96);
+      color: #ffffff;
       font-size: 0.8rem;
       font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      transition: opacity 0.2s ease, transform 0.2s ease;
       z-index: 60;
     }
 
     #icd-site .copy-toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
-      pointer-events: auto;
-    }
-
-    /* TEMPLATES */
-    #icd-site .template-block {
-      margin-top: 1.8rem;
-      padding-top: 1.4rem;
-      border-top: 1px solid rgba(15,23,42,0.08);
-    }
-
-    #icd-site .template-hint {
-      font-size: 0.88rem;
-      color: var(--ink-soft);
-      margin-bottom: 0.9rem;
-      max-width: 520px;
-      line-height: 1.6;
-    }
-
-    #icd-site .template-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    #icd-site .template-chip {
-      border: none;
-      border-radius: 999px;
-      padding: 0.45rem 0.9rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      background: #ffffff;
-      color: var(--ink-soft);
-      box-shadow: 0 4px 12px rgba(15,23,42,0.12);
-      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-      white-space: nowrap;
-      text-align: left;
-    }
-
-    #icd-site .template-chip span {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 0.1rem;
-    }
-
-    #icd-site .template-chip:hover {
-      background: var(--accent-soft);
-      color: var(--ink);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(15,23,42,0.18);
     }
 
     /* FOOTER */
@@ -447,16 +459,19 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <div class="icd-brand">
-      <div class="icd-mark" aria-hidden="true">
-        <div class="icd-loop loop-a"></div>
-        <div class="icd-loop loop-b"></div>
-        <div class="icd-loop loop-c"></div>
-      </div>
-      <div class="icd-wordmark">
-        ICD<span class="icd-tm">™</span>
-      </div>
-    </div>
+    <a href="index.html" class="icd-logo">
+      <span class="icd-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" class="icd-braid">
+          <path d="M8 28 C 14 20 14 12 20 12 C 26 12 26 20 32 28" />
+          <path d="M8 12 C 14 20 14 28 20 28 C 26 28 26 20 32 12" />
+          <path d="M8 20 C 14 18 26 22 32 20" />
+        </svg>
+      </span>
+      <span class="icd-logo-text">
+        <span class="icd-logo-main">ICD<span class="icd-tm">™</span></span>
+        <span class="icd-logo-sub">Indian Country Development</span>
+      </span>
+    </a>
     <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
@@ -494,57 +509,165 @@
 
       <div class="contact-line">
         <span class="contact-label">Contact</span>
-        Attention: Phil Gover or Elijah Moreno
+        Phil Gover or Elijah Moreno
       </div>
 
-      <div class="contact-line">
+      <div class="contact-line contact-email">
         <span class="contact-label">Email</span>
-        <div class="contact-email-row">
-          <a class="contact-link" href="mailto:contact@indiancountrydevelopment.com">
-            contact@indiancountrydevelopment.com
-          </a>
-          <button type="button" class="copy-btn" data-copy="contact@indiancountrydevelopment.com">
-            Copy email
-          </button>
-        </div>
-      </div>
-
-      <div class="template-block">
-        <span class="contact-label">Email templates</span>
-        <p class="template-hint">
-          Choose the option closest to your role to copy draft language you can paste into your email.
-        </p>
-
-        <div class="template-grid">
-          <button type="button" class="template-chip" data-template="tribal">
-            <span>Template</span>
-            Tribal government or enterprise
-          </button>
-          <button type="button" class="template-chip" data-template="external">
-            <span>Template</span>
-            External partner working with tribes
-          </button>
-          <button type="button" class="template-chip" data-template="native-org">
-            <span>Template</span>
-            Native-led nonprofit or initiative
-          </button>
-          <button type="button" class="template-chip" data-template="funder">
-            <span>Template</span>
-            Funder or intermediary
-          </button>
-        </div>
+        <button class="copy-email-btn" type="button">
+          <span class="contact-link">contact@indiancountrydevelopment.com</span>
+          <span class="copy-pill">Copy</span>
+        </button>
       </div>
     </div>
 
-    <!-- COPY TOAST (NOW INSIDE ROOT SO STYLES APPLY) -->
-    <div class="copy-toast" id="copyToast" role="status" aria-live="polite" aria-atomic="true">
-      Copied to clipboard
+    <!-- TEMPLATES -->
+    <div class="templates">
+      <h2 class="templates-heading">Quick-start email drafts</h2>
+      <p class="templates-tagline">
+        Copy a starting template that fits your role and adapt it with your project details, timelines, and context.
+      </p>
+
+      <div class="templates-grid">
+        <article class="template-card">
+          <h3>Tribal government / enterprise</h3>
+          <p class="template-desc">
+            For councils, departments, or enterprises looking at strategy, operations, or data work.
+          </p>
+          <button
+            class="template-copy"
+            type="button"
+            data-template="Subject: Potential project support for our tribal government
+
+Dear Phil and Elijah,
+
+I&#39;m reaching out from [Tribal Nation / department / enterprise name]. We are currently working on [brief description of the initiative or challenge] and are looking for support with [strategy / operations / data &amp; evaluation].
+
+We&#39;d be interested in a short conversation to see whether our work is a good fit for Indian Country Development and what a scoped engagement might look like, including rough timelines and budget.
+
+A few quick details:
+• Team / department: [brief description]
+• Key decision-makers: [e.g., council, board, CEO, etc.]
+• Desired timeline: [e.g., hoping to decide by X date]
+• Any constraints you should know about: [optional]
+
+Thank you for considering this. We appreciate your work in Indian Country and look forward to connecting.
+
+Best,
+[Name]
+[Title]
+[Tribal Nation / enterprise]"
+          >
+            Copy template
+          </button>
+        </article>
+
+        <article class="template-card">
+          <h3>Native-led organization / TCU / urban Indian</h3>
+          <p class="template-desc">
+            For Native-led nonprofits, urban Indian orgs, or tribal colleges and universities.
+          </p>
+          <button
+            class="template-copy"
+            type="button"
+            data-template="Subject: Exploring support for our Native-led organization
+
+Dear Phil and Elijah,
+
+I&#39;m reaching out from [organization name], a [brief description: Native-led nonprofit / tribal college / urban Indian organization] serving [community / region].
+
+We&#39;re navigating [brief description of challenge or opportunity] and are interested in support with [strategy / program design / evaluation / data &amp; learning]. We want to make sure any work we do is aligned with our community and sustainable for our team.
+
+Could we schedule a time to talk through what we&#39;re facing and whether it makes sense to work together?
+
+A few quick details:
+• Our work: [1–2 sentences]
+• Current need: [1–2 sentences]
+• Timeline / key dates: [if any]
+
+Thank you for your time and for the work you do across Indian Country.
+
+Best,
+[Name]
+[Title]
+[Organization]"
+          >
+            Copy template
+          </button>
+        </article>
+
+        <article class="template-card">
+          <h3>External partner (state, philanthropy, higher ed)</h3>
+          <p class="template-desc">
+            For partners who want to work with tribes in a way that’s not extractive or symbolic.
+          </p>
+          <button
+            class="template-copy"
+            type="button"
+            data-template="Subject: Support for working with tribal partners on [project name]
+
+Dear Phil and Elijah,
+
+I&#39;m reaching out from [agency / foundation / university / organization name]. We are planning or currently working on [brief description of program or initiative] that involves tribal nations or Native communities.
+
+We want to make sure our approach is grounded in how tribal governance and consultation actually work, and that our timelines and expectations are realistic and non-extractive. We&#39;re interested in exploring how Indian Country Development might help us design or adjust this work.
+
+A few quick details:
+• Our role: [state agency / philanthropy / university unit, etc.]
+• Tribal or Native partners involved (or hoped for): [if applicable]
+• Project goals: [1–2 sentences]
+• Timeframe / key decisions: [e.g., RFP dates, board meetings]
+
+If this sounds aligned with the kind of work you take on, we&#39;d appreciate a conversation about fit and possible next steps.
+
+Best,
+[Name]
+[Title]
+[Organization]"
+          >
+            Copy template
+          </button>
+        </article>
+
+        <article class="template-card">
+          <h3>General inquiry / not sure yet</h3>
+          <p class="template-desc">
+            For when you know something needs to move, but you’re still clarifying what.
+          </p>
+          <button
+            class="template-copy"
+            type="button"
+            data-template="Subject: Exploring a potential project with Indian Country Development
+
+Dear Phil and Elijah,
+
+I&#39;m reaching out from [organization / tribe / team]. We are in the early stages of thinking about support for [brief description of the issue or area: strategy, operations, data, evaluation, etc.], and we&#39;re not yet sure what the right shape of a project would be.
+
+What we do know:
+• The context: [1–3 sentences about what&#39;s happening now]
+• The questions we&#39;re asking: [a few bullet points]
+• Any time pressures or key dates: [if relevant]
+
+We would value a conversation to see whether this might be a fit for Indian Country Development, and to get your perspective on how you&#39;d structure an engagement like this.
+
+Best,
+[Name]
+[Title]
+[Organization]"
+          >
+            Copy template
+          </button>
+        </article>
+      </div>
     </div>
   </section>
 
   <footer class="site-footer">
     © 2025 Tribal Economic Development Partners L.L.C.
   </footer>
+
+  <!-- COPY TOAST -->
+  <div class="copy-toast" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>
@@ -592,8 +715,8 @@
     revealTargets.forEach(el => el.classList.add('reveal-visible'));
   }
 
-  /* COPY TO CLIPBOARD + TOAST */
-  const toast = root.querySelector('#copyToast');
+  /* COPY TOAST */
+  const toast = root.querySelector('.copy-toast');
   let toastTimeout;
 
   function showToast(message) {
@@ -603,131 +726,46 @@
     if (toastTimeout) clearTimeout(toastTimeout);
     toastTimeout = setTimeout(() => {
       toast.classList.remove('show');
-    }, 2200);
+    }, 2000);
   }
 
-  function copyText(text) {
+  function copyText(text, successMsg) {
     if (!text) return;
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text)
-        .then(() => showToast('Copied to clipboard'))
-        .catch(() => showToast('Copy not available on this device'));
+      navigator.clipboard.writeText(text).then(
+        () => showToast(successMsg || 'Copied'),
+        () => showToast('Unable to copy')
+      );
     } else {
       // Fallback
-      const temp = document.createElement('textarea');
-      temp.value = text;
-      document.body.appendChild(temp);
-      temp.select();
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
       try {
         document.execCommand('copy');
-        showToast('Copied to clipboard');
+        showToast(successMsg || 'Copied');
       } catch (e) {
-        showToast('Copy not available on this device');
+        showToast('Unable to copy');
       }
-      document.body.removeChild(temp);
+      document.body.removeChild(ta);
     }
   }
 
-  const copyBtn = root.querySelector('.copy-btn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const value = copyBtn.getAttribute('data-copy') || 'contact@indiancountrydevelopment.com';
-      copyText(value);
+  /* EMAIL COPY BUTTON */
+  const emailAddress = 'contact@indiancountrydevelopment.com';
+  const emailBtn = root.querySelector('.copy-email-btn');
+  if (emailBtn) {
+    emailBtn.addEventListener('click', () => {
+      copyText(emailAddress, 'Email address copied');
     });
   }
 
-  /* TEMPLATE EMAILS */
-  const templateMap = {
-    tribal: {
-      subject: 'Inquiry from tribal government / enterprise',
-      body:
-`Hi Phil and Elijah,
-
-I’m reaching out from [Tribal government / enterprise name]. We’re currently working on:
-
-- [Brief description of the initiative or challenge]
-- [Key timelines or decisions ahead]
-- [Any partners or funders already involved]
-
-We’re looking for support with strategy, operations, and/or data, and wanted to explore whether this might be a fit for Indian Country Development.
-
-If possible, we’d appreciate a short call to talk through context and potential next steps.
-
-Thank you,
-[Name]
-[Role / Department]
-[Tribal government / enterprise name]`
-    },
-    external: {
-      subject: 'Inquiry from external partner working with tribes',
-      body:
-`Hi Phil and Elijah,
-
-I’m reaching out from [Organization name]. We are working on a project that involves tribal partners:
-
-- [Brief description of the project]
-- [Which tribes / regions are involved or could be involved]
-- [Key timelines, funding sources, or decision points]
-
-We want to make sure our work is aligned with tribal governance, consultation, and local priorities, and wondered if ICD might be a good partner.
-
-If you’re open to it, we’d appreciate a brief conversation to see whether this is a fit and how you might be able to support.
-
-Thank you,
-[Name]
-[Title]
-[Organization]`
-    },
-    native-org: {
-      subject: 'Inquiry from Native-led nonprofit / initiative',
-      body:
-`Hi Phil and Elijah,
-
-I’m reaching out from [Native-led organization / initiative]. We’re working on:
-
-- [Short description of your work or program]
-- [Communities you serve]
-- [Any specific systems, partners, or policies you’re navigating]
-
-We’re interested in support around strategy, operations, and/or data in a way that stays grounded in our values and community priorities.
-
-If it makes sense, we’d love to connect and talk about whether ICD would be a good fit.
-
-Best,
-[Name]
-[Role]
-[Organization]`
-    },
-    funder: {
-      subject: 'Inquiry from funder / intermediary',
-      body:
-`Hi Phil and Elijah,
-
-I’m reaching out from [Funder / intermediary name]. We’re exploring ways to better support work in Indian Country through:
-
-- [Brief description of programs, grants, or investments]
-- [Types of partners you work with now]
-- [Questions you have about governance, data, or strategy]
-
-We’re interested in learning where ICD’s expertise could help us design, assess, or strengthen this work in partnership with tribal and Native-led organizations.
-
-If schedules allow, a short call to learn more about your approach and possible collaboration would be very helpful.
-
-Thank you,
-[Name]
-[Title]
-[Organization]`
-    }
-  };
-
-  const templateButtons = root.querySelectorAll('.template-chip');
-  templateButtons.forEach(btn => {
+  /* TEMPLATE COPY BUTTONS */
+  root.querySelectorAll('.template-copy').forEach(btn => {
+    const tpl = btn.getAttribute('data-template');
     btn.addEventListener('click', () => {
-      const key = btn.getAttribute('data-template');
-      const template = templateMap[key];
-      if (!template) return;
-      const text = `Subject: ${template.subject}\n\n${template.body}`;
-      copyText(text);
+      copyText(tpl, 'Template copied');
     });
   });
 })();
