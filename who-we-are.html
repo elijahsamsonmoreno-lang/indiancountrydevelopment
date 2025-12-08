@@ -45,6 +45,11 @@
       min-height: 100vh;
     }
 
+    /* prevent scroll when nav open */
+    #icd-site.nav-open {
+      overflow: hidden;
+    }
+
     #icd-site * {
       box-sizing: border-box;
     }
@@ -75,13 +80,64 @@
       border-bottom: 1px solid var(--line);
     }
 
+    /* LOGO + 3-STRAND BRAID MARK (ICD™ on subpages) */
     #icd-site .icd-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      white-space: nowrap;
+    }
+
+    #icd-site .icd-logo-icon {
+      width: 60px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    #icd-site .icd-logo-icon .strand {
+      fill: none;
+      stroke-linecap: round;
+      stroke-width: 6;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 0;
+      animation: weave 14s linear infinite;
+    }
+
+    #icd-site .icd-logo-icon .strand-1 {
+      stroke: var(--accent);
+    }
+    #icd-site .icd-logo-icon .strand-2 {
+      stroke: var(--ink-soft);
+      animation-delay: -4s;
+    }
+    #icd-site .icd-logo-icon .strand-3 {
+      stroke: var(--ink-muted);
+      animation-delay: -8s;
+    }
+
+    @keyframes weave {
+      0%   { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -400; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .icd-logo-icon .strand {
+        animation: none !important;
+      }
+    }
+
+    #icd-site .icd-logo-text {
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      white-space: nowrap;
+    }
+
+    #icd-site .icd-logo-tm {
+      font-size: 0.62rem;
+      vertical-align: super;
+      margin-left: 0.08rem;
     }
 
     #icd-site .icd-nav-toggle {
@@ -206,6 +262,10 @@
     /* WHO WE ARE – BIOS */
     #icd-site .about-block {
       max-width: 720px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 16px;
+      padding: 1.75rem 1.6rem 2rem;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.10);
     }
 
     #icd-site .about-intro {
@@ -344,6 +404,32 @@
       margin-top: 3rem;
       font-size: 0.78rem;
       color: var(--ink-muted);
+      background: rgba(255,255,255,0.96);
+    }
+
+    /* MOBILE TWEAKS */
+    @media (max-width: 480px) {
+      #icd-site .icd-header {
+        padding: 0.7rem 1rem;
+      }
+
+      #icd-site .icd-logo-icon {
+        width: 52px;
+        height: 16px;
+      }
+
+      #icd-site .icd-logo-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.10em;
+      }
+
+      #icd-site .section {
+        padding: 4.9rem 1.25rem 2.25rem;
+      }
+
+      #icd-site .about-block {
+        padding: 1.4rem 1.2rem 1.7rem;
+      }
     }
   </style>
 </head>
@@ -352,7 +438,28 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <div class="icd-logo">Indian Country Development</div>
+    <div class="icd-logo">
+      <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
+        <!-- lower strand -->
+        <path class="strand strand-1"
+          d="M 0 26
+             C 25 6, 55 6, 100 26
+             S 175 46, 200 26" />
+        <!-- middle strand -->
+        <path class="strand strand-2"
+          d="M 0 20
+             C 30 40, 70 40, 100 20
+             S 170 0, 200 20" />
+        <!-- upper strand -->
+        <path class="strand strand-3"
+          d="M 0 14
+             C 25 -6, 55 -6, 100 14
+             S 175 34, 200 14" />
+      </svg>
+      <div class="icd-logo-text">
+        ICD<span class="icd-logo-tm">™</span>
+      </div>
+    </div>
     <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
@@ -379,17 +486,20 @@
 
     <div class="about-block">
       <p class="about-intro">
-        We’ve devoted our careers to Indian Country—building institutions, tools, datasets, and partnerships
-        that didn’t exist yet, and making sure they actually work for the people they’re meant to serve.
+        We’ve spent years working across Indian Country—on reservations, in community hubs, with tribal enterprises, Native nonprofits, urban Indian organizations, and state partners. We’ve run interviews, evaluations, and focus groups; led statewide studies and economic analyses; and sat in the rooms where partnerships were formed or broke down. The work has given us a panoramic view of what tribal governments are asked to carry, where systems are strong, where gaps recur, and what actually helps people succeed for more than one funding cycle.
       </p>
 
-      <div class="about-tabs">
-        <button class="about-tab active" data-target="phil">Phil Gover</button>
-        <button class="about-tab" data-target="elijah">Elijah Moreno</button>
+      <div class="about-tabs" role="tablist" aria-label="Team members">
+        <button class="about-tab active" data-target="phil" role="tab" aria-selected="true" aria-controls="panel-phil" id="tab-phil">
+          Phil Gover
+        </button>
+        <button class="about-tab" data-target="elijah" role="tab" aria-selected="false" aria-controls="panel-elijah" id="tab-elijah">
+          Elijah Moreno
+        </button>
       </div>
 
       <div class="about-panels">
-        <div class="about-panel active" id="panel-phil">
+        <div class="about-panel active" id="panel-phil" role="tabpanel" aria-labelledby="tab-phil">
           <p class="panel-lead">Builds institutions, partnerships, and programs from scratch.</p>
           <ul class="panel-list">
             <li>Creates organizations where none existed—charter school networks, nonprofit accelerators, cross-sector initiatives.</li>
@@ -401,7 +511,7 @@
           <p class="panel-edu">MBA, Darden School of Business · BA, University of Virginia</p>
         </div>
 
-        <div class="about-panel" id="panel-elijah">
+        <div class="about-panel" id="panel-elijah" role="tabpanel" aria-labelledby="tab-elijah" hidden>
           <p class="panel-lead">Builds tools, datasets, and evidence where the field had gaps.</p>
           <ul class="panel-list">
             <li>Creates analytical tools and platforms that didn’t exist—including tech-based solutions for tribal communities.</li>
@@ -417,9 +527,7 @@
       <div class="combined-strength">
         <span class="combined-label">Together</span>
         <p class="combined-text">
-          We’ve both spent our careers building things that didn’t exist yet—institutions, tools, datasets, partnerships.
-          That’s the work we do best: taking something from zero to real, with the research to back it up and the
-          relationships to make it stick.
+          Together, we take that perspective and build things that work in real life: institutions that outlast leadership turnover, tools and datasets that remove guesswork, strategies that come off the page, and partnerships that sustain momentum. Our best work is going from zero to operational — building evidence, alignment, and capacity so tribal nations and Native-serving institutions can run programs, systems, and enterprises without relying on us.
         </p>
       </div>
     </div>
@@ -435,7 +543,7 @@
   const root = document.getElementById('icd-site');
   if (!root) return;
 
-  /* HAMBURGER NAV TOGGLE */
+  /* HAMBURGER NAV TOGGLE (with scroll lock) */
   const toggle = root.querySelector('.icd-nav-toggle');
   const drawer = root.querySelector('.icd-nav-drawer');
 
@@ -445,6 +553,7 @@
     drawer.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    root.classList.toggle('nav-open', open);
   }
 
   if (toggle && drawer) {
@@ -458,18 +567,52 @@
     });
   }
 
-  /* ABOUT TABS */
-  const aboutTabs = root.querySelectorAll('.about-tab');
-  const aboutPanels = root.querySelectorAll('.about-panel');
+  // close menu on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      setNavOpen(false);
+    }
+  });
 
-  aboutTabs.forEach(tab => {
+  /* ABOUT TABS (click + keyboard arrows) */
+  const tabs = Array.from(root.querySelectorAll('.about-tab'));
+  const panels = root.querySelectorAll('.about-panel');
+
+  function activateTab(tab) {
+    const target = tab.dataset.target;
+    tabs.forEach(t => {
+      const isActive = t === tab;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      t.setAttribute('tabindex', isActive ? '0' : '-1');
+    });
+
+    panels.forEach(p => {
+      if (p.id === 'panel-' + target) {
+        p.classList.add('active');
+        p.hidden = false;
+      } else {
+        p.classList.remove('active');
+        p.hidden = true;
+      }
+    });
+  }
+
+  tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
-      const target = tab.dataset.target;
-      aboutTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      aboutPanels.forEach(p => p.classList.remove('active'));
-      const panel = root.querySelector('#panel-' + target);
-      if (panel) panel.classList.add('active');
+      activateTab(tab);
+    });
+
+    tab.addEventListener('keydown', (e) => {
+      const key = e.key;
+      if (key === 'ArrowRight' || key === 'ArrowLeft') {
+        e.preventDefault();
+        const dir = key === 'ArrowRight' ? 1 : -1;
+        const nextIndex = (index + dir + tabs.length) % tabs.length;
+        const nextTab = tabs[nextIndex];
+        nextTab.focus();
+        activateTab(nextTab);
+      }
     });
   });
 
