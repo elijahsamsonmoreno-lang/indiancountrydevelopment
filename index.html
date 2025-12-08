@@ -93,17 +93,37 @@
       fill: none;
       stroke-linecap: round;
       stroke-width: 6;
+
+      /* subtle weaving animation */
+      stroke-dasharray: 400;
+      stroke-dashoffset: 0;
+      animation: weave 14s linear infinite;
     }
 
-    /* three-strand braid using existing palette, with more twist */
+    /* three-strand braid using existing palette */
     #icd-site .icd-logo-icon .strand-1 {
       stroke: var(--accent);      /* teal */
     }
     #icd-site .icd-logo-icon .strand-2 {
       stroke: var(--ink-soft);    /* slate */
+      animation-delay: -4s;
     }
     #icd-site .icd-logo-icon .strand-3 {
       stroke: var(--ink-muted);   /* muted gray */
+      animation-delay: -8s;
+    }
+
+    @keyframes weave {
+      0%   { stroke-dashoffset: 0;    opacity: .85; }
+      50%  { stroke-dashoffset: -200; opacity: .65; }
+      100% { stroke-dashoffset: -400; opacity: .85; }
+    }
+
+    /* ADA: respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .icd-logo-icon .strand {
+        animation: none !important;
+      }
     }
 
     #icd-site .icd-logo-text {
