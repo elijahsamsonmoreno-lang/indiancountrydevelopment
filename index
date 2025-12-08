@@ -1,0 +1,942 @@
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<div id="icd-site">
+
+<style>
+  /* PAGE BACKGROUND – may or may not be allowed by GoDaddy, but harmless */
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+  }
+
+  /* ROOT CONTAINER */
+  #icd-site {
+    --bg: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #4b5563;
+    --ink-muted: #9ca3af;
+    --accent: #0f9c93;           /* slightly deeper teal */
+    --accent-light: #34d3c1;
+    --accent-soft: rgba(15, 156, 147, 0.16);
+    --accent-soft-light: rgba(15, 156, 147, 0.06);
+    --accent-glow: rgba(15, 156, 147, 0.25);
+    --line: rgba(15, 23, 42, 0.08);
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background-color: var(--bg);
+
+    /* visible dot grid - spaced farther apart + slightly softer */
+    background-image: radial-gradient(circle, rgba(15,23,42,0.10) 1px, transparent 1px);
+    background-size: 34px 34px;
+
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+  }
+
+  #icd-site * {
+    box-sizing: border-box;
+  }
+
+  #icd-site a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  body #icd-site {
+    font-size: 16px;
+  }
+
+  /* HERO */
+  #icd-site .hero {
+    padding: 4.5rem 1.75rem 3rem;
+    text-align: center;
+    background: rgba(255,255,255,0.96);
+  }
+
+  #icd-site .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  #icd-site .hero-text {
+    font-size: clamp(1.55rem, 4.5vw, 2.5rem);
+    line-height: 1.55;
+    font-weight: 600;
+  }
+
+  #icd-site .hero-term {
+    display: inline-block;
+    font-weight: 800;
+    min-width: 260px;
+  }
+
+  /* rotating term – no gradient, same color as highlight */
+  #icd-site .hero-term-inner {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 800;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  #icd-site .hero-term-inner.fade-out {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  #icd-site .hero-term-inner.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #icd-site .hero-highlight {
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  /* GENERIC SECTIONS */
+  #icd-site .section {
+    padding: 3.5rem 1.75rem 2.25rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  #icd-site .section--wide {
+    max-width: 1000px;
+  }
+
+  #icd-site .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+
+  /* rectangular label */
+  #icd-site .label-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    background: var(--accent-soft-light);
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  #icd-site .label-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--line), transparent);
+  }
+
+  /* SCROLL REVEAL */
+  #icd-site .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  #icd-site .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SERVICES / ACCORDION */
+  #icd-site .services-list {
+    border-top: 1px solid var(--line);
+  }
+
+  #icd-site .service-item {
+    border-bottom: 1px solid var(--line);
+    padding: 0.75rem 0;
+  }
+
+  #icd-site .service-card {
+    border-radius: 10px;
+    padding: 1.1rem 1.1rem;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  #icd-site .service-item.open .service-card {
+    background: var(--accent-soft);
+    box-shadow: 0 10px 24px rgba(15,23,42,0.14);
+    transform: translateY(-2px);
+  }
+
+  #icd-site .service-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+  }
+
+  #icd-site .service-title {
+    font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+    font-weight: 700;
+  }
+
+  #icd-site .service-toggle {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent-soft-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  }
+
+  #icd-site .service-item.open .service-toggle {
+    background: var(--accent);
+    color: #ffffff;
+    transform: rotate(45deg);
+  }
+
+  #icd-site .service-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, margin-top 0.3s ease;
+  }
+
+  #icd-site .service-item.open .service-body {
+    max-height: 260px;
+    margin-top: 0.9rem;
+  }
+
+  #icd-site .service-body p {
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+
+  /* WHO WE WORK WITH – TABS */
+  #icd-site .audience-block {
+    max-width: 720px;
+  }
+
+  #icd-site .audience-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: var(--accent-soft-light);
+    width: fit-content;
+    margin-bottom: 2rem;
+  }
+
+  #icd-site .aud-tab {
+    border: none;
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    padding: 0.55rem 1.3rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  #icd-site .aud-tab:hover {
+    color: var(--ink-soft);
+  }
+
+  #icd-site .aud-tab:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  #icd-site .aud-tab.active {
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 10px 26px var(--accent-glow);
+  }
+
+  #icd-site .aud-panel {
+    display: none;
+  }
+
+  #icd-site .aud-panel.active {
+    display: block;
+  }
+
+  #icd-site .panel-lead {
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin-bottom: 1.4rem;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  #icd-site .panel-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #icd-site .panel-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.85rem;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  #icd-site .panel-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.63rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  /* HOW WE WORK – 3 STEPS */
+  #icd-site .process-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  @media (min-width: 800px) {
+    #icd-site .process-timeline {
+      flex-direction: row;
+    }
+  }
+
+  #icd-site .process-node {
+    flex: 1;
+    display: flex;
+    gap: 0.9rem;
+    padding: 0.75rem 0.9rem 0.85rem;
+    border-radius: 10px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  }
+
+  @media (min-width: 800px) {
+    #icd-site .process-node {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  #icd-site .process-node:hover {
+    transform: translateY(-3px);
+    background: rgba(15,156,147,0.04);
+    box-shadow: 0 12px 26px rgba(15,23,42,0.08);
+  }
+
+  #icd-site .node-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 24px var(--accent-glow);
+    flex-shrink: 0;
+  }
+
+  #icd-site .node-content h4 {
+    font-size: 1.0rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  #icd-site .node-content p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* WHO WE ARE – BIOS */
+  #icd-site .about-block {
+    max-width: 720px;
+  }
+
+  #icd-site .about-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: var(--accent-soft-light);
+    width: fit-content;
+    margin-bottom: 2rem;
+  }
+
+  #icd-site .about-tab {
+    border: none;
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink-muted);
+    padding: 0.55rem 1.3rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  #icd-site .about-tab:hover {
+    color: var(--ink-soft);
+  }
+
+  #icd-site .about-tab:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  #icd-site .about-tab.active {
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 10px 26px var(--accent-glow);
+  }
+
+  #icd-site .about-panel {
+    display: none;
+  }
+
+  #icd-site .about-panel.active {
+    display: block;
+  }
+
+  #icd-site .about-panel .panel-lead {
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin-bottom: 1.4rem;
+    color: var(--ink);
+  }
+
+  #icd-site .about-panel .panel-list {
+    list-style: none;
+    margin: 0 0 1.3rem 0;
+    padding: 0;
+  }
+
+  #icd-site .about-panel .panel-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  #icd-site .about-panel .panel-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.63rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  /* tribal affiliation line */
+  #icd-site .panel-tribal {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    padding-left: 1.4rem;
+  }
+
+  #icd-site .panel-edu {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    padding-left: 1.4rem;
+    border-left: 2px solid var(--accent-soft-light);
+  }
+
+  #icd-site .combined-strength {
+    padding: 1.5rem 1.4rem;
+    border-radius: 10px;
+    background: var(--accent-soft-light);
+    border-left: 3px solid var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  #icd-site .combined-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  #icd-site .combined-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  #icd-site .about-firm {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* CONTACT */
+  #icd-site .contact-block {
+    border-top: 1px solid var(--line);
+    padding-top: 3rem;
+  }
+
+  #icd-site .contact-heading {
+    font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+
+  #icd-site .contact-desc {
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    max-width: 420px;
+    line-height: 1.7;
+    margin-bottom: 2.4rem;
+  }
+
+  #icd-site .contact-line {
+    margin-bottom: 0.9rem;
+    font-size: 0.96rem;
+  }
+
+  #icd-site .contact-label {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  #icd-site .contact-link {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* BACK TO TOP BUTTON */
+  #icd-site .scroll-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.25rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: none;
+    background: var(--accent);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+    box-shadow: 0 14px 30px var(--accent-glow);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 40;
+    pointer-events: none;
+  }
+
+  #icd-site .scroll-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  #icd-site .scroll-top:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+  }
+
+  /* FOOTER */
+  #icd-site .site-footer {
+    padding: 3rem 1.75rem 2.5rem;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    margin-top: 3rem;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+  }
+</style>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-text">
+      A Native-led consulting firm for
+      <span class="hero-term">
+        <span class="hero-term-inner" id="rotateTerm">tribal governments</span>
+      </span>
+      and the partners working alongside them—strategy, operations, and data for
+      <strong class="hero-highlight">Indian Country development.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="section section--wide" id="services">
+  <div class="section-label">
+    <span class="label-text">What We Do</span>
+    <span class="label-line"></span>
+  </div>
+
+  <div class="services-list">
+    <div class="service-item" data-service="strategy">
+      <div class="service-card">
+        <div class="service-header">
+          <h3 class="service-title">Strategy &amp; Governance</h3>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-body">
+          <p>
+            The kind of planning that survives council turnover and actually respects how
+            tribal governance works. We've seen too many strategies die in a drawer—ours get used.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-item" data-service="operations">
+      <div class="service-card">
+        <div class="service-header">
+          <h3 class="service-title">Programs &amp; Operations</h3>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-body">
+          <p>
+            Untangling the messy stuff—overlapping roles, unclear handoffs, initiatives that stalled.
+            We build structures your team can actually run without us.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-item" data-service="data">
+      <div class="service-card">
+        <div class="service-header">
+          <h3 class="service-title">Data &amp; Learning</h3>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-body">
+          <p>
+            Making information useful—not just collected. Summaries leadership will read,
+            tools staff will use, and no dashboards that gather dust.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section class="section section--wide" id="audience">
+  <div class="section-label">
+    <span class="label-text">Who We Work With</span>
+    <span class="label-line"></span>
+  </div>
+
+  <div class="audience-block">
+    <div class="audience-tabs">
+      <button class="aud-tab active" data-target="tribal">Tribal &amp; Native-Led</button>
+      <button class="aud-tab" data-target="external">External Partners</button>
+    </div>
+
+    <div class="audience-panels">
+      <div class="aud-panel active" id="panel-tribal">
+        <p class="panel-lead">
+          For teams navigating something hard—a stuck initiative, a leadership transition,
+          a project that's bigger than current capacity.
+        </p>
+        <ul class="panel-list">
+          <li>We co-design around your governance, not against it.</li>
+          <li>We organize information without taking the wheel from local decision-makers.</li>
+          <li>We stay in the background so your staff can focus on relationships.</li>
+        </ul>
+      </div>
+
+      <div class="aud-panel" id="panel-external">
+        <p class="panel-lead">
+          For partners who know working with tribes isn’t a box to check—and want to get it right.
+        </p>
+        <ul class="panel-list">
+          <li>We clarify how tribal governance and consultation actually work for your project.</li>
+          <li>We align timelines and scopes so the work isn’t extractive or symbolic.</li>
+          <li>We translate between organizational, legal, and community language.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK (3 STEPS) -->
+<section class="section section--wide" id="process">
+  <div class="section-label">
+    <span class="label-text">How We Work</span>
+    <span class="label-line"></span>
+  </div>
+
+  <div class="process-timeline">
+    <div class="process-node">
+      <span class="node-num">1</span>
+      <div class="node-content">
+        <h4>Listen First</h4>
+        <p>Understand your structure, history, and what’s already been tried—on paper and in practice.</p>
+      </div>
+    </div>
+
+    <div class="process-node">
+      <span class="node-num">2</span>
+      <div class="node-content">
+        <h4>Clarify Pathways</h4>
+        <p>Map decision-makers, constraints, and realistic timelines so the work can actually move.</p>
+      </div>
+    </div>
+
+    <div class="process-node">
+      <span class="node-num">3</span>
+      <div class="node-content">
+        <h4>Build Light</h4>
+        <p>Create tools, plans, and structures your team can run without us—and stay close through launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="section section--wide" id="about">
+  <div class="section-label">
+    <span class="label-text">Who We Are</span>
+    <span class="label-line"></span>
+  </div>
+
+  <div class="about-block">
+    <div class="about-tabs">
+      <button class="about-tab active" data-target="phil">Phil Gover</button>
+      <button class="about-tab" data-target="elijah">Elijah Moreno</button>
+    </div>
+
+    <div class="about-panels">
+      <div class="about-panel active" id="panel-phil">
+        <p class="panel-lead">Builds institutions, partnerships, and programs from scratch.</p>
+        <ul class="panel-list">
+          <li>Creates organizations where none existed—charter school networks, nonprofit accelerators, cross-sector initiatives.</li>
+          <li>Designs systems that bridge tribal governments, federal agencies, and private partners.</li>
+          <li>Turns complex stakeholder landscapes into aligned, working coalitions.</li>
+          <li>Moves strategy from paper to practice with operational clarity.</li>
+        </ul>
+        <p class="panel-tribal">Northern and Southern Paiute, Pawnee, and Comanche Nations.</p>
+        <p class="panel-edu">MBA, Darden School of Business · BA, University of Virginia</p>
+      </div>
+
+      <div class="about-panel" id="panel-elijah">
+        <p class="panel-lead">Builds tools, datasets, and evidence where the field had gaps.</p>
+        <ul class="panel-list">
+          <li>Creates analytical tools and platforms that didn’t exist—including tech-based solutions for tribal communities.</li>
+          <li>Built the first comprehensive federal dataset on Native enterprise and economic impact.</li>
+          <li>Turns incomplete data into rigorous evidence that moves policy and investment.</li>
+          <li>Makes the quantitative case for what Indian Country already knows.</li>
+        </ul>
+        <p class="panel-tribal">Coastal Band of the Chumash Nation.</p>
+        <p class="panel-edu">PhD Candidate, Cornell University · BA, Dartmouth College</p>
+      </div>
+    </div>
+
+    <div class="combined-strength">
+      <span class="combined-label">Together</span>
+      <p class="combined-text">
+        We’ve devoted our careers to Indian Country. We’ve both spent our careers building things that didn’t exist yet—institutions,
+        tools, datasets, partnerships. That’s the work we do best: taking something from zero to real, with the research
+        to back it up and the relationships to make it stick.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="contact-block">
+    <h2 class="contact-heading">Let’s Talk</h2>
+    <p class="contact-desc">
+      We take on a handful of projects at a time—enough to do the work right. If you’re facing something
+      complicated, we’d like to hear about it.
+    </p>
+
+    <div class="contact-line">
+      <span class="contact-label">Contact</span>
+      Elijah Moreno
+    </div>
+    <div class="contact-line">
+      <span class="contact-label">Email</span>
+      <a class="contact-link" href="mailto:esm247@cornell.edu">esm247@cornell.edu</a>
+    </div>
+    <div class="contact-line">
+      <span class="contact-label">Firm</span>
+      Tribal Economic Development Partners L.L.C.
+    </div>
+  </div>
+</section>
+
+<!-- BACK TO TOP BUTTON -->
+<button class="scroll-top" aria-label="Back to top">↑</button>
+
+<footer class="site-footer">
+  © 2025 Tribal Economic Development Partners L.L.C.
+</footer>
+
+<script>
+(function() {
+  const root = document.getElementById('icd-site');
+  if (!root) return;
+
+  /* ROTATING HERO TERMS */
+  const terms = [
+    'tribal governments',
+    'Native Hawaiian Organizations',
+    'Alaska Native Corporations',
+    'tribal colleges and universities',
+    'Native-led organizations',
+    'state-recognized tribes',
+    'Alaska Native communities',
+    'tribal enterprises',
+    'Urban Indian communities'
+  ];
+
+  const termSpan = root.querySelector('#rotateTerm');
+  let idx = 0;
+
+  if (termSpan) {
+    termSpan.textContent = terms[0];
+    termSpan.classList.add('fade-in');
+
+    setInterval(() => {
+      termSpan.classList.remove('fade-in');
+      termSpan.classList.add('fade-out');
+
+      setTimeout(() => {
+        idx = (idx + 1) % terms.length;
+        termSpan.textContent = terms[idx];
+        termSpan.classList.remove('fade-out');
+        termSpan.classList.add('fade-in');
+      }, 260);
+    }, 3600);
+  }
+
+  /* SERVICES ACCORDION */
+  root.querySelectorAll('.service-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.closest('.service-item');
+      const isOpen = item.classList.contains('open');
+
+      root.querySelectorAll('.service-item.open').forEach(openItem => {
+        openItem.classList.remove('open');
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+
+  /* AUDIENCE TABS */
+  const audTabs = root.querySelectorAll('.aud-tab');
+  const audPanels = root.querySelectorAll('.aud-panel');
+
+  audTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      audTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      audPanels.forEach(p => p.classList.remove('active'));
+      const panel = root.querySelector('#panel-' + target);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* ABOUT TABS */
+  const aboutTabs = root.querySelectorAll('.about-tab');
+  const aboutPanels = root.querySelectorAll('.about-panel');
+
+  aboutTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      aboutTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      aboutPanels.forEach(p => p.classList.remove('active'));
+      const panel = root.querySelector('#panel-' + target);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* SCROLL REVEAL */
+  const revealTargets = root.querySelectorAll('.hero, .section');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    revealTargets.forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  } else {
+    revealTargets.forEach(el => el.classList.add('reveal-visible'));
+  }
+
+  /* SCROLL TO TOP BUTTON */
+  const scrollBtn = root.querySelector('.scroll-top');
+  if (scrollBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 320) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+})();
+</script>
+
+</div>
