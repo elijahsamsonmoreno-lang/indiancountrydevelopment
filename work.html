@@ -45,6 +45,11 @@
       min-height: 100vh;
     }
 
+    /* prevent scroll when nav open */
+    #icd-site.nav-open {
+      overflow: hidden;
+    }
+
     #icd-site * {
       box-sizing: border-box;
     }
@@ -75,13 +80,64 @@
       border-bottom: 1px solid var(--line);
     }
 
+    /* LOGO + 3-STRAND BRAID MARK (ICD™) */
     #icd-site .icd-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      white-space: nowrap;
+    }
+
+    #icd-site .icd-logo-icon {
+      width: 60px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    #icd-site .icd-logo-icon .strand {
+      fill: none;
+      stroke-linecap: round;
+      stroke-width: 6;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 0;
+      animation: weave 14s linear infinite;
+    }
+
+    #icd-site .icd-logo-icon .strand-1 {
+      stroke: var(--accent);
+    }
+    #icd-site .icd-logo-icon .strand-2 {
+      stroke: var(--ink-soft);
+      animation-delay: -4s;
+    }
+    #icd-site .icd-logo-icon .strand-3 {
+      stroke: var(--ink-muted);
+      animation-delay: -8s;
+    }
+
+    @keyframes weave {
+      0%   { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -400; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .icd-logo-icon .strand {
+        animation: none !important;
+      }
+    }
+
+    #icd-site .icd-logo-text {
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      white-space: nowrap;
+    }
+
+    #icd-site .icd-logo-tm {
+      font-size: 0.62rem;
+      vertical-align: super;
+      margin-left: 0.08rem;
     }
 
     #icd-site .icd-nav-toggle {
@@ -203,9 +259,13 @@
       transform: translateY(0);
     }
 
-    /* WHO WE WORK WITH – TABS */
+    /* WHO WE WORK WITH – BLOCK + TABS */
     #icd-site .audience-block {
       max-width: 720px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 16px;
+      padding: 1.75rem 1.6rem 2rem;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.10);
     }
 
     #icd-site .audience-tabs {
@@ -289,7 +349,15 @@
       background: var(--accent);
     }
 
-    /* HOW WE WORK – 3 STEPS */
+    /* HOW WE WORK – CARD + 3 STEPS */
+    #icd-site .process-shell {
+      max-width: 720px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 16px;
+      padding: 1.7rem 1.6rem 2rem;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.10);
+    }
+
     #icd-site .process-timeline {
       display: flex;
       flex-direction: column;
@@ -359,6 +427,33 @@
       margin-top: 3rem;
       font-size: 0.78rem;
       color: var(--ink-muted);
+      background: rgba(255,255,255,0.96);
+    }
+
+    /* MOBILE TWEAKS */
+    @media (max-width: 480px) {
+      #icd-site .icd-header {
+        padding: 0.7rem 1rem;
+      }
+
+      #icd-site .icd-logo-icon {
+        width: 52px;
+        height: 16px;
+      }
+
+      #icd-site .icd-logo-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.10em;
+      }
+
+      #icd-site .section {
+        padding: 4.9rem 1.25rem 2.25rem;
+      }
+
+      #icd-site .audience-block,
+      #icd-site .process-shell {
+        padding: 1.4rem 1.2rem 1.7rem;
+      }
     }
   </style>
 </head>
@@ -367,7 +462,28 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <div class="icd-logo">Indian Country Development</div>
+    <div class="icd-logo">
+      <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
+        <!-- lower strand -->
+        <path class="strand strand-1"
+          d="M 0 26
+             C 25  6, 55  6, 100 26
+             S 175 46, 200 26" />
+        <!-- middle strand -->
+        <path class="strand strand-2"
+          d="M 0 20
+             C 30 40, 70 40, 100 20
+             S 170  0, 200 20" />
+        <!-- upper strand -->
+        <path class="strand strand-3"
+          d="M 0 14
+             C 25 -6, 55 -6, 100 14
+             S 175 34, 200 14" />
+      </svg>
+      <div class="icd-logo-text">
+        ICD<span class="icd-logo-tm">™</span>
+      </div>
+    </div>
     <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
@@ -393,13 +509,31 @@
     </div>
 
     <div class="audience-block">
-      <div class="audience-tabs">
-        <button class="aud-tab active" data-target="tribal">Tribal &amp; Native-Led</button>
-        <button class="aud-tab" data-target="external">External Partners</button>
+      <div class="audience-tabs" role="tablist" aria-label="Who we work with">
+        <button
+          class="aud-tab active"
+          data-target="tribal"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-tribal"
+          id="tab-tribal"
+        >
+          Tribal &amp; Native-Led
+        </button>
+        <button
+          class="aud-tab"
+          data-target="external"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-external"
+          id="tab-external"
+        >
+          External Partners
+        </button>
       </div>
 
       <div class="audience-panels">
-        <div class="aud-panel active" id="panel-tribal">
+        <div class="aud-panel active" id="panel-tribal" role="tabpanel" aria-labelledby="tab-tribal">
           <p class="panel-lead">
             For teams navigating something hard—a stuck initiative, a leadership transition,
             a project that's bigger than current capacity.
@@ -411,7 +545,7 @@
           </ul>
         </div>
 
-        <div class="aud-panel" id="panel-external">
+        <div class="aud-panel" id="panel-external" role="tabpanel" aria-labelledby="tab-external" hidden>
           <p class="panel-lead">
             For partners who know working with tribes isn’t a box to check—and want to get it right.
           </p>
@@ -432,28 +566,30 @@
       <span class="label-line"></span>
     </div>
 
-    <div class="process-timeline">
-      <div class="process-node">
-        <span class="node-num">1</span>
-        <div class="node-content">
-          <h4>Listen First</h4>
-          <p>Understand your structure, history, and what’s already been tried—on paper and in practice.</p>
+    <div class="process-shell">
+      <div class="process-timeline">
+        <div class="process-node">
+          <span class="node-num">1</span>
+          <div class="node-content">
+            <h4>Listen First</h4>
+            <p>Understand your structure, history, and what’s already been tried—on paper and in practice.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="process-node">
-        <span class="node-num">2</span>
-        <div class="node-content">
-          <h4>Clarify Pathways</h4>
-          <p>Map decision-makers, constraints, and realistic timelines so the work can actually move.</p>
+        <div class="process-node">
+          <span class="node-num">2</span>
+          <div class="node-content">
+            <h4>Clarify Pathways</h4>
+            <p>Map decision-makers, constraints, and realistic timelines so the work can actually move.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="process-node">
-        <span class="node-num">3</span>
-        <div class="node-content">
-          <h4>Build Light</h4>
-          <p>Create tools, plans, and structures your team can run without us—and stay close through launch.</p>
+        <div class="process-node">
+          <span class="node-num">3</span>
+          <div class="node-content">
+            <h4>Build Light</h4>
+            <p>Create tools, plans, and structures your team can run without us—and stay close through launch.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -469,7 +605,7 @@
   const root = document.getElementById('icd-site');
   if (!root) return;
 
-  /* HAMBURGER NAV TOGGLE */
+  /* HAMBURGER NAV TOGGLE (with scroll lock) */
   const toggle = root.querySelector('.icd-nav-toggle');
   const drawer = root.querySelector('.icd-nav-drawer');
 
@@ -479,6 +615,7 @@
     drawer.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    root.classList.toggle('nav-open', open);
   }
 
   if (toggle && drawer) {
@@ -492,18 +629,52 @@
     });
   }
 
-  /* AUDIENCE TABS */
-  const audTabs = root.querySelectorAll('.aud-tab');
-  const audPanels = root.querySelectorAll('.aud-panel');
+  // close menu on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      setNavOpen(false);
+    }
+  });
 
-  audTabs.forEach(tab => {
+  /* AUDIENCE TABS (click + keyboard arrows) */
+  const tabs = Array.from(root.querySelectorAll('.aud-tab'));
+  const panels = root.querySelectorAll('.aud-panel');
+
+  function activateTab(tab) {
+    const target = tab.dataset.target;
+    tabs.forEach(t => {
+      const isActive = t === tab;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      t.setAttribute('tabindex', isActive ? '0' : '-1');
+    });
+
+    panels.forEach(p => {
+      if (p.id === 'panel-' + target) {
+        p.classList.add('active');
+        p.hidden = false;
+      } else {
+        p.classList.remove('active');
+        p.hidden = true;
+      }
+    });
+  }
+
+  tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
-      const target = tab.dataset.target;
-      audTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      audPanels.forEach(p => p.classList.remove('active'));
-      const panel = root.querySelector('#panel-' + target);
-      if (panel) panel.classList.add('active');
+      activateTab(tab);
+    });
+
+    tab.addEventListener('keydown', (e) => {
+      const key = e.key;
+      if (key === 'ArrowRight' || key === 'ArrowLeft') {
+        e.preventDefault();
+        const dir = key === 'ArrowRight' ? 1 : -1;
+        const nextIndex = (index + dir + tabs.length) % tabs.length;
+        const nextTab = tabs[nextIndex];
+        nextTab.focus();
+        activateTab(nextTab);
+      }
     });
   });
 
