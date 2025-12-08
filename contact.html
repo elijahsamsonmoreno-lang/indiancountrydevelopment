@@ -45,6 +45,11 @@
       min-height: 100vh;
     }
 
+    /* prevent scroll when nav open (matches index) */
+    #icd-site.nav-open {
+      overflow: hidden;
+    }
+
     #icd-site * {
       box-sizing: border-box;
     }
@@ -75,85 +80,94 @@
       border-bottom: 1px solid var(--line);
     }
 
+    /* LOGO + 3-STRAND SPIRAL BRAID (from index) */
     #icd-site .icd-logo {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
       white-space: nowrap;
     }
 
-    #icd-site .icd-logo-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background: var(--accent-soft-light);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    #icd-site .icd-logo-icon {
+      width: 60px;
+      height: 18px;
+      flex-shrink: 0;
     }
 
-    #icd-site .icd-logo-mark svg {
-      width: 22px;
-      height: 22px;
-      display: block;
-    }
-
-    #icd-site .icd-braid path {
+    #icd-site .icd-logo-icon .strand {
       fill: none;
-      stroke-width: 2;
       stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-dasharray: 52;
-      animation: icdBraidShift 6s linear infinite;
+      stroke-width: 6;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 0;
+      animation: weave 14s linear infinite;
     }
 
-    #icd-site .icd-braid path:nth-child(1) {
+    #icd-site .icd-logo-icon .strand-1 {
       stroke: var(--accent);
     }
-    #icd-site .icd-braid path:nth-child(2) {
-      stroke: var(--accent-light);
-      animation-delay: -2s;
-    }
-    #icd-site .icd-braid path:nth-child(3) {
+    #icd-site .icd-logo-icon .strand-2 {
       stroke: var(--ink-soft);
       animation-delay: -4s;
     }
+    #icd-site .icd-logo-icon .strand-3 {
+      stroke: var(--ink-muted);
+      animation-delay: -8s;
+    }
 
-    @keyframes icdBraidShift {
-      0% { stroke-dashoffset: 0; }
-      100% { stroke-dashoffset: -52; }
+    @keyframes weave {
+      0%   { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -400; }
+    }
+
+    /* respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .icd-logo-icon .strand {
+        animation: none !important;
+      }
     }
 
     #icd-site .icd-logo-text {
       display: flex;
       flex-direction: column;
       line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
     }
 
     #icd-site .icd-logo-main {
       font-size: 0.78rem;
-      letter-spacing: 0.16em;
-    }
-
-    #icd-site .icd-tm {
-      font-size: 0.55rem;
-      vertical-align: top;
-      margin-left: 1px;
     }
 
     #icd-site .icd-logo-sub {
-      font-size: 0.6rem;
-      letter-spacing: 0.16em;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
       color: var(--ink-muted);
-      text-transform: uppercase;
     }
 
-    @media (max-width: 420px) {
+    #icd-site .icd-logo-tm {
+      font-size: 0.62rem;
+      vertical-align: super;
+      margin-left: 0.08rem;
+    }
+
+    @media (max-width: 480px) {
+      #icd-site .icd-header {
+        padding: 0.7rem 1rem;
+      }
+
+      #icd-site .icd-logo-icon {
+        width: 52px;
+        height: 16px;
+      }
+
+      #icd-site .icd-logo-main {
+        font-size: 0.72rem;
+        letter-spacing: 0.10em;
+      }
+
       #icd-site .icd-logo-sub {
         display: none;
       }
@@ -190,7 +204,7 @@
       transform: translateY(-11px) rotate(-45deg);
     }
 
-    /* FULLSCREEN NAV DRAWER */
+    /* FULLSCREEN NAV DRAWER (no visible Menu label) */
     #icd-site .icd-nav-drawer {
       position: fixed;
       inset: 0;
@@ -351,7 +365,7 @@
       text-transform: uppercase;
     }
 
-    /* TEMPLATE EMAILS */
+    /* TEMPLATE EMAILS (single menu + card) */
     #icd-site .templates {
       margin-top: 2.5rem;
     }
@@ -369,26 +383,41 @@
       max-width: 520px;
     }
 
-    #icd-site .templates-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
+    #icd-site .templates-control {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
     }
 
-    @media (min-width: 800px) {
-      #icd-site .templates-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    #icd-site .templates-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      font-weight: 600;
     }
 
-    #icd-site .template-card {
-      padding: 1rem 1rem;
+    #icd-site .templates-select {
+      min-width: 240px;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.96);
+    }
+
+    #icd-site .template-current {
+      padding: 1.1rem 1.1rem;
       border-radius: 10px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.94);
+      background: rgba(255,255,255,0.96);
+      margin-top: 0.2rem;
     }
 
-    #icd-site .template-card h3 {
+    #icd-site .template-title {
       font-size: 0.98rem;
       font-weight: 700;
       margin-bottom: 0.3rem;
@@ -399,6 +428,20 @@
       color: var(--ink-soft);
       margin-bottom: 0.9rem;
       line-height: 1.6;
+    }
+
+    #icd-site .template-body {
+      font-size: 0.8rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+      margin-bottom: 0.9rem;
+      max-height: 260px;
+      overflow: auto;
+      white-space: pre-wrap;
+      line-height: 1.55;
+      color: #111827;
     }
 
     #icd-site .template-copy {
@@ -460,15 +503,23 @@
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
     <a href="index.html" class="icd-logo">
-      <span class="icd-logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" class="icd-braid">
-          <path d="M8 28 C 14 20 14 12 20 12 C 26 12 26 20 32 28" />
-          <path d="M8 12 C 14 20 14 28 20 28 C 26 28 26 20 32 12" />
-          <path d="M8 20 C 14 18 26 22 32 20" />
-        </svg>
-      </span>
+      <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
+        <!-- spiral / twisty braid paths (same as index) -->
+        <path class="strand strand-1"
+          d="M 0 26
+             C 25 6, 55 6, 100 26
+             S 175 46, 200 26" />
+        <path class="strand strand-2"
+          d="M 0 20
+             C 30 40, 70 40, 100 20
+             S 170 0, 200 20" />
+        <path class="strand strand-3"
+          d="M 0 14
+             C 25 -6, 55 -6, 100 14
+             S 175 34, 200 14" />
+      </svg>
       <span class="icd-logo-text">
-        <span class="icd-logo-main">ICD<span class="icd-tm">™</span></span>
+        <span class="icd-logo-main">ICD<span class="icd-logo-tm">™</span></span>
         <span class="icd-logo-sub">Indian Country Development</span>
       </span>
     </a>
@@ -479,9 +530,8 @@
     </button>
   </header>
 
-  <!-- FULLSCREEN MENU -->
+  <!-- FULLSCREEN MENU (no 'Menu' text) -->
   <nav class="icd-nav-drawer" aria-hidden="true">
-    <div class="icd-nav-label"></div>
     <a href="index.html">Home</a>
     <a href="what-we-do.html">What we do</a>
     <a href="work.html">Who we work with &amp; how we work</a>
@@ -522,144 +572,29 @@
       </div>
     </div>
 
-    <!-- TEMPLATES -->
+    <!-- TEMPLATES (dropdown + single card) -->
     <div class="templates">
       <h2 class="templates-heading">Quick-start email drafts</h2>
       <p class="templates-tagline">
-        Copy a starting template that fits your role and adapt it with your project details, timelines, and context.
+        Pick the option that best matches your role. Copy the draft, then adjust it with your project details.
       </p>
 
-      <div class="templates-grid">
-        <article class="template-card">
-          <h3>Tribal government / enterprise</h3>
-          <p class="template-desc">
-            For councils, departments, or enterprises looking at strategy, operations, or data work.
-          </p>
-          <button
-            class="template-copy"
-            type="button"
-            data-template="Subject: Potential project support for our tribal government
-
-Dear Phil and Elijah,
-
-I&#39;m reaching out from [Tribal Nation / department / enterprise name]. We are currently working on [brief description of the initiative or challenge] and are looking for support with [strategy / operations / data &amp; evaluation].
-
-We&#39;d be interested in a short conversation to see whether our work is a good fit for Indian Country Development and what a scoped engagement might look like, including rough timelines and budget.
-
-A few quick details:
-• Team / department: [brief description]
-• Key decision-makers: [e.g., council, board, CEO, etc.]
-• Desired timeline: [e.g., hoping to decide by X date]
-• Any constraints you should know about: [optional]
-
-Thank you for considering this. We appreciate your work in Indian Country and look forward to connecting.
-
-Best,
-[Name]
-[Title]
-[Tribal Nation / enterprise]"
-          >
-            Copy template
-          </button>
-        </article>
-
-        <article class="template-card">
-          <h3>Native-led organization / TCU / urban Indian</h3>
-          <p class="template-desc">
-            For Native-led nonprofits, urban Indian orgs, or tribal colleges and universities.
-          </p>
-          <button
-            class="template-copy"
-            type="button"
-            data-template="Subject: Exploring support for our Native-led organization
-
-Dear Phil and Elijah,
-
-I&#39;m reaching out from [organization name], a [brief description: Native-led nonprofit / tribal college / urban Indian organization] serving [community / region].
-
-We&#39;re navigating [brief description of challenge or opportunity] and are interested in support with [strategy / program design / evaluation / data &amp; learning]. We want to make sure any work we do is aligned with our community and sustainable for our team.
-
-Could we schedule a time to talk through what we&#39;re facing and whether it makes sense to work together?
-
-A few quick details:
-• Our work: [1–2 sentences]
-• Current need: [1–2 sentences]
-• Timeline / key dates: [if any]
-
-Thank you for your time and for the work you do across Indian Country.
-
-Best,
-[Name]
-[Title]
-[Organization]"
-          >
-            Copy template
-          </button>
-        </article>
-
-        <article class="template-card">
-          <h3>External partner (state, philanthropy, higher ed)</h3>
-          <p class="template-desc">
-            For partners who want to work with tribes in a way that’s not extractive or symbolic.
-          </p>
-          <button
-            class="template-copy"
-            type="button"
-            data-template="Subject: Support for working with tribal partners on [project name]
-
-Dear Phil and Elijah,
-
-I&#39;m reaching out from [agency / foundation / university / organization name]. We are planning or currently working on [brief description of program or initiative] that involves tribal nations or Native communities.
-
-We want to make sure our approach is grounded in how tribal governance and consultation actually work, and that our timelines and expectations are realistic and non-extractive. We&#39;re interested in exploring how Indian Country Development might help us design or adjust this work.
-
-A few quick details:
-• Our role: [state agency / philanthropy / university unit, etc.]
-• Tribal or Native partners involved (or hoped for): [if applicable]
-• Project goals: [1–2 sentences]
-• Timeframe / key decisions: [e.g., RFP dates, board meetings]
-
-If this sounds aligned with the kind of work you take on, we&#39;d appreciate a conversation about fit and possible next steps.
-
-Best,
-[Name]
-[Title]
-[Organization]"
-          >
-            Copy template
-          </button>
-        </article>
-
-        <article class="template-card">
-          <h3>General inquiry / not sure yet</h3>
-          <p class="template-desc">
-            For when you know something needs to move, but you’re still clarifying what.
-          </p>
-          <button
-            class="template-copy"
-            type="button"
-            data-template="Subject: Exploring a potential project with Indian Country Development
-
-Dear Phil and Elijah,
-
-I&#39;m reaching out from [organization / tribe / team]. We are in the early stages of thinking about support for [brief description of the issue or area: strategy, operations, data, evaluation, etc.], and we&#39;re not yet sure what the right shape of a project would be.
-
-What we do know:
-• The context: [1–3 sentences about what&#39;s happening now]
-• The questions we&#39;re asking: [a few bullet points]
-• Any time pressures or key dates: [if relevant]
-
-We would value a conversation to see whether this might be a fit for Indian Country Development, and to get your perspective on how you&#39;d structure an engagement like this.
-
-Best,
-[Name]
-[Title]
-[Organization]"
-          >
-            Copy template
-          </button>
-        </article>
+      <div class="templates-control">
+        <span class="templates-label">I’m reaching out as</span>
+        <select class="templates-select" id="templateSelect">
+          <option value="tribal">Tribal government / enterprise</option>
+          <option value="nativeOrg">Native-led org / TCU / urban Indian</option>
+          <option value="external">External partner (state, philanthropy, higher ed)</option>
+          <option value="general">General inquiry / not sure yet</option>
+        </select>
       </div>
+
+      <article class="template-current">
+        <h3 class="template-title"></h3>
+        <p class="template-desc"></p>
+        <pre class="template-body" id="templateBody"></pre>
+        <button class="template-copy" type="button">Copy template</button>
+      </article>
     </div>
   </section>
 
@@ -686,6 +621,7 @@ Best,
     drawer.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    root.classList.toggle('nav-open', open);
   }
 
   if (toggle && drawer) {
@@ -698,6 +634,13 @@ Best,
       link.addEventListener('click', () => setNavOpen(false));
     });
   }
+
+  // close menu on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      setNavOpen(false);
+    }
+  });
 
   /* SIMPLE REVEAL */
   const revealTargets = root.querySelectorAll('.reveal');
@@ -738,7 +681,6 @@ Best,
         () => showToast('Unable to copy')
       );
     } else {
-      // Fallback
       const ta = document.createElement('textarea');
       ta.value = text;
       document.body.appendChild(ta);
@@ -762,13 +704,135 @@ Best,
     });
   }
 
-  /* TEMPLATE COPY BUTTONS */
-  root.querySelectorAll('.template-copy').forEach(btn => {
-    const tpl = btn.getAttribute('data-template');
-    btn.addEventListener('click', () => {
-      copyText(tpl, 'Template copied');
+  /* TEMPLATE LOGIC: dropdown + single card */
+  const templates = {
+    tribal: {
+      title: 'Tribal government / enterprise',
+      desc: 'For councils, departments, or enterprises looking at strategy, operations, or data work.',
+      body: `Subject: Potential project support for our tribal government
+
+Dear Phil and Elijah,
+
+I'm reaching out from [Tribal Nation / department / enterprise name]. We are currently working on [brief description of the initiative or challenge] and are looking for support with [strategy / operations / data & evaluation].
+
+We'd be interested in a short conversation to see whether our work is a good fit for Indian Country Development and what a scoped engagement might look like, including rough timelines and budget.
+
+A few quick details:
+• Team / department: [brief description]
+• Key decision-makers: [e.g., council, board, CEO, etc.]
+• Desired timeline: [e.g., hoping to decide by X date]
+• Any constraints you should know about: [optional]
+
+Thank you for considering this. We appreciate your work in Indian Country and look forward to connecting.
+
+Best,
+[Name]
+[Title]
+[Tribal Nation / enterprise]`
+    },
+    nativeOrg: {
+      title: 'Native-led organization / TCU / urban Indian',
+      desc: 'For Native-led nonprofits, tribal colleges, or urban Indian organizations.',
+      body: `Subject: Exploring support for our Native-led organization
+
+Dear Phil and Elijah,
+
+I'm reaching out from [organization name], a [brief description: Native-led nonprofit / tribal college / urban Indian organization] serving [community / region].
+
+We're navigating [brief description of challenge or opportunity] and are interested in support with [strategy / program design / evaluation / data & learning]. We want to make sure any work we do is aligned with our community and sustainable for our team.
+
+Could we schedule a time to talk through what we're facing and whether it makes sense to work together?
+
+A few quick details:
+• Our work: [1–2 sentences]
+• Current need: [1–2 sentences]
+• Timeline / key dates: [if any]
+
+Thank you for your time and for the work you do across Indian Country.
+
+Best,
+[Name]
+[Title]
+[Organization]`
+    },
+    external: {
+      title: 'External partner (state, philanthropy, higher ed)',
+      desc: 'For partners who want to work with tribes in a way that’s not extractive or symbolic.',
+      body: `Subject: Support for working with tribal partners on [project name]
+
+Dear Phil and Elijah,
+
+I'm reaching out from [agency / foundation / university / organization name]. We are planning or currently working on [brief description of program or initiative] that involves tribal nations or Native communities.
+
+We want to make sure our approach is grounded in how tribal governance and consultation actually work, and that our timelines and expectations are realistic and non-extractive. We're interested in exploring how Indian Country Development might help us design or adjust this work.
+
+A few quick details:
+• Our role: [state agency / philanthropy / university unit, etc.]
+• Tribal or Native partners involved (or hoped for): [if applicable]
+• Project goals: [1–2 sentences]
+• Timeframe / key decisions: [e.g., RFP dates, board meetings]
+
+If this sounds aligned with the kind of work you take on, we'd appreciate a conversation about fit and possible next steps.
+
+Best,
+[Name]
+[Title]
+[Organization]`
+    },
+    general: {
+      title: 'General inquiry / not sure yet',
+      desc: 'For when you know something needs to move, but you’re still clarifying what.',
+      body: `Subject: Exploring a potential project with Indian Country Development
+
+Dear Phil and Elijah,
+
+I'm reaching out from [organization / tribe / team]. We are in the early stages of thinking about support for [brief description of the issue or area: strategy, operations, data, evaluation, etc.], and we're not yet sure what the right shape of a project would be.
+
+What we do know:
+• The context: [1–3 sentences about what's happening now]
+• The questions we're asking: [a few bullet points]
+• Any time pressures or key dates: [if relevant]
+
+We would value a conversation to see whether this might be a fit for Indian Country Development, and to get your perspective on how you'd structure an engagement like this.
+
+Best,
+[Name]
+[Title]
+[Organization]`
+    }
+  };
+
+  const selectEl = root.querySelector('#templateSelect');
+  const titleEl  = root.querySelector('.template-title');
+  const descEl   = root.querySelector('.template-desc');
+  const bodyEl   = root.querySelector('.template-body');
+  const copyBtn  = root.querySelector('.template-copy');
+
+  function renderTemplate(key) {
+    const tpl = templates[key] || templates.tribal;
+    if (!titleEl || !descEl || !bodyEl) return;
+    titleEl.textContent = tpl.title;
+    descEl.textContent = tpl.desc;
+    bodyEl.textContent = tpl.body;
+    bodyEl.dataset.currentKey = key;
+  }
+
+  if (selectEl) {
+    selectEl.addEventListener('change', () => {
+      renderTemplate(selectEl.value);
     });
-  });
+  }
+
+  if (copyBtn && bodyEl) {
+    copyBtn.addEventListener('click', () => {
+      const key = bodyEl.dataset.currentKey || 'tribal';
+      const tpl = templates[key] || templates.tribal;
+      copyText(tpl.body, 'Template copied');
+    });
+  }
+
+  // initial render
+  renderTemplate('tribal');
 })();
 </script>
 </body>
