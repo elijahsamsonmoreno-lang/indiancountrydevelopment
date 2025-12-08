@@ -11,14 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
-    /* PAGE BACKGROUND */
     html, body {
       margin: 0;
       padding: 0;
       background: #ffffff !important;
     }
 
-    /* ROOT CONTAINER */
     #icd-site {
       --bg: #ffffff;
       --ink: #0f172a;
@@ -36,7 +34,6 @@
       color: var(--ink);
       background-color: var(--bg);
 
-      /* dot grid */
       background-image: radial-gradient(circle, rgba(15,23,42,0.10) 1px, transparent 1px);
       background-size: 34px 34px;
 
@@ -45,20 +42,11 @@
       min-height: 100vh;
     }
 
-    #icd-site * {
-      box-sizing: border-box;
-    }
+    #icd-site * { box-sizing: border-box; }
+    #icd-site a { color: inherit; text-decoration: none; }
+    body #icd-site { font-size: 16px; }
 
-    #icd-site a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    body #icd-site {
-      font-size: 16px;
-    }
-
-    /* HEADER + HAMBURGER */
+    /* HEADER */
     #icd-site .icd-header {
       position: fixed;
       top: 0;
@@ -71,7 +59,6 @@
       padding: 0.8rem 1.5rem;
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
 
@@ -84,22 +71,19 @@
       white-space: nowrap;
     }
 
+    /* NAV TOGGLE */
     #icd-site .icd-nav-toggle {
       border: none;
       background: transparent;
       cursor: pointer;
-      padding: 0;
-      width: 30px;
-      height: 24px;
-      display: flex;
-      flex-direction: column;
+      width: 30px; height: 24px;
+      display: flex; flex-direction: column;
       justify-content: space-between;
     }
 
     #icd-site .icd-nav-toggle span {
       display: block;
-      width: 100%;
-      height: 2px;
+      width: 100%; height: 2px;
       border-radius: 999px;
       background: var(--ink);
       transition: transform 0.2s ease, opacity 0.2s ease;
@@ -115,7 +99,7 @@
       transform: translateY(-11px) rotate(-45deg);
     }
 
-    /* FULLSCREEN NAV DRAWER */
+    /* NAV DRAWER */
     #icd-site .icd-nav-drawer {
       position: fixed;
       inset: 0;
@@ -130,46 +114,17 @@
       gap: 1.2rem;
     }
 
-    #icd-site .icd-nav-drawer.open {
-      transform: translateY(0);
-    }
+    #icd-site .icd-nav-drawer.open { transform: translateY(0); }
 
-    #icd-site .icd-nav-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      opacity: 0.9;
-    }
-
-    #icd-site .icd-nav-drawer a {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #e5e7eb;
-      padding: 0.35rem 0;
-    }
-
-    #icd-site .icd-nav-drawer a:hover {
-      color: #ffffff;
-    }
-
-    /* GENERIC SECTIONS */
+    /* SECTIONS */
     #icd-site .section {
-      padding: 4.9rem 1.75rem 2.25rem; /* extra top padding for fixed header */
+      padding: 4.9rem 1.75rem 2.25rem;
       max-width: 720px;
       margin: 0 auto;
     }
 
-    #icd-site .section--wide {
-      max-width: 1000px;
-    }
-
     #icd-site .section-label {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      display: flex; align-items: center; gap: 1rem;
       margin-bottom: 2.25rem;
     }
 
@@ -182,28 +137,14 @@
       background: var(--accent-soft-light);
       padding: 0.5rem 0.9rem;
       border-radius: 6px;
-      white-space: nowrap;
     }
 
     #icd-site .label-line {
-      flex: 1;
-      height: 1px;
+      flex: 1; height: 1px;
       background: linear-gradient(to right, var(--line), transparent);
     }
 
-    /* SCROLL REVEAL */
-    #icd-site .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    #icd-site .reveal-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* CONTACT */
+    /* CONTACT UI */
     #icd-site .contact-heading {
       font-size: clamp(1.9rem, 4vw, 2.4rem);
       font-weight: 800;
@@ -249,15 +190,61 @@
       margin-bottom: 0.25rem;
     }
 
-    #icd-site .contact-link {
-      color: var(--accent);
-      font-weight: 600;
+    .copy-btn {
+      margin-left: 0.5rem;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.75rem;
+      border-radius: 6px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
     }
 
-    /* FOOTER */
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: white;
+      padding: 0.55rem 1rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    #toast.show {
+      opacity: 1;
+    }
+
+    #icd-site .template-block {
+      margin-top: 2.25rem;
+      background: rgba(15,156,147,0.05);
+      border-radius: 10px;
+      padding: 1.25rem 1.2rem;
+    }
+
+    #icd-site .template-heading {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    #icd-site .template-email {
+      font-size: 0.84rem;
+      line-height: 1.6;
+      background: white;
+      border-radius: 8px;
+      padding: 0.8rem;
+      border: 1px solid rgba(15,23,42,0.1);
+    }
+
     #icd-site .site-footer {
-      padding: 3rem 1.75rem 2.5rem;
       text-align: center;
+      padding: 3rem 1.75rem 2.5rem;
       border-top: 1px solid var(--line);
       margin-top: 3rem;
       font-size: 0.78rem;
@@ -268,17 +255,13 @@
 <body>
 <div id="icd-site">
 
-  <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
     <div class="icd-logo">Indian Country Development</div>
     <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </header>
 
-  <!-- FULLSCREEN MENU -->
   <nav class="icd-nav-drawer" aria-hidden="true">
     <div class="icd-nav-label">Menu</div>
     <a href="index.html">Home</a>
@@ -288,8 +271,7 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- CONTACT SECTION -->
-  <section class="section reveal" id="contact">
+  <section class="section" id="contact">
     <div class="section-label">
       <span class="label-text">Contact</span>
       <span class="label-line"></span>
@@ -297,8 +279,7 @@
 
     <h1 class="contact-heading">Let’s talk about the work in front of you.</h1>
     <p class="contact-tagline">
-      We keep our project load small on purpose. If you’re navigating something complex—and want a team
-      that knows Indian Country and actually builds with you—reach out.
+      We keep our project load small on purpose. We respond within 3–5 business days.
     </p>
 
     <div class="contact-block">
@@ -309,69 +290,99 @@
 
       <div class="contact-line">
         <span class="contact-label">Contact</span>
-        Elijah Moreno
+        Phil Gover or Elijah Moreno
       </div>
+
       <div class="contact-line">
         <span class="contact-label">Email</span>
-        <a class="contact-link" href="mailto:esm247@cornell.edu">esm247@cornell.edu</a>
+        <span id="email-text">contact@indiancountrydevelopment.com</span>
+        <button class="copy-btn" onclick="copyEmail()">Copy</button>
       </div>
+
       <div class="contact-line">
         <span class="contact-label">Firm</span>
         Tribal Economic Development Partners L.L.C.
       </div>
     </div>
+
+    <!-- TEMPLATE EMAILS -->
+    <div class="template-block">
+      <div class="template-heading">Tribal Government Inquiry</div>
+      <div class="template-email" id="tpl1">
+        Hello, we are a tribal government navigating a project or initiative and would like to explore potential support. We would appreciate a short call to discuss our structure, timeline, and any decisions in front of us.
+      </div>
+      <button class="copy-btn" onclick="copyTemplate('tpl1')">Copy</button>
+    </div>
+
+    <div class="template-block">
+      <div class="template-heading">External Partner Inquiry</div>
+      <div class="template-email" id="tpl2">
+        Hello, we are an external partner working with or hoping to work with tribal nations. We would like to discuss governance structures, consultation alignment, and how to scope a non-extractive partnership.
+      </div>
+      <button class="copy-btn" onclick="copyTemplate('tpl2')">Copy</button>
+    </div>
+
+    <div class="template-block">
+      <div class="template-heading">Native Nonprofit Inquiry</div>
+      <div class="template-email" id="tpl3">
+        Hello, we are a Native-serving nonprofit and would like to explore a scoped engagement related to capacity-building, community alignment, or long-term implementation support.
+      </div>
+      <button class="copy-btn" onclick="copyTemplate('tpl3')">Copy</button>
+    </div>
+
   </section>
 
   <footer class="site-footer">
     © 2025 Tribal Economic Development Partners L.L.C.
   </footer>
+
 </div>
+
+<div id="toast">Copied!</div>
 
 <script>
 (function() {
   const root = document.getElementById('icd-site');
   if (!root) return;
 
-  /* HAMBURGER NAV TOGGLE */
   const toggle = root.querySelector('.icd-nav-toggle');
   const drawer = root.querySelector('.icd-nav-drawer');
 
   function setNavOpen(open) {
-    if (!toggle || !drawer) return;
     toggle.classList.toggle('open', open);
     drawer.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
   }
 
-  if (toggle && drawer) {
-    toggle.addEventListener('click', () => {
-      const isOpen = drawer.classList.contains('open');
-      setNavOpen(!isOpen);
-    });
+  toggle.addEventListener('click', () => {
+    const isOpen = drawer.classList.contains('open');
+    setNavOpen(!isOpen);
+  });
 
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => setNavOpen(false));
-    });
-  }
-
-  /* SIMPLE REVEAL */
-  const revealTargets = root.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.18 });
-
-    revealTargets.forEach(el => observer.observe(el));
-  } else {
-    revealTargets.forEach(el => el.classList.add('reveal-visible'));
-  }
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setNavOpen(false));
+  });
 })();
+
+/* TOAST */
+function showToast() {
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 1500);
+}
+
+/* COPY EMAIL */
+function copyEmail() {
+  const email = document.getElementById('email-text').innerText;
+  navigator.clipboard.writeText(email).then(showToast);
+}
+
+/* COPY TEMPLATE */
+function copyTemplate(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(showToast);
+}
 </script>
 </body>
 </html>
