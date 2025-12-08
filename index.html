@@ -75,13 +75,49 @@
       border-bottom: 1px solid var(--line);
     }
 
+    /* LOGO + 3-STRAND BRAID MARK */
     #icd-site .icd-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      white-space: nowrap;
+    }
+
+    #icd-site .icd-logo-icon {
+      width: 72px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    #icd-site .icd-logo-icon .strand {
+      fill: none;
+      stroke-linecap: round;
+      stroke-width: 6;
+    }
+
+    /* three-strand braid using existing palette */
+    #icd-site .icd-logo-icon .strand-1 {
+      stroke: var(--accent);      /* teal */
+    }
+    #icd-site .icd-logo-icon .strand-2 {
+      stroke: var(--ink-soft);    /* slate */
+    }
+    #icd-site .icd-logo-icon .strand-3 {
+      stroke: var(--ink-muted);   /* muted gray */
+    }
+
+    #icd-site .icd-logo-text {
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      white-space: nowrap;
+    }
+
+    #icd-site .icd-logo-tm {
+      font-size: 0.62rem;
+      vertical-align: super;
+      margin-left: 0.08rem;
     }
 
     #icd-site .icd-nav-toggle {
@@ -217,7 +253,28 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <div class="icd-logo">Indian Country Development</div>
+    <div class="icd-logo">
+      <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
+        <!-- left strand -->
+        <path class="strand strand-1"
+          d="M 0 28
+             C 30 10, 70 10, 100 28
+             S 170 46, 200 28" />
+        <!-- middle strand -->
+        <path class="strand strand-2"
+          d="M 0 20
+             C 30 38, 70 38, 100 20
+             S 170 2, 200 20" />
+        <!-- right strand -->
+        <path class="strand strand-3"
+          d="M 0 12
+             C 30 -6, 70 -6, 100 12
+             S 170 30, 200 12" />
+      </svg>
+      <div class="icd-logo-text">
+        Indian Country Development<span class="icd-logo-tm">™</span>
+      </div>
+    </div>
     <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
