@@ -45,6 +45,11 @@
       min-height: 100vh;
     }
 
+    /* prevent scroll when nav open */
+    #icd-site.nav-open {
+      overflow: hidden;
+    }
+
     #icd-site * {
       box-sizing: border-box;
     }
@@ -214,7 +219,8 @@
     #icd-site .hero {
       padding: 5.2rem 1.75rem 3.5rem; /* extra top padding for fixed header */
       text-align: center;
-      background: rgba(255,255,255,0.96);
+      /* transparent so dot grid shows through */
+      background: transparent;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -390,6 +396,7 @@
     drawer.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    root.classList.toggle('nav-open', open);
   }
 
   if (toggle && drawer) {
@@ -403,6 +410,13 @@
       link.addEventListener('click', () => setNavOpen(false));
     });
   }
+
+  // close menu on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      setNavOpen(false);
+    }
+  });
 })();
 </script>
 </body>
