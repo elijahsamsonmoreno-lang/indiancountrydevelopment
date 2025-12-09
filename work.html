@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <title>Indian Country Development – Who We Work With</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Indian Country Development works with tribal governments, Native-led organizations, and external partners like foundations, state agencies, and universities committed to non-extractive collaboration.">
+  <meta name="keywords" content="tribal consulting, Indian Country development, tribal economic development, Native American consulting, tribal government consulting, Indigenous consulting">
 
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -190,16 +192,6 @@
       transform: translateY(0);
     }
 
-    #icd-site .icd-nav-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      opacity: 0.9;
-    }
-
     #icd-site .icd-nav-drawer a {
       font-size: 1.15rem;
       font-weight: 600;
@@ -209,6 +201,12 @@
 
     #icd-site .icd-nav-drawer a:hover {
       color: #ffffff;
+    }
+
+    #icd-site .icd-nav-drawer a.active {
+      color: var(--accent-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     /* GENERIC SECTIONS */
@@ -251,6 +249,19 @@
     #icd-site .reveal-visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .no-js #icd-site .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
     }
 
     /* WHO WE WORK WITH – BLOCK + TABS */
@@ -343,6 +354,25 @@
       background: var(--accent);
     }
 
+    /* BOTTOM CTA */
+    #icd-site .audience-cta {
+      margin-top: 1.75rem;
+      text-align: left;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    #icd-site .audience-cta a {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    #icd-site .audience-cta a:hover {
+      color: var(--accent-light);
+    }
+
     /* FOOTER */
     #icd-site .site-footer {
       padding: 3rem 1.75rem 2.5rem;
@@ -416,71 +446,76 @@
 
   <!-- FULLSCREEN MENU -->
   <nav class="icd-nav-drawer" aria-hidden="true">
-    <div class="icd-nav-label"></div>
     <a href="index.html">Home</a>
     <a href="what-we-do.html">What We Do</a>
-    <a href="work.html">Who We Work With</a>
+    <a href="work.html" class="active" aria-current="page">Who We Work With</a>
     <a href="who-we-are.html">Who We Are</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- WHO WE WORK WITH -->
-  <section class="section section--wide reveal" id="audience">
-    <div class="section-label">
-      <span class="label-text">Who We Work With</span>
-      <!-- grey header line removed -->
-    </div>
-
-    <div class="audience-block">
-      <div class="audience-tabs" role="tablist" aria-label="Who we work with">
-        <button
-          class="aud-tab active"
-          data-target="tribal"
-          role="tab"
-          aria-selected="true"
-          aria-controls="panel-tribal"
-          id="tab-tribal"
-        >
-          Tribal &amp; Native-Led
-        </button>
-        <button
-          class="aud-tab"
-          data-target="external"
-          role="tab"
-          aria-selected="false"
-          aria-controls="panel-external"
-          id="tab-external"
-        >
-          External Partners
-        </button>
+  <main id="main">
+    <!-- WHO WE WORK WITH -->
+    <section class="section section--wide reveal" id="audience">
+      <div class="section-label">
+        <span class="label-text">Who We Work With</span>
       </div>
 
-      <div class="audience-panels">
-        <div class="aud-panel active" id="panel-tribal" role="tabpanel" aria-labelledby="tab-tribal">
-          <p class="panel-lead">
-            For teams navigating something hard—a stuck initiative, a leadership transition,
-            a project that's bigger than current capacity.
-          </p>
-          <ul class="panel-list">
-            <li>We co-design around your governance, not against it.</li>
-            <li>We structure information without sidelining local decision-makers.</li>
-            <li>We stay in the background so your staff can focus on relationships.</li>
-          </ul>
+      <div class="audience-block">
+        <div class="audience-tabs" role="tablist" aria-label="Who we work with">
+          <button
+            class="aud-tab active"
+            data-target="tribal"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-tribal"
+            id="tab-tribal"
+          >
+            Tribal &amp; Native-Led
+          </button>
+          <button
+            class="aud-tab"
+            data-target="external"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-external"
+            id="tab-external"
+          >
+            External Partners
+          </button>
         </div>
 
-        <div class="aud-panel" id="panel-external" role="tabpanel" aria-labelledby="tab-external" hidden>
-          <p class="panel-lead">
-            For partners who know working with tribes isn’t a box to check—and want to get it right.
-          </p>
-          <ul class="panel-list">
-            <li>We clarify how tribal governance and consultation actually work for your project.</li>
-            <li>We align timelines and scopes so the work isn’t extractive or symbolic.</li>
-            <li>We translate between organizational, legal, and community language.</li>
-          </ul>
+        <div class="audience-panels">
+          <div class="aud-panel active" id="panel-tribal" role="tabpanel" aria-labelledby="tab-tribal">
+            <p class="panel-lead">
+              For teams navigating something hard—a stuck initiative, a leadership transition,
+              a project that's bigger than current capacity.
+            </p>
+            <ul class="panel-list">
+              <li>We co-design around your governance, not against it.</li>
+              <li>We structure information without sidelining local decision-makers.</li>
+              <li>We stay in the background so your staff can focus on relationships.</li>
+            </ul>
+          </div>
+
+          <div class="aud-panel" id="panel-external" role="tabpanel" aria-labelledby="tab-external" hidden>
+            <p class="panel-lead">
+              For partners who know working with tribes isn’t a box to check—and want to get it right.
+            </p>
+            <ul class="panel-list">
+              <li>We clarify how tribal governance and consultation actually work for your project.</li>
+              <li>We align timelines and scopes so the work isn’t extractive or symbolic.</li>
+              <li>We translate between organizational, legal, and community language.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="audience-cta">
+          Ready to explore a project together?
+          <a href="contact.html">Get in touch.</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="site-footer">
     © 2025 Tribal Economic Development Partners L.L.C.
@@ -489,6 +524,8 @@
 
 <script>
 (function() {
+  document.documentElement.classList.remove('no-js');
+
   const root = document.getElementById('icd-site');
   if (!root) return;
 
