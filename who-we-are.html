@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <title>Indian Country Development – Who We Are</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meet the team behind Indian Country Development. Phil Gover and Elijah Moreno bring decades of combined experience in tribal governance, economic development, and community-centered strategy.">
+  <meta name="keywords" content="tribal consulting, Indian Country development, tribal economic development, Native American consulting, tribal government consulting, Indigenous consulting">
 
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,6 +13,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
+    /* SCREEN READER ONLY */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
     /* PAGE BACKGROUND */
     html, body {
       margin: 0;
@@ -211,6 +225,12 @@
       color: #ffffff;
     }
 
+    #icd-site .icd-nav-drawer a.active {
+      color: var(--accent-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     /* GENERIC SECTIONS */
     #icd-site .section {
       padding: 4.9rem 1.75rem 2.25rem; /* extra top padding for fixed header */
@@ -251,6 +271,19 @@
     #icd-site .reveal-visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .no-js #icd-site .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
     }
 
     /* WHO WE ARE – BIOS */
@@ -467,65 +500,79 @@
     <a href="index.html">Home</a>
     <a href="what-we-do.html">What We Do</a>
     <a href="work.html">Who We Work With</a>
-    <a href="who-we-are.html">Who We Are</a>
+    <a href="who-we-are.html" class="active" aria-current="page">Who We Are</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- WHO WE ARE -->
-  <section class="section section--wide reveal" id="about">
-    <div class="section-label">
-      <span class="label-text">Who We Are</span>
-      <!-- grey line removed -->
-    </div>
-
-    <div class="about-block">
-      <p class="about-intro">
-        We’ve spent years working across Indian Country—on reservations, in community hubs, with tribal enterprises, Native nonprofits, urban Indian organizations, and state partners. We’ve run interviews, evaluations, and focus groups; led statewide studies and economic analyses; and sat in the rooms where partnerships were formed or broke down. That work taught us what tribal governments are asked to carry, where systems are strong, where gaps recur, and what actually helps people succeed for more than one funding cycle.
-      </p>
-
-      <div class="about-tabs" role="tablist" aria-label="Team members">
-        <button class="about-tab active" data-target="phil" role="tab" aria-selected="true" aria-controls="panel-phil" id="tab-phil">
-          Phil Gover
-        </button>
-        <button class="about-tab" data-target="elijah" role="tab" aria-selected="false" aria-controls="panel-elijah" id="tab-elijah">
-          Elijah Moreno
-        </button>
+  <main id="main">
+    <!-- WHO WE ARE -->
+    <section class="section section--wide reveal" id="about">
+      <div class="section-label">
+        <span class="label-text">Who We Are</span>
+        <!-- grey line removed -->
       </div>
 
-      <div class="about-panels">
-        <div class="about-panel active" id="panel-phil" role="tabpanel" aria-labelledby="tab-phil">
-          <p class="panel-lead">Builds institutions, partnerships, and programs from scratch.</p>
-          <ul class="panel-list">
-            <li>Creates organizations where none existed—charter school networks, nonprofit accelerators, cross-sector initiatives.</li>
-            <li>Designs systems that bridge tribal governments, federal agencies, and private partners.</li>
-            <li>Turns crowded rooms into aligned, working coalitions.</li>
-            <li>Moves strategy from paper to practice with operational clarity.</li>
-          </ul>
-          <p class="panel-tribal">Northern and Southern Paiute, Pawnee, and Comanche Nations.</p>
-          <p class="panel-edu">MBA, Darden School of Business · BA, University of Virginia</p>
-        </div>
-
-        <div class="about-panel" id="panel-elijah" role="tabpanel" aria-labelledby="tab-elijah" hidden>
-          <p class="panel-lead">Builds tools, datasets, and evidence where the field had gaps.</p>
-          <ul class="panel-list">
-            <li>Creates analytical tools and platforms that didn’t exist—including data dashboards and applications for tribal communities.</li>
-            <li>Built the first comprehensive federal dataset on Native enterprise and economic impact.</li>
-            <li>Turns incomplete data into rigorous evidence that moves policy and investment.</li>
-            <li>Makes the quantitative case for what Indian Country already knows.</li>
-          </ul>
-          <p class="panel-tribal">Coastal Band of the Chumash Nation.</p>
-          <p class="panel-edu">PhD Candidate, Cornell University · BA, Dartmouth College</p>
-        </div>
-      </div>
-
-      <div class="combined-strength">
-        <span class="combined-label">Together</span>
-        <p class="combined-text">
-          Together, we take that perspective and build things that work in real life: institutions that outlast leadership turnover, tools and datasets that remove guesswork, strategies that come off the page, and partnerships that sustain momentum. Our best work starts at zero and ends at operational—building evidence, alignment, and capacity so tribal nations and Native-serving institutions can run programs, systems, and enterprises without relying on us.
+      <div class="about-block">
+        <p class="about-intro">
+          We’ve spent years working across Indian Country—on reservations, in community hubs, with tribal enterprises, Native nonprofits, urban Indian organizations, and state partners. We’ve run interviews, evaluations, and focus groups; led statewide studies and economic analyses; and sat in the rooms where partnerships were formed or broke down. That work taught us what tribal governments are asked to carry, where systems are strong, where gaps recur, and what actually helps people succeed for more than one funding cycle.
         </p>
+
+        <div class="about-tabs" role="tablist" aria-label="Team members">
+          <button class="about-tab active" data-target="phil" role="tab" aria-selected="true" aria-controls="panel-phil" id="tab-phil">
+            Phil Gover
+          </button>
+          <button class="about-tab" data-target="elijah" role="tab" aria-selected="false" aria-controls="panel-elijah" id="tab-elijah">
+            Elijah Moreno
+          </button>
+        </div>
+
+        <div class="about-panels">
+          <div class="about-panel active" id="panel-phil" role="tabpanel" aria-labelledby="tab-phil">
+            <p class="panel-lead">Builds institutions, partnerships, and programs from scratch.</p>
+            <ul class="panel-list">
+              <li>Creates organizations where none existed—charter school networks, nonprofit accelerators, cross-sector initiatives.</li>
+              <li>Designs systems that bridge tribal governments, federal agencies, and private partners.</li>
+              <li>Turns crowded rooms into aligned, working coalitions.</li>
+              <li>Moves strategy from paper to practice with operational clarity.</li>
+            </ul>
+            <p class="panel-tribal">
+              <span class="sr-only">Tribal affiliation: </span>
+              Northern and Southern Paiute, Pawnee, and Comanche Nations.
+            </p>
+            <p class="panel-edu">
+              <span class="sr-only">Education: </span>
+              MBA, Darden School of Business · BA, University of Virginia
+            </p>
+          </div>
+
+          <div class="about-panel" id="panel-elijah" role="tabpanel" aria-labelledby="tab-elijah" hidden>
+            <p class="panel-lead">Builds tools, datasets, and evidence where the field had gaps.</p>
+            <ul class="panel-list">
+              <li>Creates analytical tools and platforms that didn’t exist—including data dashboards and applications for tribal communities.</li>
+              <li>Built the first comprehensive federal dataset on Native enterprise and economic impact.</li>
+              <li>Turns incomplete data into rigorous evidence that moves policy and investment.</li>
+              <li>Makes the quantitative case for what Indian Country already knows.</li>
+            </ul>
+            <p class="panel-tribal">
+              <span class="sr-only">Tribal affiliation: </span>
+              Coastal Band of the Chumash Nation.
+            </p>
+            <p class="panel-edu">
+              <span class="sr-only">Education: </span>
+              PhD Candidate, Cornell University · BA, Dartmouth College
+            </p>
+          </div>
+        </div>
+
+        <div class="combined-strength">
+          <h3 class="combined-label">Together</h3>
+          <p class="combined-text">
+            Together, we take that perspective and build things that work in real life: institutions that outlast leadership turnover, tools and datasets that remove guesswork, strategies that come off the page, and partnerships that sustain momentum. Our best work starts at zero and ends at operational—building evidence, alignment, and capacity so tribal nations and Native-serving institutions can run programs, systems, and enterprises without relying on us.
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="site-footer">
     © 2025 Tribal Economic Development Partners L.L.C.
@@ -534,6 +581,9 @@
 
 <script>
 (function() {
+  // remove no-js class when JS is available
+  document.documentElement.classList.remove('no-js');
+
   const root = document.getElementById('icd-site');
   if (!root) return;
 
