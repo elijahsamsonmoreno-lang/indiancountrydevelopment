@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <title>Indian Country Development – What We Do</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Native-led consulting firm providing strategy, operations, and data services for tribal governments, Native organizations, and their partners.">
+  <meta name="keywords" content="tribal consulting, Indian Country development, tribal economic development, Native American consulting, tribal government consulting, Indigenous consulting">
 
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -98,7 +100,6 @@
       fill: none;
       stroke-linecap: round;
       stroke-width: 6;
-
       stroke-dasharray: 400;
       stroke-dashoffset: 0;
       animation: weave 14s linear infinite;
@@ -212,9 +213,20 @@
       color: #ffffff;
     }
 
+    /* ACTIVE NAV LINK STYLE (shared) */
+    #icd-site .icd-nav-drawer a.active {
+      color: var(--accent-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     /* GENERIC SECTIONS */
+    #icd-site main {
+      padding-top: 4.9rem; /* space for fixed header */
+    }
+
     #icd-site .section {
-      padding: 4.9rem 1.75rem 2.25rem; /* extra top padding for fixed header */
+      padding: 0 1.75rem 2.25rem;
       max-width: 720px;
       margin: 0 auto;
     }
@@ -227,7 +239,7 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 2.25rem;
+      margin: 2.25rem 0 2.25rem;
     }
 
     #icd-site .label-text {
@@ -258,6 +270,19 @@
     #icd-site .reveal-visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .no-js #icd-site .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
     }
 
     /* SERVICES / ACCORDION */
@@ -377,7 +402,7 @@
       }
 
       #icd-site .section {
-        padding: 4.9rem 1.25rem 2.25rem;
+        padding: 0 1.25rem 2.25rem;
       }
     }
   </style>
@@ -387,20 +412,16 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <!-- logo now links to home -->
     <a class="icd-logo" href="index.html" aria-label="Indian Country Development home">
       <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
-        <!-- lower strand -->
         <path class="strand strand-1"
           d="M 0 26
              C 25 6, 55 6, 100 26
              S 175 46, 200 26" />
-        <!-- middle strand -->
         <path class="strand strand-2"
           d="M 0 20
              C 30 40, 70 40, 100 20
              S 170 0, 200 20" />
-        <!-- upper strand -->
         <path class="strand strand-3"
           d="M 0 14
              C 25 -6, 55 -6, 100 14
@@ -421,66 +442,86 @@
   <nav class="icd-nav-drawer" aria-hidden="true">
     <div class="icd-nav-label"></div>
     <a href="index.html">Home</a>
-    <a href="what-we-do.html">What We Do</a>
+    <a href="what-we-do.html" class="active" aria-current="page">What We Do</a>
     <a href="work.html">Who We Work With</a>
     <a href="who-we-are.html">Who We Are</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- WHAT WE DO ONLY -->
-  <section class="section section--wide reveal" id="services">
-    <div class="section-label">
-      <span class="label-text">What We Do</span>
-      <span class="label-line"></span>
-    </div>
+  <main id="main">
+    <!-- WHAT WE DO ONLY -->
+    <section class="section section--wide reveal" id="services">
+      <div class="section-label">
+        <span class="label-text">What We Do</span>
+        <span class="label-line"></span>
+      </div>
 
-    <div class="services-list">
-      <div class="service-item" data-service="strategy">
-        <div class="service-card">
-          <div class="service-header" role="button" tabindex="0">
-            <h3 class="service-title">Strategy &amp; Governance</h3>
-            <span class="service-toggle">+</span>
+      <div class="services-list" aria-label="Service areas">
+        <div class="service-item open" data-service="strategy">
+          <div class="service-card">
+            <div
+              class="service-header"
+              role="button"
+              tabindex="0"
+              aria-expanded="true"
+              aria-controls="body-strategy"
+            >
+              <h3 class="service-title">Strategy &amp; Governance</h3>
+              <span class="service-toggle" aria-hidden="true">+</span>
+            </div>
+            <div class="service-body" id="body-strategy">
+              <p>
+                The kind of planning that survives council turnover and actually respects how
+                tribal governance works. Too many strategies die in drawers. Ours get used.
+              </p>
+            </div>
           </div>
-          <div class="service-body">
-            <p>
-              The kind of planning that survives council turnover and actually respects how
-              tribal governance works. Too many strategies die in drawers. Ours get used.
-            </p>
+        </div>
+
+        <div class="service-item" data-service="operations">
+          <div class="service-card">
+            <div
+              class="service-header"
+              role="button"
+              tabindex="0"
+              aria-expanded="false"
+              aria-controls="body-operations"
+            >
+              <h3 class="service-title">Programs &amp; Operations</h3>
+              <span class="service-toggle" aria-hidden="true">+</span>
+            </div>
+            <div class="service-body" id="body-operations">
+              <p>
+                Untangling the messy stuff—overlapping roles, unclear handoffs, initiatives that stalled.
+                We build structures your team can actually run without us.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-item" data-service="data">
+          <div class="service-card">
+            <div
+              class="service-header"
+              role="button"
+              tabindex="0"
+              aria-expanded="false"
+              aria-controls="body-data"
+            >
+              <h3 class="service-title">Data &amp; Learning</h3>
+              <span class="service-toggle" aria-hidden="true">+</span>
+            </div>
+            <div class="service-body" id="body-data">
+              <p>
+                Making information useful—not just collected. Summaries leadership will read,
+                tools staff will use, and no dashboards no one opens.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="service-item" data-service="operations">
-        <div class="service-card">
-          <div class="service-header" role="button" tabindex="0">
-            <h3 class="service-title">Programs &amp; Operations</h3>
-            <span class="service-toggle">+</span>
-          </div>
-          <div class="service-body">
-            <p>
-              Untangling the messy stuff—overlapping roles, unclear handoffs, initiatives that stalled.
-              We build structures your team can actually run without us.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="service-item" data-service="data">
-        <div class="service-card">
-          <div class="service-header" role="button" tabindex="0">
-            <h3 class="service-title">Data &amp; Learning</h3>
-            <span class="service-toggle">+</span>
-          </div>
-          <div class="service-body">
-            <p>
-              Making information useful—not just collected. Summaries leadership will read,
-              tools staff will use, and no dashboards no one opens.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="site-footer">
     © 2025 Tribal Economic Development Partners L.L.C.
@@ -489,6 +530,9 @@
 
 <script>
 (function() {
+  // JS is running, remove no-js to let the reveal CSS behave correctly
+  document.documentElement.classList.remove('no-js');
+
   const root = document.getElementById('icd-site');
   if (!root) return;
 
@@ -523,30 +567,41 @@
     }
   });
 
-  /* SERVICES ACCORDION (click + keyboard) */
+  /* SERVICES ACCORDION (click + keyboard, with aria-expanded) */
   const items = root.querySelectorAll('.service-item');
 
-  function openItem(item) {
-    items.forEach(i => i.classList.remove('open'));
-    if (item) item.classList.add('open');
+  function updateAriaStates() {
+    items.forEach(item => {
+      const header = item.querySelector('.service-header');
+      const expanded = item.classList.contains('open');
+      if (header) {
+        header.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      }
+    });
   }
 
-  // default: open first item so the page has content expanded
-  if (items.length > 0) {
-    items[0].classList.add('open');
+  function openItem(item) {
+    // If clicking the already-open item, allow closing it
+    const isAlreadyOpen = item.classList.contains('open');
+
+    items.forEach(i => i.classList.remove('open'));
+
+    if (!isAlreadyOpen) {
+      item.classList.add('open');
+    }
+
+    updateAriaStates();
   }
+
+  // ensure initial aria-expanded matches initial .open class
+  updateAriaStates();
 
   root.querySelectorAll('.service-header').forEach(header => {
     const item = header.closest('.service-item');
     if (!item) return;
 
     const handler = () => {
-      const isOpen = item.classList.contains('open');
-      if (isOpen) {
-        item.classList.remove('open');
-      } else {
-        openItem(item);
-      }
+      openItem(item);
     };
 
     header.addEventListener('click', handler);
