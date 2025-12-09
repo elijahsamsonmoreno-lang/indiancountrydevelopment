@@ -43,7 +43,7 @@
       --accent-soft: rgba(15, 156, 147, 0.16);
       --accent-soft-light: rgba(15, 156, 147, 0.06);
       --accent-glow: rgba(15, 156, 147, 0.25);
-      --cta-purple: #4c1d95; /* indigo-purple */
+      --cta-purple: #4c1d95;
       --cta-purple-soft: rgba(76, 29, 149, 0.16);
       --line: rgba(15, 23, 42, 0.08);
       --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -219,7 +219,7 @@
 
     /* HERO */
     #icd-site .hero {
-      padding: 5.2rem 1.75rem 1.2rem;
+      padding: 5.2rem 1.75rem 0.6rem; /* pulled hero bottom up a bit more */
       text-align: center;
       background: transparent;
       min-height: 100svh;
@@ -270,27 +270,26 @@
       font-weight: 800;
     }
 
-    /* BOTTOM CTA – ARROW SHAPE */
+    /* BOTTOM CTA – bigger, closer, coming from the left */
     #icd-site .bottom-cta-wrap {
       padding: 0 1.75rem 2.25rem;
       display: flex;
       justify-content: center;
-      margin-top: 0.25rem;
+      margin-top: 0.1rem; /* closer to hero */
     }
 
     #icd-site .bottom-cta {
       margin: 0;
       text-align: center;
-      font-size: 1.12rem;
+      font-size: 1.2rem; /* a little bigger */
     }
 
     #icd-site .bottom-cta a {
       position: relative;
       display: inline-block;
-      padding: 0.55rem 1.9rem 0.55rem 1.1rem;
+      padding: 0.65rem 2.15rem 0.65rem 1.25rem; /* slightly larger hit area */
       color: var(--ink);
       text-decoration: none;
-      /* overflow removed so the tip never gets clipped */
     }
 
     /* Single arrow-shaped purple swath (rectangle + triangular tip) */
@@ -302,10 +301,10 @@
       clip-path: polygon(0 0, 87% 0, 100% 50%, 87% 100%, 0 100%);
       border-radius: 6px;
       transform-origin: left center;
-      transform: scaleX(0);
+      transform: translateX(-60vw) scaleX(0); /* start off-screen left */
       opacity: 0;
       z-index: 0;
-      animation: ctaSwathIn 0.65s ease-out 0.35s forwards;
+      animation: ctaSwathIn 0.75s ease-out 0.35s forwards;
     }
 
     #icd-site .bottom-cta-label {
@@ -323,11 +322,15 @@
 
     @keyframes ctaSwathIn {
       0% {
-        transform: scaleX(0);
+        transform: translateX(-60vw) scaleX(0);
         opacity: 0;
       }
+      60% {
+        transform: translateX(0) scaleX(1.02);
+        opacity: 1;
+      }
       100% {
-        transform: scaleX(1); /* no overshoot so nothing hangs past the box */
+        transform: translateX(0) scaleX(1);
         opacity: 1;
       }
     }
@@ -388,7 +391,7 @@
       }
 
       #icd-site .bottom-cta {
-        font-size: 1.08rem;
+        font-size: 1.16rem;
       }
     }
   </style>
