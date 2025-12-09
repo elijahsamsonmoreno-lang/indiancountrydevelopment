@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Indian Country Development – Who We Work With & How We Work</title>
+  <title>Indian Country Development – Who We Work With</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- FONT -->
@@ -273,7 +273,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.35rem;
-      border-radius: 999px;
+      border-radius: 10px;       /* squared off */
       background: var(--accent-soft-light);
       width: fit-content;
       margin-bottom: 2rem;
@@ -287,7 +287,7 @@
       font-weight: 600;
       color: var(--ink-muted);
       padding: 0.55rem 1.3rem;
-      border-radius: 999px;
+      border-radius: 8px;        /* squared off */
       cursor: pointer;
       transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
     }
@@ -349,76 +349,6 @@
       background: var(--accent);
     }
 
-    /* HOW WE WORK – CARD + 3 STEPS */
-    #icd-site .process-shell {
-      max-width: 720px;
-      background: rgba(255,255,255,0.96);
-      border-radius: 16px;
-      padding: 1.7rem 1.6rem 2rem;
-      box-shadow: 0 18px 45px rgba(15,23,42,0.10);
-    }
-
-    #icd-site .process-timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1.6rem;
-    }
-
-    @media (min-width: 800px) {
-      #icd-site .process-timeline {
-        flex-direction: row;
-      }
-    }
-
-    #icd-site .process-node {
-      flex: 1;
-      display: flex;
-      gap: 0.9rem;
-      padding: 0.75rem 0.9rem 0.85rem;
-      border-radius: 10px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    }
-
-    @media (min-width: 800px) {
-      #icd-site .process-node {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    #icd-site .process-node:hover {
-      transform: translateY(-3px);
-      background: rgba(15,156,147,0.04);
-      box-shadow: 0 12px 26px rgba(15,23,42,0.08);
-    }
-
-    #icd-site .node-num {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 0.8rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 24px var(--accent-glow);
-      flex-shrink: 0;
-    }
-
-    #icd-site .node-content h4 {
-      font-size: 1.0rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    #icd-site .node-content p {
-      font-size: 0.88rem;
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
     /* FOOTER */
     #icd-site .site-footer {
       padding: 3rem 1.75rem 2.5rem;
@@ -450,8 +380,7 @@
         padding: 4.9rem 1.25rem 2.25rem;
       }
 
-      #icd-site .audience-block,
-      #icd-site .process-shell {
+      #icd-site .audience-block {
         padding: 1.4rem 1.2rem 1.7rem;
       }
     }
@@ -462,7 +391,7 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <div class="icd-logo">
+    <a href="index.html" class="icd-logo">
       <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
         <!-- lower strand -->
         <path class="strand strand-1"
@@ -483,7 +412,7 @@
       <div class="icd-logo-text">
         ICD<span class="icd-logo-tm">™</span>
       </div>
-    </div>
+    </a>
     <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
@@ -495,9 +424,9 @@
   <nav class="icd-nav-drawer" aria-hidden="true">
     <div class="icd-nav-label"></div>
     <a href="index.html">Home</a>
-    <a href="what-we-do.html">What we do</a>
-    <a href="work.html">Who we work with &amp; how we work</a>
-    <a href="who-we-are.html">Who we are</a>
+    <a href="what-we-do.html">What We Do</a>
+    <a href="work.html">Who We Work With</a>
+    <a href="who-we-are.html">Who We Are</a>
     <a href="contact.html">Contact</a>
   </nav>
 
@@ -554,42 +483,6 @@
             <li>We align timelines and scopes so the work isn’t extractive or symbolic.</li>
             <li>We translate between organizational, legal, and community language.</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW WE WORK (3 STEPS) -->
-  <section class="section section--wide reveal" id="process">
-    <div class="section-label">
-      <span class="label-text">How We Work</span>
-      <span class="label-line"></span>
-    </div>
-
-    <div class="process-shell">
-      <div class="process-timeline">
-        <div class="process-node">
-          <span class="node-num">1</span>
-          <div class="node-content">
-            <h4>Listen First</h4>
-            <p>Understand your structure, history, and what’s already been tried—on paper and in practice.</p>
-          </div>
-        </div>
-
-        <div class="process-node">
-          <span class="node-num">2</span>
-          <div class="node-content">
-            <h4>Clarify Pathways</h4>
-            <p>Map decision-makers, constraints, and realistic timelines so the work can actually move.</p>
-          </div>
-        </div>
-
-        <div class="process-node">
-          <span class="node-num">3</span>
-          <div class="node-content">
-            <h4>Build Light</h4>
-            <p>Create tools, plans, and structures your team can run without us—and stay close through launch.</p>
-          </div>
         </div>
       </div>
     </div>
