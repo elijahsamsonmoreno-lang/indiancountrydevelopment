@@ -394,9 +394,25 @@
       font-size: 0.82rem;
       color: var(--ink-muted);
       font-weight: 500;
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
       padding-left: 1.4rem;
       border-left: 2px solid var(--accent-soft-light);
+    }
+
+    #icd-site .panel-email {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 500;
+      padding-left: 1.4rem;
+      border-left: 2px solid var(--accent-soft-light);
+      margin-bottom: 0;
+    }
+
+    #icd-site .panel-email a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--accent-soft);
+      text-underline-offset: 2px;
     }
 
     #icd-site .combined-strength {
@@ -509,7 +525,6 @@
     <section class="section section--wide reveal" id="about">
       <div class="section-label">
         <span class="label-text">Who We Are</span>
-        <!-- grey line removed -->
       </div>
 
       <div class="about-block">
@@ -527,6 +542,7 @@
         </div>
 
         <div class="about-panels">
+          <!-- PHIL -->
           <div class="about-panel active" id="panel-phil" role="tabpanel" aria-labelledby="tab-phil">
             <p class="panel-lead">Builds institutions, partnerships, and programs from scratch.</p>
             <ul class="panel-list">
@@ -536,15 +552,17 @@
               <li>Moves strategy from paper to practice with operational clarity.</li>
             </ul>
             <p class="panel-tribal">
-              <span class="sr-only">Tribal affiliation: </span>
-              Northern and Southern Paiute, Pawnee, and Comanche Nations.
+              <strong>Tribal Affiliation:</strong> Northern and Southern Paiute, Pawnee, and Comanche Nations.
             </p>
             <p class="panel-edu">
-              <span class="sr-only">Education: </span>
-              MBA, Darden School of Business · BA, University of Virginia
+              <strong>Education:</strong> MBA, Darden School of Business · BA, University of Virginia
+            </p>
+            <p class="panel-email">
+              <a href="mailto:phil@indiancountrydevelopment.com">phil@indiancountrydevelopment.com</a>
             </p>
           </div>
 
+          <!-- ELIJAH -->
           <div class="about-panel" id="panel-elijah" role="tabpanel" aria-labelledby="tab-elijah" hidden>
             <p class="panel-lead">Builds tools, datasets, and evidence where the field had gaps.</p>
             <ul class="panel-list">
@@ -554,12 +572,13 @@
               <li>Makes the quantitative case for what Indian Country already knows.</li>
             </ul>
             <p class="panel-tribal">
-              <span class="sr-only">Tribal affiliation: </span>
-              Coastal Band of the Chumash Nation.
+              <strong>Tribal Affiliation:</strong> Coastal Band of the Chumash Nation.
             </p>
             <p class="panel-edu">
-              <span class="sr-only">Education: </span>
-              PhD Candidate, Cornell University · BA, Dartmouth College
+              <strong>Education:</strong> PhD Candidate, Cornell University · BA, Dartmouth College
+            </p>
+            <p class="panel-email">
+              <a href="mailto:elijah@indiancountrydevelopment.com">elijah@indiancountrydevelopment.com</a>
             </p>
           </div>
         </div>
