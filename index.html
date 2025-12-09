@@ -43,6 +43,8 @@
       --accent-soft: rgba(15, 156, 147, 0.16);
       --accent-soft-light: rgba(15, 156, 147, 0.06);
       --accent-glow: rgba(15, 156, 147, 0.25);
+      --cta-purple: #4c1d95; /* indigo-purple swath */
+      --cta-purple-soft: rgba(76, 29, 149, 0.16);
       --line: rgba(15, 23, 42, 0.08);
       --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -268,6 +270,101 @@
       font-weight: 800;
     }
 
+    /* BOTTOM CTA – PURPLE PAINT SWATH + MATERIALIZE + PULSE */
+    #icd-site .bottom-cta-wrap {
+      padding: 0 1.75rem 3.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    #icd-site .bottom-cta {
+      margin: 0;
+      text-align: center;
+      font-size: 0.98rem;
+    }
+
+    #icd-site .bottom-cta a {
+      position: relative;
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      color: var(--ink);
+      text-decoration: none;
+      overflow: hidden;
+    }
+
+    /* Purple swath behind text */
+    #icd-site .bottom-cta a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--cta-purple-soft), var(--cta-purple));
+      border-radius: 999px;
+      transform-origin: left center;
+      transform: scaleX(0);
+      opacity: 0;
+      animation: ctaSwathIn 0.65s ease-out 0.35s forwards;
+    }
+
+    #icd-site .bottom-cta-label {
+      position: relative;
+      z-index: 1;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(4px);
+      color: #f9fafb; /* light text on purple */
+      animation:
+        ctaTextIn 0.5s ease-out 0.75s forwards,
+        ctaPulse 1.8s ease-in-out 1.5s infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes ctaSwathIn {
+      0% {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scaleX(1.08);
+        opacity: 1;
+      }
+    }
+
+    @keyframes ctaTextIn {
+      0% {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes ctaPulse {
+      0% {
+        transform: translateY(0) scale(1);
+        text-shadow: 0 0 0 rgba(76, 29, 149, 0.0);
+      }
+      50% {
+        transform: translateY(0) scale(1.03);
+        text-shadow: 0 0 16px rgba(76, 29, 149, 0.35);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        text-shadow: 0 0 0 rgba(76, 29, 149, 0.0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .bottom-cta a::before,
+      #icd-site .bottom-cta-label {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        text-shadow: none !important;
+      }
+    }
+
     @media (max-width: 480px) {
       #icd-site .icd-header {
         padding: 0.7rem 1rem;
@@ -281,6 +378,14 @@
       #icd-site .icd-logo-text {
         font-size: 0.7rem;
         letter-spacing: 0.10em;
+      }
+
+      #icd-site .bottom-cta-wrap {
+        padding: 0 1.25rem 2.75rem;
+      }
+
+      #icd-site .bottom-cta {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -339,6 +444,15 @@
       </p>
     </div>
   </section>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta-wrap">
+    <p class="bottom-cta">
+      <a href="contact.html">
+        <span class="bottom-cta-label">Start a conversation →</span>
+      </a>
+    </p>
+  </div>
 
 </div>
 
