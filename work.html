@@ -241,12 +241,6 @@
       white-space: nowrap;
     }
 
-    #icd-site .label-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, var(--line), transparent);
-    }
-
     /* SCROLL REVEAL */
     #icd-site .reveal {
       opacity: 0;
@@ -273,7 +267,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.35rem;
-      border-radius: 10px;       /* squared off */
+      border-radius: 10px;
       background: var(--accent-soft-light);
       width: fit-content;
       margin-bottom: 2rem;
@@ -287,7 +281,7 @@
       font-weight: 600;
       color: var(--ink-muted);
       padding: 0.55rem 1.3rem;
-      border-radius: 8px;        /* squared off */
+      border-radius: 8px;
       cursor: pointer;
       transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
     }
@@ -391,7 +385,7 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <a href="index.html" class="icd-logo">
+    <a href="index.html" class="icd-logo" aria-label="Indian Country Development home">
       <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
         <!-- lower strand -->
         <path class="strand strand-1"
@@ -434,7 +428,7 @@
   <section class="section section--wide reveal" id="audience">
     <div class="section-label">
       <span class="label-text">Who We Work With</span>
-      <span class="label-line"></span>
+      <!-- grey header line removed -->
     </div>
 
     <div class="audience-block">
@@ -469,7 +463,7 @@
           </p>
           <ul class="panel-list">
             <li>We co-design around your governance, not against it.</li>
-            <li>We organize information without taking the wheel from local decision-makers.</li>
+            <li>We structure information without sidelining local decision-makers.</li>
             <li>We stay in the background so your staff can focus on relationships.</li>
           </ul>
         </div>
