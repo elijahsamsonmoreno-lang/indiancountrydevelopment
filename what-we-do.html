@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Indian Country Development – What We Do</title>
+  <title>Indian Country Development – Who We Work With</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- FONT -->
@@ -80,7 +80,7 @@
       border-bottom: 1px solid var(--line);
     }
 
-    /* LOGO + 3-STRAND BRAID MARK (ICD™ on subpages) */
+    /* LOGO + 3-STRAND BRAID MARK (ICD™) */
     #icd-site .icd-logo {
       display: inline-flex;
       align-items: center;
@@ -98,7 +98,6 @@
       fill: none;
       stroke-linecap: round;
       stroke-width: 6;
-
       stroke-dasharray: 400;
       stroke-dashoffset: 0;
       animation: weave 14s linear infinite;
@@ -242,12 +241,6 @@
       white-space: nowrap;
     }
 
-    #icd-site .label-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, var(--line), transparent);
-    }
-
     /* SCROLL REVEAL */
     #icd-site .reveal {
       opacity: 0;
@@ -260,93 +253,94 @@
       transform: translateY(0);
     }
 
-    /* SERVICES / ACCORDION */
-    #icd-site .services-list {
-      border-top: 1px solid var(--line);
-      background: rgba(255,255,255,0.9);
-      border-radius: 12px;
-      box-shadow: 0 10px 35px rgba(15,23,42,0.08);
+    /* WHO WE WORK WITH – BLOCK + TABS */
+    #icd-site .audience-block {
+      max-width: 720px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 16px;
+      padding: 1.75rem 1.6rem 2rem;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.10);
     }
 
-    #icd-site .service-item {
-      border-bottom: 1px solid var(--line);
-      padding: 0.75rem 1rem;
-    }
-
-    #icd-site .service-item:last-child {
-      border-bottom: none;
-    }
-
-    #icd-site .service-card {
+    #icd-site .audience-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem;
       border-radius: 10px;
-      padding: 0.9rem 0.1rem 0.1rem;
-      transition: background 0.25s ease, transform 0.25s ease;
-    }
-
-    #icd-site .service-item.open .service-card {
-      transform: translateY(-1px);
-    }
-
-    #icd-site .service-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      cursor: pointer;
-    }
-
-    #icd-site .service-header[role="button"] {
-      outline: none;
-    }
-
-    #icd-site .service-header:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-      border-radius: 6px;
-    }
-
-    #icd-site .service-title {
-      font-size: clamp(1.1rem, 2.4vw, 1.3rem);
-      font-weight: 700;
-    }
-
-    #icd-site .service-toggle {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
       background: var(--accent-soft-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+      width: fit-content;
+      margin-bottom: 2rem;
     }
 
-    #icd-site .service-item.open .service-toggle {
+    #icd-site .aud-tab {
+      border: none;
+      background: transparent;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    #icd-site .aud-tab:hover {
+      color: var(--ink-soft);
+    }
+
+    #icd-site .aud-tab:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    #icd-site .aud-tab.active {
       background: var(--accent);
       color: #ffffff;
-      transform: rotate(45deg);
+      box-shadow: 0 10px 26px var(--accent-glow);
     }
 
-    #icd-site .service-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, margin-top 0.3s ease;
+    #icd-site .aud-panel {
+      display: none;
     }
 
-    #icd-site .service-item.open .service-body {
-      max-height: 260px;
-      margin-top: 0.9rem;
+    #icd-site .aud-panel.active {
+      display: block;
     }
 
-    #icd-site .service-body p {
-      font-size: 0.96rem;
+    #icd-site .panel-lead {
+      font-size: 1.02rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    #icd-site .panel-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #icd-site .panel-list li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.94rem;
       color: var(--ink-soft);
-      line-height: 1.8;
-      margin: 0 0 0.2rem;
+      line-height: 1.7;
+    }
+
+    #icd-site .panel-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.63rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
     }
 
     /* FOOTER */
@@ -379,6 +373,10 @@
       #icd-site .section {
         padding: 4.9rem 1.25rem 2.25rem;
       }
+
+      #icd-site .audience-block {
+        padding: 1.4rem 1.2rem 1.7rem;
+      }
     }
   </style>
 </head>
@@ -387,19 +385,18 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <!-- logo now links to home -->
-    <a class="icd-logo" href="index.html" aria-label="Indian Country Development home">
+    <a href="index.html" class="icd-logo" aria-label="Indian Country Development home">
       <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
         <!-- lower strand -->
         <path class="strand strand-1"
           d="M 0 26
-             C 25 6, 55 6, 100 26
+             C 25  6, 55  6, 100 26
              S 175 46, 200 26" />
         <!-- middle strand -->
         <path class="strand strand-2"
           d="M 0 20
              C 30 40, 70 40, 100 20
-             S 170 0, 200 20" />
+             S 170  0, 200 20" />
         <!-- upper strand -->
         <path class="strand strand-3"
           d="M 0 14
@@ -427,56 +424,59 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- WHAT WE DO ONLY -->
-  <section class="section section--wide reveal" id="services">
+  <!-- WHO WE WORK WITH -->
+  <section class="section section--wide reveal" id="audience">
     <div class="section-label">
-      <span class="label-text">What We Do</span>
-      <span class="label-line"></span>
+      <span class="label-text">Who We Work With</span>
+      <!-- grey header line removed -->
     </div>
 
-    <div class="services-list">
-      <div class="service-item" data-service="strategy">
-        <div class="service-card">
-          <div class="service-header" role="button" tabindex="0">
-            <h3 class="service-title">Strategy &amp; Governance</h3>
-            <span class="service-toggle">+</span>
-          </div>
-          <div class="service-body">
-            <p>
-              The kind of planning that survives council turnover and actually respects how
-              tribal governance works. Too many strategies die in drawers. Ours get used.
-            </p>
-          </div>
-        </div>
+    <div class="audience-block">
+      <div class="audience-tabs" role="tablist" aria-label="Who we work with">
+        <button
+          class="aud-tab active"
+          data-target="tribal"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-tribal"
+          id="tab-tribal"
+        >
+          Tribal &amp; Native-Led
+        </button>
+        <button
+          class="aud-tab"
+          data-target="external"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-external"
+          id="tab-external"
+        >
+          External Partners
+        </button>
       </div>
 
-      <div class="service-item" data-service="operations">
-        <div class="service-card">
-          <div class="service-header" role="button" tabindex="0">
-            <h3 class="service-title">Programs &amp; Operations</h3>
-            <span class="service-toggle">+</span>
-          </div>
-          <div class="service-body">
-            <p>
-              Untangling the messy stuff—overlapping roles, unclear handoffs, initiatives that stalled.
-              We build structures your team can actually run without us.
-            </p>
-          </div>
+      <div class="audience-panels">
+        <div class="aud-panel active" id="panel-tribal" role="tabpanel" aria-labelledby="tab-tribal">
+          <p class="panel-lead">
+            For teams navigating something hard—a stuck initiative, a leadership transition,
+            a project that's bigger than current capacity.
+          </p>
+          <ul class="panel-list">
+            <li>We co-design around your governance, not against it.</li>
+            <li>We structure information without sidelining local decision-makers.</li>
+            <li>We stay in the background so your staff can focus on relationships.</li>
+          </ul>
         </div>
-      </div>
 
-      <div class="service-item" data-service="data">
-        <div class="service-card">
-          <div class="service-header" role="button" tabindex="0">
-            <h3 class="service-title">Data &amp; Learning</h3>
-            <span class="service-toggle">+</span>
-          </div>
-          <div class="service-body">
-            <p>
-              Making information useful—not just collected. Summaries leadership will read,
-              tools staff will use, and no dashboards no one opens.
-            </p>
-          </div>
+        <div class="aud-panel" id="panel-external" role="tabpanel" aria-labelledby="tab-external" hidden>
+          <p class="panel-lead">
+            For partners who know working with tribes isn’t a box to check—and want to get it right.
+          </p>
+          <ul class="panel-list">
+            <li>We clarify how tribal governance and consultation actually work for your project.</li>
+            <li>We align timelines and scopes so the work isn’t extractive or symbolic.</li>
+            <li>We translate between organizational, legal, and community language.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -523,45 +523,51 @@
     }
   });
 
-  /* SERVICES ACCORDION (click + keyboard) */
-  const items = root.querySelectorAll('.service-item');
+  /* AUDIENCE TABS (click + keyboard arrows) */
+  const tabs = Array.from(root.querySelectorAll('.aud-tab'));
+  const panels = root.querySelectorAll('.aud-panel');
 
-  function openItem(item) {
-    items.forEach(i => i.classList.remove('open'));
-    if (item) item.classList.add('open');
-  }
+  function activateTab(tab) {
+    const target = tab.dataset.target;
+    tabs.forEach(t => {
+      const isActive = t === tab;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      t.setAttribute('tabindex', isActive ? '0' : '-1');
+    });
 
-  // default: open first item so the page has content expanded
-  if (items.length > 0) {
-    items[0].classList.add('open');
-  }
-
-  root.querySelectorAll('.service-header').forEach(header => {
-    const item = header.closest('.service-item');
-    if (!item) return;
-
-    const handler = () => {
-      const isOpen = item.classList.contains('open');
-      if (isOpen) {
-        item.classList.remove('open');
+    panels.forEach(p => {
+      if (p.id === 'panel-' + target) {
+        p.classList.add('active');
+        p.hidden = false;
       } else {
-        openItem(item);
+        p.classList.remove('active');
+        p.hidden = true;
       }
-    };
+    });
+  }
 
-    header.addEventListener('click', handler);
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      activateTab(tab);
+    });
 
-    header.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
+    tab.addEventListener('keydown', (e) => {
+      const key = e.key;
+      if (key === 'ArrowRight' || key === 'ArrowLeft') {
         e.preventDefault();
-        handler();
+        const dir = key === 'ArrowRight' ? 1 : -1;
+        const nextIndex = (index + dir + tabs.length) % tabs.length;
+        const nextTab = tabs[nextIndex];
+        nextTab.focus();
+        activateTab(nextTab);
       }
     });
   });
 
   /* SIMPLE REVEAL */
-  const section = root.querySelector('#services');
-  if ('IntersectionObserver' in window && section) {
+  const revealTargets = root.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -571,9 +577,9 @@
       });
     }, { threshold: 0.18 });
 
-    observer.observe(section);
-  } else if (section) {
-    section.classList.add('reveal-visible');
+    revealTargets.forEach(el => observer.observe(el));
+  } else {
+    revealTargets.forEach(el => el.classList.add('reveal-visible'));
   }
 })();
 </script>
