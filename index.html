@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <title>Indian Country Development</title>
@@ -217,12 +217,48 @@
       color: #ffffff;
     }
 
+    /* ACTIVE NAV LINK STYLE (shared across pages) */
+    #icd-site .icd-nav-drawer a.active {
+      color: var(--accent-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* SCROLL REVEAL (shared pattern, even if not used here yet) */
+    #icd-site .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    #icd-site .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .no-js #icd-site .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
+    }
+
     /* HERO */
+    #icd-site main {
+      padding-top: 5.2rem; /* account for fixed header */
+    }
+
     #icd-site .hero {
-      padding: 5.2rem 1.75rem 0.6rem; /* pulled hero bottom up a bit more */
+      padding: 0 1.75rem 0.6rem;
       text-align: center;
       background: transparent;
-      min-height: 100svh;
+      min-height: calc(100svh - 5.2rem);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -403,7 +439,7 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <div class="icd-logo">
+    <a href="index.html" class="icd-logo" aria-label="Indian Country Development home">
       <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
         <path class="strand strand-1"
           d="M 0 26
@@ -421,7 +457,7 @@
       <div class="icd-logo-text">
         Indian Country Development<span class="icd-logo-tm">™</span>
       </div>
-    </div>
+    </a>
     <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
@@ -431,43 +467,49 @@
 
   <!-- FULLSCREEN MENU -->
   <nav class="icd-nav-drawer" aria-hidden="true">
+    <a href="index.html" class="active" aria-current="page">Home</a>
     <a href="what-we-do.html">What We Do</a>
     <a href="work.html">Who We Work With</a>
     <a href="who-we-are.html">Who We Are</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="hero-text">
-        A Native-led consulting firm for
-        <span class="hero-term">
-          <span class="hero-term-inner" id="rotateTerm">tribal governments</span>
-        </span>
-        and the partners working alongside them—strategy, operations, and data for
-        <strong class="hero-highlight">Indian Country development.</strong>
+  <main role="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="hero-text">
+          A Native-led consulting firm for
+          <span class="hero-term">
+            <span class="hero-term-inner" id="rotateTerm">tribal governments</span>
+          </span>
+          and the partners working alongside them—strategy, operations, and data for
+          <strong class="hero-highlight">Indian Country development.</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <div class="bottom-cta-wrap">
+      <p class="bottom-cta">
+        <a href="contact.html">
+          <span class="bottom-cta-label">Start a conversation</span>
+        </a>
       </p>
     </div>
-  </section>
-
-  <!-- BOTTOM CTA -->
-  <div class="bottom-cta-wrap">
-    <p class="bottom-cta">
-      <a href="contact.html">
-        <span class="bottom-cta-label">Start a conversation</span>
-      </a>
-    </p>
-  </div>
+  </main>
 
 </div>
 
 <script>
 (function() {
+  // JS is running, so remove no-js class for reveal fallbacks
+  document.documentElement.classList.remove('no-js');
+
   const root = document.getElementById('icd-site');
   if (!root) return;
 
-  /* ROTATING HERO TERMS */
+  /* ROTATING HERO TERMS (with pause on hover/focus) */
   const terms = [
     'tribal governments',
     'Native Hawaiian Organizations',
@@ -481,23 +523,50 @@
   ];
 
   const termSpan = root.querySelector('#rotateTerm');
+  const heroSection = root.querySelector('.hero');
   let idx = 0;
+  let intervalId = null;
+
+  function showTerm(newIdx) {
+    if (!termSpan) return;
+    termSpan.classList.remove('fade-in');
+    termSpan.classList.add('fade-out');
+
+    setTimeout(() => {
+      idx = newIdx;
+      termSpan.textContent = terms[idx];
+      termSpan.classList.remove('fade-out');
+      termSpan.classList.add('fade-in');
+    }, 260);
+  }
+
+  function startRotation() {
+    if (!termSpan || intervalId !== null) return;
+    intervalId = setInterval(() => {
+      const nextIdx = (idx + 1) % terms.length;
+      showTerm(nextIdx);
+    }, 5000);
+  }
+
+  function stopRotation() {
+    if (intervalId !== null) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+  }
 
   if (termSpan) {
     termSpan.textContent = terms[0];
     termSpan.classList.add('fade-in');
+    startRotation();
+  }
 
-    setInterval(() => {
-      termSpan.classList.remove('fade-in');
-      termSpan.classList.add('fade-out');
-
-      setTimeout(() => {
-        idx = (idx + 1) % terms.length;
-        termSpan.textContent = terms[idx];
-        termSpan.classList.remove('fade-out');
-        termSpan.classList.add('fade-in');
-      }, 260);
-    }, 5000);
+  // Pause rotation when user hovers or focuses within the hero block
+  if (heroSection) {
+    heroSection.addEventListener('mouseenter', stopRotation);
+    heroSection.addEventListener('mouseleave', startRotation);
+    heroSection.addEventListener('focusin', stopRotation);
+    heroSection.addEventListener('focusout', startRotation);
   }
 
   /* HAMBURGER NAV TOGGLE */
