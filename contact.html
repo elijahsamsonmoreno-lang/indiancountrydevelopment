@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <title>Indian Country Development – Contact</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- META / SEO -->
+  <meta name="description" content="Native-led consulting firm providing strategy, operations, and data services for tribal governments, Native organizations, and their partners.">
+  <meta name="keywords" content="tribal consulting, Indian Country development, tribal economic development, Native American consulting, tribal government consulting, Indigenous consulting">
 
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -80,7 +84,7 @@
       border-bottom: 1px solid var(--line);
     }
 
-    /* LOGO + 3-STRAND SPIRAL BRAID (from index) */
+    /* LOGO (braid + ICD™ only) */
     #icd-site .icd-logo {
       display: inline-flex;
       align-items: center;
@@ -120,7 +124,6 @@
       100% { stroke-dashoffset: -400; }
     }
 
-    /* respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
       #icd-site .icd-logo-icon .strand {
         animation: none !important;
@@ -128,23 +131,11 @@
     }
 
     #icd-site .icd-logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
+      font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-soft);
-    }
-
-    #icd-site .icd-logo-main {
-      font-size: 0.78rem;
-    }
-
-    #icd-site .icd-logo-sub {
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      color: var(--ink-muted);
     }
 
     #icd-site .icd-logo-tm {
@@ -163,13 +154,9 @@
         height: 16px;
       }
 
-      #icd-site .icd-logo-main {
+      #icd-site .icd-logo-text {
         font-size: 0.72rem;
         letter-spacing: 0.10em;
-      }
-
-      #icd-site .icd-logo-sub {
-        display: none;
       }
     }
 
@@ -204,7 +191,7 @@
       transform: translateY(-11px) rotate(-45deg);
     }
 
-    /* FULLSCREEN NAV DRAWER (no visible Menu label) */
+    /* FULLSCREEN NAV DRAWER */
     #icd-site .icd-nav-drawer {
       position: fixed;
       inset: 0;
@@ -234,6 +221,13 @@
       color: #ffffff;
     }
 
+    /* highlight current page in nav */
+    #icd-site .icd-nav-drawer a.active {
+      color: var(--accent-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     /* GENERIC SECTIONS */
     #icd-site .section {
       padding: 4.9rem 1.75rem 2.25rem; /* extra top padding for fixed header */
@@ -243,31 +237,6 @@
 
     #icd-site .section--wide {
       max-width: 1000px;
-    }
-
-    #icd-site .section-label {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.25rem;
-    }
-
-    #icd-site .label-text {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 700;
-      background: var(--accent-soft-light);
-      padding: 0.5rem 0.9rem;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-
-    #icd-site .label-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, var(--line), transparent);
     }
 
     /* SCROLL REVEAL */
@@ -280,6 +249,20 @@
     #icd-site .reveal-visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* no-JS / reduced-motion fallback */
+    .no-js #icd-site .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #icd-site .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
     }
 
     /* CONTACT */
@@ -335,6 +318,10 @@
 
     #icd-site .contact-email {
       margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     #icd-site .copy-email-btn {
@@ -343,15 +330,8 @@
       padding: 0;
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
       font-family: var(--font-sans);
       cursor: pointer;
-    }
-
-    #icd-site .copy-email-btn .contact-link {
-      text-decoration: underline;
-      text-decoration-color: var(--accent-soft);
-      text-underline-offset: 2px;
     }
 
     #icd-site .copy-pill {
@@ -365,7 +345,7 @@
       text-transform: uppercase;
     }
 
-    /* TEMPLATE EMAILS (single menu + card) */
+    /* TEMPLATE EMAILS */
     #icd-site .templates {
       margin-top: 2.5rem;
     }
@@ -415,6 +395,11 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.96);
       margin-top: 0.2rem;
+      transition: opacity 0.25s ease;
+    }
+
+    #icd-site .template-current.switching {
+      opacity: 0;
     }
 
     #icd-site .template-title {
@@ -502,9 +487,8 @@
 
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
-    <a href="index.html" class="icd-logo">
+    <a href="index.html" class="icd-logo" aria-label="Indian Country Development home">
       <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
-        <!-- spiral / twisty braid paths (same as index) -->
         <path class="strand strand-1"
           d="M 0 26
              C 25 6, 55 6, 100 26
@@ -519,8 +503,7 @@
              S 175 34, 200 14" />
       </svg>
       <span class="icd-logo-text">
-        <span class="icd-logo-main">ICD<span class="icd-logo-tm">™</span></span>
-        <span class="icd-logo-sub">Indian Country Development</span>
+        ICD<span class="icd-logo-tm">™</span>
       </span>
     </a>
     <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -530,23 +513,17 @@
     </button>
   </header>
 
-  <!-- FULLSCREEN MENU (no 'Menu' text) -->
+  <!-- FULLSCREEN MENU -->
   <nav class="icd-nav-drawer" aria-hidden="true">
-    <div class="icd-nav-label"></div>
     <a href="index.html">Home</a>
     <a href="what-we-do.html">What We Do</a>
     <a href="work.html">Who We Work With</a>
     <a href="who-we-are.html">Who We Are</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="active" aria-current="page">Contact</a>
   </nav>
 
   <!-- CONTACT SECTION -->
   <section class="section reveal" id="contact">
-    <div class="section-label">
-      <span class="label-text">Contact</span>
-      <span class="label-line"></span>
-    </div>
-
     <h1 class="contact-heading">Let’s talk about the work in front of you.</h1>
     <p class="contact-tagline">
       We keep our project load small on purpose. If you’re navigating something complex—and want a team
@@ -555,7 +532,7 @@
 
     <div class="contact-block">
       <p class="contact-desc">
-        Share a few lines about your team, what you’re working on, and any timelines or decisions you’re facing.
+        Share a few lines about your team, what you’re working on, and any timelines or deadlines you’re facing.
         We’ll follow up to see whether we’re a good fit and what a scoped engagement might look like.
       </p>
 
@@ -566,14 +543,16 @@
 
       <div class="contact-line contact-email">
         <span class="contact-label">Email</span>
+        <a href="mailto:contact@indiancountrydevelopment.com" class="contact-link">
+          contact@indiancountrydevelopment.com
+        </a>
         <button class="copy-email-btn" type="button">
-          <span class="contact-link">contact@indiancountrydevelopment.com</span>
-          <span class="copy-pill">Copy</span>
+          <span class="copy-pill">Copy email</span>
         </button>
       </div>
     </div>
 
-    <!-- TEMPLATES (dropdown + single card) -->
+    <!-- TEMPLATES -->
     <div class="templates">
       <h2 class="templates-heading">Quick-start email drafts</h2>
       <p class="templates-tagline">
@@ -581,7 +560,7 @@
       </p>
 
       <div class="templates-control">
-        <span class="templates-label">I’m reaching out as</span>
+        <span class="templates-label">I’m reaching out from a</span>
         <select class="templates-select" id="templateSelect">
           <option value="tribal">Tribal government / enterprise</option>
           <option value="nativeOrg">Native-led org / TCU / urban Indian</option>
@@ -603,12 +582,14 @@
     © 2025 Tribal Economic Development Partners L.L.C.
   </footer>
 
-  <!-- COPY TOAST -->
   <div class="copy-toast" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>
 (function() {
+  // remove no-js class when JS is running
+  document.documentElement.classList.remove('no-js');
+
   const root = document.getElementById('icd-site');
   if (!root) return;
 
@@ -705,7 +686,7 @@
     });
   }
 
-  /* TEMPLATE LOGIC: dropdown + single card */
+  /* TEMPLATE LOGIC */
   const templates = {
     tribal: {
       title: 'Tribal government / enterprise',
@@ -716,7 +697,7 @@ Dear Phil and Elijah,
 
 I'm reaching out from [Tribal Nation / department / enterprise name]. We are currently working on [brief description of the initiative or challenge] and are looking for support with [strategy / operations / data & evaluation].
 
-We'd be interested in a short conversation to see whether our work is a good fit for Indian Country Development and what a scoped engagement might look like, including rough timelines and budget.
+We'd be interested in a short conversation to see whether Indian Country Development might be a good fit for this work and what a scoped engagement might look like, including rough timelines and budget.
 
 A few quick details:
 • Team / department: [brief description]
@@ -808,14 +789,27 @@ Best,
   const descEl   = root.querySelector('.template-desc');
   const bodyEl   = root.querySelector('.template-body');
   const copyBtn  = root.querySelector('.template-copy');
+  const cardEl   = root.querySelector('.template-current');
 
   function renderTemplate(key) {
     const tpl = templates[key] || templates.tribal;
     if (!titleEl || !descEl || !bodyEl) return;
-    titleEl.textContent = tpl.title;
-    descEl.textContent = tpl.desc;
-    bodyEl.textContent = tpl.body;
-    bodyEl.dataset.currentKey = key;
+
+    if (cardEl) {
+      cardEl.classList.add('switching');
+      setTimeout(() => {
+        titleEl.textContent = tpl.title;
+        descEl.textContent = tpl.desc;
+        bodyEl.textContent = tpl.body;
+        bodyEl.dataset.currentKey = key;
+        cardEl.classList.remove('switching');
+      }, 120);
+    } else {
+      titleEl.textContent = tpl.title;
+      descEl.textContent = tpl.desc;
+      bodyEl.textContent = tpl.body;
+      bodyEl.dataset.currentKey = key;
+    }
   }
 
   if (selectEl) {
@@ -825,10 +819,16 @@ Best,
   }
 
   if (copyBtn && bodyEl) {
+    const defaultCopyText = 'Copy template';
     copyBtn.addEventListener('click', () => {
       const key = bodyEl.dataset.currentKey || 'tribal';
       const tpl = templates[key] || templates.tribal;
       copyText(tpl.body, 'Template copied');
+
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        copyBtn.textContent = defaultCopyText;
+      }, 1500);
     });
   }
 
