@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <title>Indian Country Development</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Native-led consulting firm providing strategy, operations, and data services for tribal governments, Native organizations, and their partners.">
+  <meta name="keywords" content="tribal consulting, Indian Country development, tribal economic development, Native American consulting, tribal government consulting, Indigenous consulting">
 
   <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,6 +13,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
+    /* SCREEN READER ONLY */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
     /* PAGE BACKGROUND */
     html, body {
       margin: 0;
@@ -24,7 +38,7 @@
       --ink: #0f172a;
       --ink-soft: #4b5563;
       --ink-muted: #9ca3af;
-      --accent: #0f9c93;           /* slightly deeper teal */
+      --accent: #0f9c93;
       --accent-light: #34d3c1;
       --accent-soft: rgba(15, 156, 147, 0.16);
       --accent-soft-light: rgba(15, 156, 147, 0.06);
@@ -59,7 +73,7 @@
       text-decoration: none;
     }
 
-    body #icd-site {
+    #icd-site {
       font-size: 16px;
     }
 
@@ -89,7 +103,7 @@
     }
 
     #icd-site .icd-logo-icon {
-      width: 60px;   /* a bit smaller so the header breathes more */
+      width: 60px;
       height: 18px;
       flex-shrink: 0;
     }
@@ -99,22 +113,20 @@
       stroke-linecap: round;
       stroke-width: 6;
 
-      /* subtle weaving animation */
       stroke-dasharray: 400;
       stroke-dashoffset: 0;
       animation: weave 14s linear infinite;
     }
 
-    /* three-strand braid using existing palette */
     #icd-site .icd-logo-icon .strand-1 {
-      stroke: var(--accent);      /* teal */
+      stroke: var(--accent);
     }
     #icd-site .icd-logo-icon .strand-2 {
-      stroke: var(--ink-soft);    /* slate */
+      stroke: var(--ink-soft);
       animation-delay: -4s;
     }
     #icd-site .icd-logo-icon .strand-3 {
-      stroke: var(--ink-muted);   /* muted gray */
+      stroke: var(--ink-muted);
       animation-delay: -8s;
     }
 
@@ -123,7 +135,6 @@
       100% { stroke-dashoffset: -400; }
     }
 
-    /* ADA: respect reduced motion preference */
     @media (prefers-reduced-motion: reduce) {
       #icd-site .icd-logo-icon .strand {
         animation: none !important;
@@ -194,16 +205,6 @@
       transform: translateY(0);
     }
 
-    #icd-site .icd-nav-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      opacity: 0.9;
-    }
-
     #icd-site .icd-nav-drawer a {
       font-size: 1.15rem;
       font-weight: 600;
@@ -217,11 +218,10 @@
 
     /* HERO */
     #icd-site .hero {
-      padding: 5.2rem 1.75rem 3.5rem; /* extra top padding for fixed header */
+      padding: 5.2rem 1.75rem 3.5rem;
       text-align: center;
-      /* transparent so dot grid shows through */
       background: transparent;
-      min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -268,7 +268,6 @@
       font-weight: 800;
     }
 
-    /* MOBILE TWEAKS: give header more room */
     @media (max-width: 480px) {
       #icd-site .icd-header {
         padding: 0.7rem 1rem;
@@ -284,29 +283,25 @@
         letter-spacing: 0.10em;
       }
     }
-
-    /* (Other section styles for subpages can live below if needed) */
   </style>
 </head>
 <body>
 <div id="icd-site">
 
+  <h1 class="sr-only">Indian Country Development – Native-Led Tribal Consulting</h1>
+
   <!-- FIXED HEADER + HAMBURGER -->
   <header class="icd-header">
     <div class="icd-logo">
       <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
-        <!-- more twisty braid, same overall width -->
-        <!-- lower strand -->
         <path class="strand strand-1"
           d="M 0 26
              C 25 6, 55 6, 100 26
              S 175 46, 200 26" />
-        <!-- middle strand -->
         <path class="strand strand-2"
           d="M 0 20
              C 30 40, 70 40, 100 20
              S 170 0, 200 20" />
-        <!-- upper strand -->
         <path class="strand strand-3"
           d="M 0 14
              C 25 -6, 55 -6, 100 14
@@ -325,14 +320,13 @@
 
   <!-- FULLSCREEN MENU -->
   <nav class="icd-nav-drawer" aria-hidden="true">
-    <div class="icd-nav-label"></div>
     <a href="what-we-do.html">What We Do</a>
     <a href="work.html">Who We Work With</a>
     <a href="who-we-are.html">Who We Are</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- HERO ONLY -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
       <p class="hero-text">
@@ -383,7 +377,7 @@
         termSpan.classList.remove('fade-out');
         termSpan.classList.add('fade-in');
       }, 260);
-    }, 3600);
+    }, 5000);
   }
 
   /* HAMBURGER NAV TOGGLE */
@@ -405,13 +399,11 @@
       setNavOpen(!isOpen);
     });
 
-    // close menu when a link is clicked
     drawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => setNavOpen(false));
     });
   }
 
-  // close menu on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       setNavOpen(false);
