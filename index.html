@@ -258,7 +258,8 @@
       padding: 0 1.75rem 0.6rem;
       text-align: center;
       background: transparent;
-      min-height: calc(100svh - 5.2rem);
+      /* shorter min-height so CTA sits higher in viewport */
+      min-height: calc(100svh - 9.5rem);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -311,7 +312,7 @@
       padding: 0 1.75rem 2.25rem;
       display: flex;
       justify-content: center;
-      margin-top: 0.1rem; /* closer to hero */
+      margin-top: 0.1rem; /* base */
     }
 
     #icd-site .bottom-cta {
@@ -407,6 +408,13 @@
       }
     }
 
+    /* pull CTA a bit closer to hero on wider screens */
+    @media (min-width: 768px) {
+      #icd-site .bottom-cta-wrap {
+        margin-top: -1.2rem;
+      }
+    }
+
     @media (max-width: 480px) {
       #icd-site .icd-header {
         padding: 0.7rem 1rem;
@@ -424,6 +432,7 @@
 
       #icd-site .bottom-cta-wrap {
         padding: 0 1.25rem 2.1rem;
+        margin-top: 0.25rem;
       }
 
       #icd-site .bottom-cta {
@@ -509,7 +518,7 @@
   const root = document.getElementById('icd-site');
   if (!root) return;
 
-  /* ROTATING HERO TERMS (with pause on hover/focus) */
+  /* ROTATING HERO TERMS (with pause on hover/focus ON THE TERM ONLY) */
   const terms = [
     'tribal governments',
     'Native Hawaiian Organizations',
@@ -523,7 +532,6 @@
   ];
 
   const termSpan = root.querySelector('#rotateTerm');
-  const heroSection = root.querySelector('.hero');
   let idx = 0;
   let intervalId = null;
 
@@ -545,7 +553,7 @@
     intervalId = setInterval(() => {
       const nextIdx = (idx + 1) % terms.length;
       showTerm(nextIdx);
-    }, 5000);
+    }, 3200); // faster rotation (3.2s)
   }
 
   function stopRotation() {
@@ -559,14 +567,13 @@
     termSpan.textContent = terms[0];
     termSpan.classList.add('fade-in');
     startRotation();
-  }
 
-  // Pause rotation when user hovers or focuses within the hero block
-  if (heroSection) {
-    heroSection.addEventListener('mouseenter', stopRotation);
-    heroSection.addEventListener('mouseleave', startRotation);
-    heroSection.addEventListener('focusin', stopRotation);
-    heroSection.addEventListener('focusout', startRotation);
+    // Only pause if the user is directly on the rotating term,
+    // not just anywhere in the hero (fixes desktop "stuck" state)
+    termSpan.addEventListener('mouseenter', stopRotation);
+    termSpan.addEventListener('mouseleave', startRotation);
+    termSpan.addEventListener('focusin', stopRotation);
+    termSpan.addEventListener('focusout', startRotation);
   }
 
   /* HAMBURGER NAV TOGGLE */
