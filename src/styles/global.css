@@ -15,6 +15,11 @@
   border: 0;
 }
 
+/* #9: Prevent dark mode inversion */
+html {
+  color-scheme: light;
+}
+
 /* PAGE BACKGROUND */
 html, body {
   margin: 0;
@@ -527,6 +532,68 @@ html, body {
   }
 }
 
+/* ─── #2: LOADING SKELETON ─── */
+.loading-skeleton {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-shimmer {
+  position: absolute;
+  top: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent-soft), transparent);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0; transform: translateX(-50%) scaleX(0.3); }
+  50% { opacity: 1; transform: translateX(-50%) scaleX(1); }
+  100% { opacity: 0; transform: translateX(-50%) scaleX(0.3); }
+}
+
+/* ─── #4: GPU acceleration for animated elements ─── */
+.hero-term-inner,
+.bottom-cta a::before,
+.bottom-cta-label,
+.how-body,
+.service-body {
+  will-change: transform, opacity;
+}
+
+/* ─── #6: SCROLL TO TOP BUTTON ─── */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  color: var(--ink-soft);
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.scroll-top-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
 /* ─── MOBILE TWEAKS ─── */
 @media (max-width: 480px) {
   .icd-header {
@@ -540,5 +607,10 @@ html, body {
 
   .section {
     padding: 0 1.25rem var(--space-xl);
+  }
+
+  /* #5: Reduce dot grid on mobile for readability */
+  #root {
+    background-image: radial-gradient(circle, rgba(15,23,42,0.05) 1px, transparent 1px);
   }
 }

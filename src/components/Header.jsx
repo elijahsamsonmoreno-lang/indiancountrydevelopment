@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LogoFull, LogoCompact } from './Logo';
+import { preloadRoute } from '../App';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -52,6 +53,7 @@ export default function Header() {
               to={to}
               className={({ isActive }) => isActive ? 'active' : ''}
               end={to === '/'}
+              onMouseEnter={() => preloadRoute(to)}
             >
               {label}
             </NavLink>

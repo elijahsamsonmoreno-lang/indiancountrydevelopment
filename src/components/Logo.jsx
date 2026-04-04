@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-/* Sovereign Break Logo — Option B / Shifted Ring */
+/* Sovereign Break Logo — Option B / Shifted Ring
+   Rings nest close on the LEFT, wide gap on the RIGHT.
+   Outer ring has gap at ~2-3 o'clock. Teal arc outside gap. */
 
 export function LogoIcon({ size = 40, className = '', dark = false, animate = false }) {
   const ink = dark ? '#e5e7eb' : 'var(--ink, #0f172a)';
@@ -16,43 +18,43 @@ export function LogoIcon({ size = 40, className = '', dark = false, animate = fa
       aria-hidden="true"
       fill="none"
     >
-      {/* Outer ring — near-circle, gap at ~1-3 o'clock */}
+      {/* Outer ring — near-circle, open gap at 2-3 o'clock */}
       <path
         className="logo-ring logo-ring-outer"
-        d="M 80 10
-           C 66 4, 46 4, 32 14
-           C 16 26, 6 44, 8 64
-           C 10 84, 22 100, 42 108
-           C 58 114, 76 112, 88 102
-           C 98 94, 106 80, 108 66"
+        d="M 88 16
+           C 74 6, 54 2, 38 10
+           C 20 20, 8 40, 8 60
+           C 8 82, 20 100, 40 108
+           C 58 116, 78 112, 92 100
+           C 102 92, 108 78, 110 64"
         stroke={ink} strokeWidth="3" fill="none"
         strokeLinecap="round"
       />
-      {/* Middle ring — shifted left and up */}
+      {/* Middle ring — shifted hard left, close to outer on left, gap on right */}
       <path
         className="logo-ring logo-ring-mid"
-        d="M 48 22
-           C 30 24, 16 38, 16 56
-           C 16 74, 26 90, 44 96
-           C 60 100, 76 92, 84 78
-           C 90 66, 88 50, 80 38
-           C 72 28, 58 22, 48 22 Z"
+        d="M 42 20
+           C 26 22, 14 36, 14 54
+           C 14 72, 22 86, 38 94
+           C 52 100, 68 96, 78 84
+           C 86 74, 88 58, 82 44
+           C 76 30, 58 20, 42 20 Z"
         stroke={ink} strokeWidth="2.5" fill="none"
       />
-      {/* Inner blob — shifted left/up, organic land contour */}
+      {/* Inner blob — shifted left, organic land contour, wider than tall */}
       <path
         className="logo-ring logo-ring-inner"
-        d="M 42 42
-           C 32 46, 28 56, 30 66
-           C 32 76, 42 82, 54 80
-           C 66 78, 74 66, 70 54
-           C 66 44, 52 40, 42 42 Z"
+        d="M 36 44
+           C 24 50, 22 62, 26 72
+           C 30 80, 42 84, 56 80
+           C 68 76, 74 64, 68 52
+           C 62 42, 46 40, 36 44 Z"
         stroke={ink} strokeWidth="2.8" fill="none"
       />
-      {/* Teal accent arc — shifted up/left, outside outer ring gap */}
+      {/* Teal accent arc — outside outer ring, in the gap */}
       <path
         className="logo-arc"
-        d="M 104 32 C 110 42, 112 54, 110 64"
+        d="M 106 30 C 114 42, 116 56, 114 66"
         stroke={accent} strokeWidth="4.5" strokeLinecap="round" fill="none"
       />
     </svg>

@@ -20,7 +20,7 @@
 .contact-block {
   margin-top: 1.75rem;
   padding: 1.6rem 1.4rem;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   background: var(--accent-soft-light);
   border-left: 3px solid var(--accent);
 }
@@ -73,116 +73,18 @@
 
 .copy-pill {
   padding: 0.25rem 0.7rem;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--accent);
   color: #ffffff;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  transition: background 0.2s ease;
 }
 
-/* TEMPLATES */
-.templates {
-  margin-top: 2.5rem;
-}
-
-.templates-heading {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 0.35rem;
-}
-
-.templates-tagline {
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-  margin-bottom: 1.2rem;
-  max-width: 520px;
-}
-
-.templates-control {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 1rem;
-}
-
-.templates-label {
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  font-weight: 600;
-}
-
-.templates-select {
-  min-width: 240px;
-  padding: 0.45rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  background: rgba(255,255,255,0.96);
-}
-
-.template-current {
-  padding: 1.1rem 1.1rem;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.96);
-  margin-top: 0.2rem;
-  transition: opacity 0.25s ease;
-}
-
-.template-current.switching {
-  opacity: 0;
-}
-
-.template-title {
-  font-size: 0.98rem;
-  font-weight: 700;
-  margin: 0 0 0.3rem;
-}
-
-.template-desc {
-  font-size: 0.86rem;
-  color: var(--ink-soft);
-  margin-bottom: 0.9rem;
-  line-height: 1.6;
-}
-
-.template-body {
-  font-size: 0.8rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  background: #f9fafb;
-  border-radius: 8px;
-  padding: 0.75rem 0.9rem;
-  margin-bottom: 0.9rem;
-  max-height: 260px;
-  overflow: auto;
-  white-space: pre-wrap;
-  line-height: 1.55;
-  color: #111827;
-}
-
-.template-copy {
-  border: none;
-  border-radius: 999px;
-  padding: 0.45rem 0.9rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: var(--font-sans);
-  background: var(--accent);
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.template-copy:hover {
-  background: #0c7f76;
+.copy-pill:hover {
+  background: var(--accent-dark);
 }
 
 /* COPY TOAST */
@@ -192,7 +94,7 @@
   bottom: 1.2rem;
   transform: translateX(-50%) translateY(20px);
   padding: 0.5rem 1rem;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: rgba(15,23,42,0.96);
   color: #ffffff;
   font-size: 0.8rem;
@@ -200,7 +102,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 60;
+  z-index: var(--z-toast);
 }
 
 .copy-toast.show {
