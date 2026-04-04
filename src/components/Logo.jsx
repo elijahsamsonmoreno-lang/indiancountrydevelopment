@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-/* Sovereign Break Logo — Option B / Shifted Ring
-   Outer ring: near-circle with gap at ~2 o'clock
-   Middle ring: offset circle shifted left/down
-   Inner shape: smooth organic blob (land contour)
-   Teal arc: short, outside the outer ring gap */
+/* Sovereign Break Logo — Option B / Shifted Ring */
 
 export function LogoIcon({ size = 40, className = '', dark = false, animate = false }) {
   const ink = dark ? '#e5e7eb' : 'var(--ink, #0f172a)';
@@ -20,43 +16,43 @@ export function LogoIcon({ size = 40, className = '', dark = false, animate = fa
       aria-hidden="true"
       fill="none"
     >
-      {/* Outer ring — near-circle arc, gap from ~1:30 to ~3:30 o'clock */}
+      {/* Outer ring — near-circle, gap at ~1-3 o'clock */}
       <path
         className="logo-ring logo-ring-outer"
-        d="M 84 10
-           C 70 4, 50 4, 36 12
-           C 20 22, 8 40, 8 60
-           C 8 80, 18 96, 36 106
-           C 50 114, 68 114, 82 106
-           C 94 98, 104 86, 108 72"
+        d="M 80 10
+           C 66 4, 46 4, 32 14
+           C 16 26, 6 44, 8 64
+           C 10 84, 22 100, 42 108
+           C 58 114, 76 112, 88 102
+           C 98 94, 106 80, 108 66"
         stroke={ink} strokeWidth="3" fill="none"
         strokeLinecap="round"
       />
-      {/* Middle ring — near-circle, shifted left and down */}
+      {/* Middle ring — shifted left and up */}
       <path
         className="logo-ring logo-ring-mid"
-        d="M 54 24
-           C 36 24, 20 36, 18 54
-           C 16 72, 24 88, 42 96
-           C 56 102, 74 96, 84 82
-           C 92 70, 92 54, 84 40
-           C 78 30, 66 24, 54 24 Z"
+        d="M 48 22
+           C 30 24, 16 38, 16 56
+           C 16 74, 26 90, 44 96
+           C 60 100, 76 92, 84 78
+           C 90 66, 88 50, 80 38
+           C 72 28, 58 22, 48 22 Z"
         stroke={ink} strokeWidth="2.5" fill="none"
       />
-      {/* Inner blob — smooth organic land contour */}
+      {/* Inner blob — shifted left/up, organic land contour */}
       <path
         className="logo-ring logo-ring-inner"
-        d="M 48 46
-           C 38 48, 32 56, 34 66
-           C 36 76, 46 82, 58 80
-           C 68 78, 76 68, 74 56
-           C 72 46, 60 42, 48 46 Z"
+        d="M 42 42
+           C 32 46, 28 56, 30 66
+           C 32 76, 42 82, 54 80
+           C 66 78, 74 66, 70 54
+           C 66 44, 52 40, 42 42 Z"
         stroke={ink} strokeWidth="2.8" fill="none"
       />
-      {/* Teal accent arc — outside the outer ring, in the gap */}
+      {/* Teal accent arc — shifted up/left, outside outer ring gap */}
       <path
         className="logo-arc"
-        d="M 110 42 C 116 52, 118 64, 114 76"
+        d="M 104 32 C 110 42, 112 54, 110 64"
         stroke={accent} strokeWidth="4.5" strokeLinecap="round" fill="none"
       />
     </svg>
