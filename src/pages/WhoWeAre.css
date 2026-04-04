@@ -43,7 +43,8 @@
 }
 
 .about-tab:hover {
-  color: var(--ink-soft);
+  color: var(--ink);
+  background: rgba(15, 156, 147, 0.08);
 }
 
 .about-tab:focus-visible {
@@ -65,7 +66,6 @@
   display: block;
 }
 
-/* #21: Photo placeholder with accent ring */
 .member-photo-placeholder {
   width: 64px;
   height: 64px;
@@ -105,6 +105,11 @@
   font-size: 0.93rem;
   color: var(--ink-soft);
   line-height: 1.7;
+  transition: color 0.2s ease;
+}
+
+.about-panel .panel-list li:hover {
+  color: var(--ink);
 }
 
 .about-panel .panel-list li::before {
@@ -116,6 +121,11 @@
   height: 7px;
   border-radius: var(--radius-full);
   background: var(--accent);
+  transition: transform 0.2s ease;
+}
+
+.about-panel .panel-list li:hover::before {
+  transform: scale(1.4);
 }
 
 .panel-tribal {
@@ -149,6 +159,11 @@
   text-decoration: underline;
   text-decoration-color: var(--accent-soft);
   text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.panel-email a:hover {
+  text-decoration-color: var(--accent);
 }
 
 .combined-strength {
@@ -174,33 +189,6 @@
   line-height: 1.7;
   color: var(--ink-soft);
   margin: 0;
-}
-
-/* #39: ECOSYSTEM VIZ */
-.ecosystem-section {
-  margin-top: 1rem;
-}
-
-.ecosystem-viz {
-  background: rgba(255,255,255,0.96);
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  border: 1px solid var(--line);
-  text-align: center;
-}
-
-.ecosystem-svg {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-}
-
-.ecosystem-caption {
-  font-size: 0.88rem;
-  color: var(--ink-muted);
-  line-height: 1.6;
-  margin: 1rem auto 0;
-  max-width: 500px;
 }
 
 @media (max-width: 480px) {

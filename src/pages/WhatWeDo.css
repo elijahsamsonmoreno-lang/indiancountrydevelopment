@@ -9,6 +9,11 @@
 .service-item {
   border-bottom: 1px solid var(--line);
   padding: 0.75rem 1rem;
+  transition: background 0.2s ease;
+}
+
+.service-item:hover {
+  background: rgba(15, 156, 147, 0.03);
 }
 
 .service-item:last-child {

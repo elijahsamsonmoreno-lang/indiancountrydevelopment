@@ -58,7 +58,7 @@ describe('Header', () => {
 describe('Footer', () => {
   it('renders copyright and tagline', () => {
     render(<TestWrapper><Footer /></TestWrapper>);
-    expect(screen.getByText(/Tribal Economic Development Partners/)).toBeInTheDocument();
+    expect(screen.getByText(/All rights reserved/)).toBeInTheDocument();
     expect(screen.getByText(/Native-led/)).toBeInTheDocument();
   });
 });

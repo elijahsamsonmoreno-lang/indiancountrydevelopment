@@ -16,13 +16,6 @@ const terms = [
   'Urban Indian communities',
 ];
 
-/* #8: differentiators */
-const differentiators = [
-  { headline: 'We\u2019ve never used a template', body: 'Every engagement is designed from scratch around your governance, your team, and your timeline.' },
-  { headline: 'Our work outlasts us', body: 'We build systems your staff can run without us. If you still need us a year later, we failed.' },
-  { headline: 'We say no more than yes', body: 'We take 4\u20136 projects a year. If we take yours, you get our full attention.' },
-];
-
 export default function Home() {
   const [idx, setIdx] = useState(0);
   const [fading, setFading] = useState(false);
@@ -65,10 +58,8 @@ export default function Home() {
         <section className="hero" aria-label="Introduction">
           <div className="hero-inner">
             <h1 className="sr-only">Indian Country Development - Native-Led Tribal Consulting</h1>
-            {/* #7: Bolder hero tagline */}
             <p className="hero-text">
-              We don&rsquo;t parachute in with playbooks.{' '}
-              We build what doesn&rsquo;t exist yet&mdash;for{' '}
+              A Native-led consulting firm for{' '}
               <span className="hero-term">
                 <span
                   className={`hero-term-inner ${fading ? 'fade-out' : 'fade-in'}`}
@@ -83,10 +74,8 @@ export default function Home() {
                   {terms[idx]}
                 </span>
               </span>{' '}
-              and the partners working alongside them.
-            </p>
-            <p className="hero-sub">
-              <Link to="/what-we-do">Strategy, operations, and data</Link> for{' '}
+              and the partners working alongside them&mdash;
+              <Link to="/what-we-do">strategy, operations, and data</Link> for{' '}
               <strong className="hero-highlight">Indian Country development.</strong>
             </p>
           </div>
@@ -100,46 +89,31 @@ export default function Home() {
           </p>
         </div>
 
-        {/* #8: How We're Different section */}
         <ScrollReveal>
-          <section className="section section--wide differentiators-section" aria-label="How we are different">
-            <div className="section-label section-label--sticky">
-              <span className="label-text">How We&rsquo;re Different</span>
-              <span className="label-line"></span>
-            </div>
-
-            <div className="diff-grid">
-              {differentiators.map((d, i) => (
-                <div key={i} className="diff-card stagger-child card-hover">
-                  <h3 className="diff-headline">{d.headline}</h3>
-                  <p className="diff-body">{d.body}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        </ScrollReveal>
-
-        {/* #33: What We Won't Do */}
-        <ScrollReveal>
-          <section className="section section--wide section--solid-bg wont-do-section" aria-label="What we will not do">
+          <section className="section section--wide how-we-work-section" aria-label="How we work">
             <div className="section-label">
-              <span className="label-text">What We Won&rsquo;t Do</span>
+              <span className="label-text">How We Work</span>
               <span className="label-line"></span>
             </div>
 
-            <div className="wont-do-grid">
-              {[
-                'We don\u2019t do one-week flybys.',
-                'We don\u2019t write reports no one reads.',
-                'We don\u2019t bid on work we can\u2019t staff.',
-                'We don\u2019t treat tribal consultation as a checkbox.',
-                'We don\u2019t take projects where we\u2019d learn on your dime.',
-              ].map((item, i) => (
-                <div key={i} className="wont-do-item stagger-child">
-                  <span className="wont-do-x" aria-hidden="true">&times;</span>
-                  <span>{item}</span>
-                </div>
-              ))}
+            <div className="how-grid">
+              <div className="how-do stagger-child">
+                <h3 className="how-heading">What we do</h3>
+                <ul className="how-list">
+                  <li>Design every engagement from scratch around your governance, team, and timeline.</li>
+                  <li>Build systems your staff can run without us.</li>
+                  <li>Take 4&ndash;6 projects a year so each one gets our full attention.</li>
+                </ul>
+              </div>
+              <div className="how-dont stagger-child">
+                <h3 className="how-heading">What we don&rsquo;t</h3>
+                <ul className="how-list how-list--no">
+                  <li>One-week flybys.</li>
+                  <li>Reports no one reads.</li>
+                  <li>Bid on work we can&rsquo;t staff.</li>
+                  <li>Treat tribal consultation as a checkbox.</li>
+                </ul>
+              </div>
             </div>
           </section>
         </ScrollReveal>

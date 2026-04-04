@@ -162,7 +162,7 @@ export default function Contact() {
       <ScrollReveal>
         <section className="section contact-section" id="contact" aria-label="Contact information">
           {/* #13: upgraded headline */}
-          <h1 className="contact-heading">We take on 4&ndash;6 projects a year. Here&rsquo;s how to become one.</h1>
+          <h1 className="contact-heading">Let&rsquo;s talk about the work in front of you.</h1>
           <p className="contact-tagline">
             We keep our project load small on purpose. If you&rsquo;re navigating something complex&mdash;and want a team
             that knows Indian Country and actually builds with you&mdash;reach out.
