@@ -51,7 +51,8 @@ export default function Contact() {
 
       <ScrollReveal>
         <section className="section contact-section" id="contact" aria-label="Contact information">
-          <h1 className="contact-heading">Let&rsquo;s talk.</h1>
+          <h1 className="sr-only">Contact Indian Country Development &mdash; Tribal Consulting by Phil Gover and Elijah Moreno</h1>
+          <p className="contact-heading" aria-hidden="true">Let&rsquo;s talk.</p>
           <p className="contact-tagline">
             We keep our project load small on purpose. If you&rsquo;re navigating something real and want a team that knows Indian Country&mdash;reach out.
           </p>

@@ -55,6 +55,7 @@ export default function Work() {
       <main id="main">
         <ScrollReveal>
           <section className="section section--wide work-section" id="audience" aria-label="Who we work with">
+            <h1 className="sr-only">Who We Work With &mdash; Tribal Government and Partner Consulting</h1>
             <div className="section-label section-label--sticky">
               <span className="label-text">Who We Work With</span>
               <span className="label-line"></span>

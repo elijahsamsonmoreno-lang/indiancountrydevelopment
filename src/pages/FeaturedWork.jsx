@@ -45,6 +45,7 @@ export default function FeaturedWork() {
       <main id="main" style={{ paddingTop: '4.9rem' }}>
         <ScrollReveal>
           <section className="section section--wide" id="services" aria-label="Our services">
+            <h1 className="sr-only">Featured Work &mdash; Tribal Consulting Services by Indian Country Development</h1>
             <div className="section-label">
               <span className="label-text">Featured Work</span>
               <span className="label-line"></span>
@@ -71,7 +72,7 @@ export default function FeaturedWork() {
                           }
                         }}
                       >
-                        <h3 className="service-title">{title}</h3>
+                        <h2 className="service-title">{title}</h2>
                         <span className="service-toggle" aria-hidden="true">+</span>
                       </div>
                       <div className="service-body" id={`body-${id}`} role="region">

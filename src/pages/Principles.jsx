@@ -47,6 +47,7 @@ export default function Principles() {
       <main id="main">
         <ScrollReveal>
           <section className="section section--wide principles-section" aria-label="Our principles">
+            <h1 className="sr-only">Our Principles &mdash; Non-Extractive Tribal Consulting Standards</h1>
             <div className="section-label section-label--sticky">
               <span className="label-text">Our Principles</span>
               <span className="label-line"></span>
@@ -61,7 +62,7 @@ export default function Principles() {
               {principles.map((p, i) => (
                 <div key={i} className="principle-card stagger-child">
                   <span className="principle-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="principle-title">{p.title}</h3>
+                  <h2 className="principle-title">{p.title}</h2>
                   <p className="principle-body">{p.body}</p>
                 </div>
               ))}

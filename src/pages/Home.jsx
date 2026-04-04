@@ -101,6 +101,7 @@ export default function Home() {
               <span className="label-line"></span>
             </div>
 
+            <h2 className="sr-only">How We Work</h2>
             <div className="how-grid">
               <div
                 className={`how-panel how-do${openPanel === 'do' ? ' open' : ''}`}

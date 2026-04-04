@@ -62,6 +62,7 @@ export default function WhoWeAre() {
       <main id="main">
         <ScrollReveal>
           <section className="section section--wide about-section" id="about" aria-label="About the team">
+            <h1 className="sr-only">Who We Are &mdash; Phil Gover and Elijah Moreno, Indian Country Development</h1>
             <div className="section-label">
               <span className="label-text">Who We Are</span>
               <span className="label-line"></span>
@@ -120,7 +121,7 @@ export default function WhoWeAre() {
               </div>
 
               <div className="combined-strength">
-                <h3 className="combined-label">Together</h3>
+                <h2 className="combined-label">Together</h2>
                 <p className="combined-text">
                   We build things that work in real life: institutions that outlast leadership turnover, tools that remove guesswork, and strategies that come off the page. Our best work starts at zero and ends at operational.
                 </p>
