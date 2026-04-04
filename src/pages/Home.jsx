@@ -80,7 +80,7 @@ export default function Home() {
                 </span>
               </span>{' '}
               and the partners working alongside them&mdash;
-              <Link to="/what-we-do">strategy, operations, and data</Link> for{' '}
+              <Link to="/featured-work">strategy, operations, and data</Link> for{' '}
               <strong className="hero-highlight">Indian Country development.</strong>
             </p>
           </div>
