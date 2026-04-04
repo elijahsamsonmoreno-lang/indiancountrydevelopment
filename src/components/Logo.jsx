@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /* Sovereign Break Logo — Option B / Shifted Ring
-   Three organic, irregular concentric rings with a teal accent arc
-   where the outer ring breaks/shifts on the right side. */
+   - Outer ring: nearly circular, with a small gap at upper-right
+   - Middle ring: circular but shifted left/down for asymmetry
+   - Inner shape: smooth organic blob like a land contour
+   - Teal accent arc: small, sits in the gap of the outer ring */
 
 export function LogoIcon({ size = 40, className = '', dark = false, animate = false }) {
   const ink = dark ? '#e5e7eb' : 'var(--ink, #0f172a)';
@@ -18,29 +20,30 @@ export function LogoIcon({ size = 40, className = '', dark = false, animate = fa
       aria-hidden="true"
       fill="none"
     >
-      {/* Outer ring — organic, with a break/shift on the right */}
+      {/* Outer ring — nearly circular, gap at upper-right (~1-2 o'clock) */}
       <path
         className="logo-ring logo-ring-outer"
-        d="M 58 8 C 30 8, 8 28, 8 58 C 8 88, 28 110, 58 112 C 78 113, 95 104, 104 88 C 108 81, 110 72, 110 63 C 110 42, 98 22, 76 12 C 70 9, 64 8, 58 8 Z"
-        stroke={ink} strokeWidth="3.2" fill="none"
+        d="M 82 14 A 52 52 0 1 0 100 38"
+        stroke={ink} strokeWidth="3" fill="none"
+        strokeLinecap="round"
       />
-      {/* Middle ring — shifted slightly, organic wobble */}
-      <path
+      {/* Middle ring — circular but shifted left and slightly down */}
+      <circle
         className="logo-ring logo-ring-mid"
-        d="M 56 22 C 36 23, 22 38, 22 58 C 22 78, 35 95, 56 96 C 72 97, 86 88, 92 74 C 96 66, 96 56, 92 46 C 86 32, 72 22, 56 22 Z"
+        cx="54" cy="62" r="34"
         stroke={ink} strokeWidth="2.8" fill="none"
       />
-      {/* Inner organic blob — land mass shape */}
+      {/* Inner blob — smooth organic land contour shape */}
       <path
         className="logo-ring logo-ring-inner"
-        d="M 52 42 C 42 44, 36 52, 38 62 C 40 72, 48 78, 58 76 C 68 74, 78 68, 78 56 C 78 46, 70 40, 60 40 C 57 40, 54 41, 52 42 Z"
+        d="M 54 44 C 42 44, 34 52, 36 63 C 38 74, 48 80, 60 77 C 70 74, 76 66, 74 56 C 72 47, 64 43, 54 44 Z"
         stroke={ink} strokeWidth="2.8" fill="none"
       />
-      {/* Teal accent arc — sits in the break of the outer ring, right side */}
+      {/* Teal accent arc — small, in the gap of the outer ring */}
       <path
         className="logo-arc"
-        d="M 105 44 C 114 54, 114 70, 106 82"
-        stroke={accent} strokeWidth="4.5" strokeLinecap="round" fill="none"
+        d="M 96 34 C 102 42, 104 52, 102 60"
+        stroke={accent} strokeWidth="4" strokeLinecap="round" fill="none"
       />
     </svg>
   );
