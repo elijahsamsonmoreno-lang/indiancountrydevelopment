@@ -1,15 +1,27 @@
 import { Helmet } from 'react-helmet-async';
+import PropTypes from 'prop-types';
 
 const BASE_URL = 'https://indiancountrydevelopment.com';
 const SITE_NAME = 'Indian Country Development';
 const DEFAULT_DESCRIPTION = 'Indian Country Development is a Native-led consulting firm providing strategy, operations, and data services for tribal governments, Native organizations, and their partners. Founded by Phil Gover and Elijah Moreno.';
 const DEFAULT_KEYWORDS = 'Phil Gover, Center for Indian Country Development, Indian Country Development, tribal consulting, Native American consulting, tribal economic development, tribal government consulting, Indigenous consulting, Native-led consulting';
 
-export default function SEO({ title, description, path = '/', keywords }) {
+export default function SEO({ title, description, path = '/', keywords, noindex = false, breadcrumbs }) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Native-Led Tribal Consulting`;
   const desc = description || DEFAULT_DESCRIPTION;
   const url = `${BASE_URL}${path}`;
   const kw = keywords || DEFAULT_KEYWORDS;
+
+  const breadcrumbLD = breadcrumbs ? {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': breadcrumbs.map((item, i) => ({
+      '@type': 'ListItem',
+      'position': i + 1,
+      'name': item.name,
+      'item': `${BASE_URL}${item.path}`,
+    })),
+  } : null;
 
   return (
     <Helmet>
@@ -17,6 +29,8 @@ export default function SEO({ title, description, path = '/', keywords }) {
       <meta name="description" content={desc} />
       <meta name="keywords" content={kw} />
       <link rel="canonical" href={url} />
+
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />
@@ -29,6 +43,27 @@ export default function SEO({ title, description, path = '/', keywords }) {
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={desc} />
+
+      {/* #29: Breadcrumb structured data */}
+      {breadcrumbLD && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbLD)}
+        </script>
+      )}
     </Helmet>
   );
 }
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  path: PropTypes.string,
+  keywords: PropTypes.string,
+  noindex: PropTypes.bool,
+  breadcrumbs: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+    })
+  ),
+};

@@ -6,9 +6,9 @@
 .about-block {
   max-width: 720px;
   background: rgba(255,255,255,0.96);
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   padding: 1.75rem 1.6rem 2rem;
-  box-shadow: 0 18px 45px rgba(15,23,42,0.10);
+  box-shadow: var(--shadow-lg);
 }
 
 .about-intro {
@@ -23,7 +23,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--accent-soft-light);
   width: fit-content;
   margin-bottom: 2rem;
@@ -37,9 +37,9 @@
   font-weight: 700;
   color: var(--ink-muted);
   padding: 0.55rem 1.3rem;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  transition: background var(--ease-default), color var(--ease-default), box-shadow var(--ease-default);
 }
 
 .about-tab:hover {
@@ -63,6 +63,26 @@
 
 .about-panel.active {
   display: block;
+}
+
+/* #21: Photo placeholder with accent ring */
+.member-photo-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-soft-light);
+  border: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.photo-initials {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.05em;
 }
 
 .about-panel .panel-lead {
@@ -94,7 +114,7 @@
   top: 0.63rem;
   width: 7px;
   height: 7px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--accent);
 }
 
@@ -133,7 +153,7 @@
 
 .combined-strength {
   padding: 1.5rem 1.4rem;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   background: var(--accent-soft-light);
   border-left: 3px solid var(--accent);
   margin-top: 1.5rem;
@@ -154,6 +174,33 @@
   line-height: 1.7;
   color: var(--ink-soft);
   margin: 0;
+}
+
+/* #39: ECOSYSTEM VIZ */
+.ecosystem-section {
+  margin-top: 1rem;
+}
+
+.ecosystem-viz {
+  background: rgba(255,255,255,0.96);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.ecosystem-svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.ecosystem-caption {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  margin: 1rem auto 0;
+  max-width: 500px;
 }
 
 @media (max-width: 480px) {

@@ -7,7 +7,7 @@ main {
   padding: 0 1.75rem 0.6rem;
   text-align: center;
   background: transparent;
-  min-height: calc(100svh - 9.5rem);
+  min-height: calc(100svh - 12rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +23,14 @@ main {
   font-size: clamp(1.55rem, 4.5vw, 2.5rem);
   line-height: 1.55;
   font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.hero-sub {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-top: 0;
 }
 
 .hero-term {
@@ -84,7 +92,7 @@ main {
   inset: 0;
   background: linear-gradient(90deg, var(--cta-purple-soft), var(--cta-purple));
   clip-path: polygon(0 0, 87% 0, 100% 50%, 87% 100%, 0 100%);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   transform-origin: left center;
   transform: translateX(-60vw) scaleX(0);
   opacity: 0;
@@ -136,6 +144,81 @@ main {
   .bottom-cta-wrap {
     margin-top: -1.2rem;
   }
+}
+
+/* #8: DIFFERENTIATORS */
+.differentiators-section {
+  padding-top: 1rem;
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.diff-card {
+  background: rgba(255,255,255,0.96);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.4rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid transparent;
+}
+
+.diff-headline {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+
+.diff-body {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* #33: WHAT WE WON'T DO */
+.wont-do-section {
+  margin-top: 1rem;
+}
+
+.wont-do-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 600px;
+}
+
+.wont-do-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.wont-do-item:last-child {
+  border-bottom: none;
+}
+
+.wont-do-x {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 @media (max-width: 480px) {

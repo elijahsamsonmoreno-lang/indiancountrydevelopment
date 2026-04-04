@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 export default function ScrollReveal({ children, className = '', threshold = 0.18 }) {
   const ref = useRef(null);
@@ -34,3 +35,9 @@ export default function ScrollReveal({ children, className = '', threshold = 0.1
     </div>
   );
 }
+
+ScrollReveal.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  threshold: PropTypes.number,
+};

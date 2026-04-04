@@ -46,17 +46,22 @@ export default function Work() {
         path="/who-we-work-with"
         description="Indian Country Development works with tribal governments, Native-led organizations, and external partners like foundations, state agencies, and universities committed to non-extractive collaboration."
         keywords="tribal government consulting, Native American consulting partners, Indian Country Development clients, tribal consulting services, Phil Gover, Center for Indian Country Development"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Who We Work With', path: '/who-we-work-with' },
+        ]}
       />
 
       <main id="main">
         <ScrollReveal>
-          <section className="section section--wide work-section" id="audience">
-            <div className="section-label">
+          <section className="section section--wide work-section" id="audience" aria-label="Who we work with">
+            <div className="section-label section-label--sticky">
               <span className="label-text">Who We Work With</span>
+              <span className="label-line"></span>
             </div>
 
             <div className="audience-block">
-              <div className="audience-tabs" role="tablist" aria-label="Who we work with">
+              <div className="audience-tabs" role="tablist" aria-label="Audience types">
                 {audiences.map((aud, i) => (
                   <button
                     key={aud.id}
