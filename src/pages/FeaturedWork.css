@@ -1,43 +1,117 @@
-.featured-section {
-  padding-top: 4.9rem;
+/* FEATURED WORK — uses same accordion styles as services */
+.services-list {
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
-.featured-coming-soon {
-  text-align: center;
-  padding: 3rem 1.5rem 2.5rem;
-  background: rgba(255,255,255,0.96);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
+.service-item {
+  border-bottom: 1px solid var(--line);
+  padding: 0.75rem 1rem;
+  transition: background 0.2s ease;
 }
 
-.coming-soon-icon {
-  margin-bottom: 1rem;
-  opacity: 0.5;
+.service-item:hover {
+  background: rgba(15, 156, 147, 0.03);
 }
 
-.coming-soon-heading {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--ink);
-  margin: 0 0 0.5rem;
+.service-item:last-child {
+  border-bottom: none;
 }
 
-.coming-soon-text {
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  line-height: 1.6;
-  margin: 0 0 1rem;
+.service-card {
+  border-radius: var(--radius-md);
+  padding: 0.9rem 0.1rem 0.1rem;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
-.coming-soon-cta {
-  font-size: 0.9rem;
-  color: var(--ink-muted);
+.service-item.open .service-card {
+  transform: translateY(-1px);
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.service-header:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.service-title {
+  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+  font-weight: 700;
   margin: 0;
 }
 
-.coming-soon-cta a {
+.service-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent-soft-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.service-item.open .service-toggle {
+  background: var(--accent);
+  color: #ffffff;
+  transform: rotate(45deg);
+}
+
+.service-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, margin-top 0.3s ease;
+}
+
+.service-item.open .service-body {
+  max-height: 260px;
+  margin-top: 0.9rem;
+}
+
+.service-body p {
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin: 0 0 0.2rem;
+}
+
+.services-note {
+  margin-top: 2.25rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--accent-soft-light);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+}
+
+.services-note p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.services-note a {
   color: var(--accent);
   font-weight: 600;
+}
+
+.services-note a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
