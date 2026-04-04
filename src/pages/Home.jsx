@@ -19,6 +19,7 @@ const terms = [
 export default function Home() {
   const [idx, setIdx] = useState(0);
   const [fading, setFading] = useState(false);
+  const [openPanel, setOpenPanel] = useState(null);
   const intervalRef = useRef(null);
 
   const rotate = useCallback(() => {
@@ -45,6 +46,10 @@ export default function Home() {
     startRotation();
     return stopRotation;
   }, [startRotation, stopRotation]);
+
+  const togglePanel = (panel) => {
+    setOpenPanel(openPanel === panel ? null : panel);
+  };
 
   return (
     <>
@@ -97,22 +102,47 @@ export default function Home() {
             </div>
 
             <div className="how-grid">
-              <div className="how-do stagger-child">
-                <h3 className="how-heading">What we do</h3>
-                <ul className="how-list">
-                  <li>Design every engagement from scratch around your governance, team, and timeline.</li>
-                  <li>Build systems your staff can run without us.</li>
-                  <li>Take 4&ndash;6 projects a year so each one gets our full attention.</li>
-                </ul>
+              <div
+                className={`how-panel how-do${openPanel === 'do' ? ' open' : ''}`}
+                role="button"
+                tabIndex={0}
+                aria-expanded={openPanel === 'do'}
+                onClick={() => togglePanel('do')}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePanel('do'); } }}
+              >
+                <div className="how-header">
+                  <h3 className="how-heading">What we do</h3>
+                  <span className="how-toggle" aria-hidden="true">{openPanel === 'do' ? '\u2212' : '+'}</span>
+                </div>
+                <div className="how-body">
+                  <ul className="how-list">
+                    <li>Design every engagement from scratch around your governance, team, and timeline.</li>
+                    <li>Build systems your staff can run without us.</li>
+                    <li>Take 4&ndash;6 projects a year so each one gets our full attention.</li>
+                  </ul>
+                </div>
               </div>
-              <div className="how-dont stagger-child">
-                <h3 className="how-heading">What we don&rsquo;t</h3>
-                <ul className="how-list how-list--no">
-                  <li>One-week flybys.</li>
-                  <li>Reports no one reads.</li>
-                  <li>Bid on work we can&rsquo;t staff.</li>
-                  <li>Treat tribal consultation as a checkbox.</li>
-                </ul>
+
+              <div
+                className={`how-panel how-dont${openPanel === 'dont' ? ' open' : ''}`}
+                role="button"
+                tabIndex={0}
+                aria-expanded={openPanel === 'dont'}
+                onClick={() => togglePanel('dont')}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePanel('dont'); } }}
+              >
+                <div className="how-header">
+                  <h3 className="how-heading">What we don&rsquo;t</h3>
+                  <span className="how-toggle" aria-hidden="true">{openPanel === 'dont' ? '\u2212' : '+'}</span>
+                </div>
+                <div className="how-body">
+                  <ul className="how-list how-list--no">
+                    <li>One-week flybys.</li>
+                    <li>Reports no one reads.</li>
+                    <li>Bid on work we can&rsquo;t staff.</li>
+                    <li>Treat tribal consultation as a checkbox.</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </section>

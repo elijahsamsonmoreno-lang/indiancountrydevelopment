@@ -7,7 +7,7 @@ const team = [
   {
     id: 'phil',
     name: 'Phil Gover',
-    lead: 'Has built four institutions from scratch that still operate today.',
+    lead: 'Has built institutions from scratch that still operate today.',
     items: [
       'Creates organizations where none existed\u2014charter school networks, nonprofit accelerators, cross-sector initiatives.',
       'Designs systems that bridge tribal governments, federal agencies, and private partners.',
@@ -69,7 +69,7 @@ export default function WhoWeAre() {
 
             <div className="about-block">
               <p className="about-intro">
-                We&rsquo;ve worked across Indian Country for years&mdash;on reservations, in tribal enterprises, with Native nonprofits and state partners. That experience taught us where systems work, where gaps keep showing up, and what actually lasts beyond a single funding cycle.
+                We&rsquo;ve worked across Indian Country for years&mdash;on reservations, in tribal enterprises, with Native nonprofits, federal agencies, and state partners. That experience taught us where systems work, where gaps keep showing up, and what actually lasts beyond a single funding cycle.
               </p>
 
               <div className="about-tabs" role="tablist" aria-label="Team members">
@@ -100,9 +100,6 @@ export default function WhoWeAre() {
                     aria-labelledby={`tab-${member.id}`}
                     hidden={activeTab !== member.id}
                   >
-                    <div className="member-photo-placeholder" aria-hidden="true">
-                      <span className="photo-initials">{member.name.split(' ').map(n => n[0]).join('')}</span>
-                    </div>
                     <p className="panel-lead">{member.lead}</p>
                     <ul className="panel-list">
                       {member.items.map((item, j) => (

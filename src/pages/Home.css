@@ -138,7 +138,7 @@ main {
   }
 }
 
-/* HOW WE WORK — consolidated do/don't section */
+/* HOW WE WORK — collapsible do/don't */
 .how-we-work-section {
   padding-top: 1rem;
 }
@@ -155,19 +155,30 @@ main {
   }
 }
 
-.how-do,
-.how-dont {
+.how-panel {
   background: rgba(255,255,255,0.96);
   border-radius: var(--radius-lg);
-  padding: 1.4rem;
+  padding: 1.2rem 1.4rem;
   border: 1px solid var(--line);
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
 }
 
-.how-do:hover,
-.how-dont:hover {
+.how-panel:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
+}
+
+.how-panel:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.how-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .how-heading {
@@ -175,15 +186,47 @@ main {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 700;
-  margin: 0 0 0.8rem;
+  margin: 0;
 }
 
-.how-do .how-heading {
+.how-do .how-heading { color: var(--accent); }
+.how-dont .how-heading { color: #dc2626; }
+
+.how-toggle {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--accent);
+  transition: transform 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
 }
 
-.how-dont .how-heading {
-  color: #dc2626;
+.how-dont .how-toggle { color: #dc2626; }
+
+.how-panel.open .how-toggle {
+  background: var(--accent);
+  color: #fff;
+}
+
+.how-dont.open .how-toggle {
+  background: #dc2626;
+}
+
+.how-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, margin-top 0.3s ease;
+}
+
+.how-panel.open .how-body {
+  max-height: 300px;
+  margin-top: 0.8rem;
 }
 
 .how-list {
@@ -199,11 +242,6 @@ main {
   font-size: 0.9rem;
   color: var(--ink-soft);
   line-height: 1.6;
-  transition: color 0.2s ease;
-}
-
-.how-list li:hover {
-  color: var(--ink);
 }
 
 .how-list li::before {

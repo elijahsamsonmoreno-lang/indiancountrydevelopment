@@ -4,21 +4,6 @@ import ScrollReveal from '../components/ScrollReveal';
 import { LogoIcon } from '../components/Logo';
 import './FeaturedWork.css';
 
-const placeholders = [
-  {
-    title: 'Tribal Strategic Planning',
-    category: 'Strategy & Governance',
-  },
-  {
-    title: 'Native Enterprise Data Initiative',
-    category: 'Data & Learning',
-  },
-  {
-    title: 'Cross-Sector Coalition Building',
-    category: 'Programs & Operations',
-  },
-];
-
 export default function FeaturedWork() {
   return (
     <>
@@ -27,10 +12,6 @@ export default function FeaturedWork() {
         path="/featured-work"
         description="Featured projects from Indian Country Development. Coming soon."
         noindex
-        breadcrumbs={[
-          { name: 'Home', path: '/' },
-          { name: 'Featured Work', path: '/featured-work' },
-        ]}
       />
 
       <main id="main">
@@ -49,22 +30,8 @@ export default function FeaturedWork() {
               <p className="coming-soon-text">
                 Case studies and project highlights are on the way.
               </p>
-            </div>
-
-            <div className="featured-preview-grid">
-              {placeholders.map(({ title, category }) => (
-                <div key={title} className="featured-card">
-                  <span className="featured-card-category">{category}</span>
-                  <h3 className="featured-card-title">{title}</h3>
-                  <div className="featured-card-badge">Coming Soon</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="featured-cta">
-              <p>
-                Want to discuss a project?{' '}
-                <Link to="/contact">Get in touch &rarr;</Link>
+              <p className="coming-soon-cta">
+                <Link to="/contact">Get in touch</Link> to discuss a project.
               </p>
             </div>
           </section>

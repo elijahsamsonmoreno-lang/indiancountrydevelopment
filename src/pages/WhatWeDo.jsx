@@ -9,7 +9,7 @@ const services = [
   {
     id: 'strategy',
     title: 'Strategy & Governance',
-    body: "We\u2019ve watched $2M plans collect dust. Ours don\u2019t. We build the kind of strategy that survives council turnover and respects how tribal governance actually works\u2014because we\u2019ve been in those rooms.",
+    body: "We\u2019ve watched six-figure plans collect dust. Ours don\u2019t. We build the kind of strategy that survives council turnover and respects how tribal governance actually works\u2014because we\u2019ve been in those rooms.",
   },
   {
     id: 'operations',
@@ -24,7 +24,7 @@ const services = [
 ];
 
 export default function WhatWeDo() {
-  const [openId, setOpenId] = useState('strategy');
+  const [openId, setOpenId] = useState(null);
 
   const toggle = (id) => {
     setOpenId(openId === id ? null : id);

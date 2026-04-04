@@ -161,23 +161,20 @@ export default function Contact() {
 
       <ScrollReveal>
         <section className="section contact-section" id="contact" aria-label="Contact information">
-          {/* #13: upgraded headline */}
-          <h1 className="contact-heading">Let&rsquo;s talk about the work in front of you.</h1>
+          <h1 className="contact-heading">Let&rsquo;s talk.</h1>
           <p className="contact-tagline">
-            We keep our project load small on purpose. If you&rsquo;re navigating something complex&mdash;and want a team
-            that knows Indian Country and actually builds with you&mdash;reach out.
+            We keep our project load small on purpose. If you&rsquo;re navigating something real and want a team that knows Indian Country&mdash;reach out.
           </p>
 
           {/* #37: Capacity badge */}
           <div className="capacity-badge" aria-label="Currently accepting projects">
             <span className="capacity-dot" aria-hidden="true"></span>
-            Currently accepting projects for Q3 2026
+            Currently accepting projects for Q3 &amp; Q4 2026
           </div>
 
           <div className="contact-block">
             <p className="contact-desc">
-              Share a few lines about your team, what you&rsquo;re working on, and any timelines or deadlines you&rsquo;re facing.
-              We&rsquo;ll follow up to see whether we&rsquo;re a good fit and what a scoped engagement might look like.
+              Tell us about your team and what you&rsquo;re working on. We&rsquo;ll follow up to see if it&rsquo;s a fit.
             </p>
 
             <div className="contact-line">
@@ -202,9 +199,9 @@ export default function Contact() {
           </div>
 
           <div className="templates">
-            <h2 className="templates-heading">Quick-start email drafts</h2>
+            <h2 className="templates-heading">Email drafts</h2>
             <p className="templates-tagline">
-              Pick the option that best matches your role. Copy the draft, then adjust it with your project details.
+              Pick your role, copy the draft, adjust with your details.
             </p>
 
             <div className="templates-control">
