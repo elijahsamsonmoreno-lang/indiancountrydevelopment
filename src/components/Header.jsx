@@ -6,9 +6,8 @@ import { preloadRoute } from '../App';
 
 const navLinks = [
   { to: '/', label: 'Home' },
-  { to: '/what-we-do', label: 'What We Do' },
+  { to: '/featured-work', label: 'Featured Work' },
   { to: '/who-we-work-with', label: 'Who We Work With' },
-  { to: '/who-we-are', label: 'Who We Are' },
   { to: '/contact', label: 'Contact' },
 ];
 
