@@ -1,611 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Indian Country Development</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Native-led consulting firm providing strategy, operations, and data services for tribal governments, Native organizations, and their partners.">
-  <meta name="keywords" content="tribal consulting, Indian Country development, tribal economic development, Native American consulting, tribal government consulting, Indigenous consulting">
+  <title>Indian Country Development | Native-Led Tribal Consulting</title>
+  <meta name="description" content="Indian Country Development is a Native-led consulting firm providing strategy, operations, and data services for tribal governments, Native organizations, and their partners. Founded by Phil Gover and Elijah Moreno." />
+  <meta name="keywords" content="Phil Gover, Center for Indian Country Development, Indian Country Development, tribal consulting, Native American consulting, tribal economic development, tribal government consulting, Indigenous consulting" />
+  <link rel="canonical" href="https://indiancountrydevelopment.com/" />
 
-  <!-- FONT -->
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Indian Country Development | Native-Led Tribal Consulting" />
+  <meta property="og:description" content="Strategy, operations, and data services for tribal governments, Native organizations, and their partners." />
+  <meta property="og:url" content="https://indiancountrydevelopment.com/" />
+  <meta property="og:site_name" content="Indian Country Development" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Indian Country Development" />
+  <meta name="twitter:description" content="Native-led consulting firm for tribal governments and their partners." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <style>
-    /* SCREEN READER ONLY */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      border: 0;
-    }
-
-    /* PAGE BACKGROUND */
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff !important;
-    }
-
-    /* ROOT CONTAINER */
-    #icd-site {
-      --bg: #ffffff;
-      --ink: #0f172a;
-      --ink-soft: #4b5563;
-      --ink-muted: #9ca3af;
-      --accent: #0f9c93;
-      --accent-light: #34d3c1;
-      --accent-soft: rgba(15, 156, 147, 0.16);
-      --accent-soft-light: rgba(15, 156, 147, 0.06);
-      --accent-glow: rgba(15, 156, 147, 0.25);
-      --cta-purple: #4c1d95;
-      --cta-purple-soft: rgba(76, 29, 149, 0.16);
-      --line: rgba(15, 23, 42, 0.08);
-      --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-
-      font-family: var(--font-sans);
-      color: var(--ink);
-      background-color: var(--bg);
-
-      /* dot grid */
-      background-image: radial-gradient(circle, rgba(15,23,42,0.10) 1px, transparent 1px);
-      background-size: 34px 34px;
-
-      width: 100%;
-      max-width: 100%;
-      min-height: 100vh;
-    }
-
-    /* prevent scroll when nav open */
-    #icd-site.nav-open {
-      overflow: hidden;
-    }
-
-    #icd-site * {
-      box-sizing: border-box;
-    }
-
-    #icd-site a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    #icd-site {
-      font-size: 16px;
-    }
-
-    /* HEADER + HAMBURGER */
-    #icd-site .icd-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.8rem 1.5rem;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    /* LOGO + 3-STRAND BRAID MARK */
-    #icd-site .icd-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      white-space: nowrap;
-    }
-
-    #icd-site .icd-logo-icon {
-      width: 60px;
-      height: 18px;
-      flex-shrink: 0;
-    }
-
-    #icd-site .icd-logo-icon .strand {
-      fill: none;
-      stroke-linecap: round;
-      stroke-width: 6;
-      stroke-dasharray: 400;
-      stroke-dashoffset: 0;
-      animation: weave 14s linear infinite;
-    }
-
-    #icd-site .icd-logo-icon .strand-1 {
-      stroke: var(--accent);
-    }
-    #icd-site .icd-logo-icon .strand-2 {
-      stroke: var(--ink-soft);
-      animation-delay: -4s;
-    }
-    #icd-site .icd-logo-icon .strand-3 {
-      stroke: var(--ink-muted);
-      animation-delay: -8s;
-    }
-
-    @keyframes weave {
-      0%   { stroke-dashoffset: 0; }
-      100% { stroke-dashoffset: -400; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #icd-site .icd-logo-icon .strand {
-        animation: none !important;
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Indian Country Development",
+    "alternateName": ["ICD", "Center for Indian Country Development"],
+    "url": "https://indiancountrydevelopment.com",
+    "description": "Native-led consulting firm providing strategy, operations, and data services for tribal governments, Native organizations, and their partners.",
+    "foundingDate": "2024",
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Phil Gover",
+        "jobTitle": "Co-Founder",
+        "email": "phil@indiancountrydevelopment.com",
+        "alumniOf": [
+          {"@type": "CollegeOrUniversity", "name": "University of Virginia"},
+          {"@type": "CollegeOrUniversity", "name": "Darden School of Business"}
+        ]
+      },
+      {
+        "@type": "Person",
+        "name": "Elijah Moreno",
+        "jobTitle": "Co-Founder",
+        "email": "elijah@indiancountrydevelopment.com",
+        "alumniOf": [
+          {"@type": "CollegeOrUniversity", "name": "Dartmouth College"},
+          {"@type": "CollegeOrUniversity", "name": "Cornell University"}
+        ]
       }
-    }
+    ],
+    "knowsAbout": ["Tribal Consulting", "Native American Consulting", "Tribal Economic Development", "Indian Country Development", "Tribal Government Consulting"],
+    "areaServed": "United States",
+    "serviceType": ["Strategy & Governance", "Programs & Operations", "Data & Learning"]
+  }
+  </script>
 
-    #icd-site .icd-logo-text {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
-
-    #icd-site .icd-logo-tm {
-      font-size: 0.62rem;
-      vertical-align: super;
-      margin-left: 0.08rem;
-    }
-
-    #icd-site .icd-nav-toggle {
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      padding: 0;
-      width: 30px;
-      height: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    #icd-site .icd-nav-toggle span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--ink);
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    #icd-site .icd-nav-toggle.open span:nth-child(1) {
-      transform: translateY(11px) rotate(45deg);
-    }
-    #icd-site .icd-nav-toggle.open span:nth-child(2) {
-      opacity: 0;
-    }
-    #icd-site .icd-nav-toggle.open span:nth-child(3) {
-      transform: translateY(-11px) rotate(-45deg);
-    }
-
-    /* FULLSCREEN NAV DRAWER */
-    #icd-site .icd-nav-drawer {
-      position: fixed;
-      inset: 0;
-      z-index: 40;
-      background: rgba(15,23,42,0.94);
-      color: #ffffff;
-      transform: translateY(-100%);
-      transition: transform 0.25s ease-out;
-      padding: 4.2rem 1.75rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    #icd-site .icd-nav-drawer.open {
-      transform: translateY(0);
-    }
-
-    #icd-site .icd-nav-drawer a {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #e5e7eb;
-      padding: 0.35rem 0;
-    }
-
-    #icd-site .icd-nav-drawer a:hover {
-      color: #ffffff;
-    }
-
-    /* ACTIVE NAV LINK STYLE (shared across pages) */
-    #icd-site .icd-nav-drawer a.active {
-      color: var(--accent-light);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    /* SCROLL REVEAL (shared pattern, even if not used here yet) */
-    #icd-site .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    #icd-site .reveal-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .no-js #icd-site .reveal {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #icd-site .reveal {
-        transition: none;
-        transform: none;
-        opacity: 1;
+  <!-- GitHub Pages SPA redirect handler -->
+  <script>
+    (function(l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function(s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
       }
-    }
-
-    /* HERO */
-    #icd-site main {
-      padding-top: 5.2rem; /* account for fixed header */
-    }
-
-    #icd-site .hero {
-      padding: 0 1.75rem 0.6rem;
-      text-align: center;
-      background: transparent;
-      /* shorter min-height so CTA sits higher in viewport */
-      min-height: calc(100svh - 9.5rem);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    #icd-site .hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    #icd-site .hero-text {
-      font-size: clamp(1.55rem, 4.5vw, 2.5rem);
-      line-height: 1.55;
-      font-weight: 600;
-    }
-
-    #icd-site .hero-term {
-      display: inline-block;
-      font-weight: 800;
-      min-width: 260px;
-    }
-
-    #icd-site .hero-term-inner {
-      display: inline-block;
-      color: var(--accent);
-      font-weight: 800;
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.45s ease, transform 0.45s ease;
-    }
-
-    #icd-site .hero-term-inner.fade-out {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-
-    #icd-site .hero-term-inner.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #icd-site .hero-highlight {
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    /* BOTTOM CTA – bigger, closer, coming from the left */
-    #icd-site .bottom-cta-wrap {
-      padding: 0 1.75rem 2.25rem;
-      display: flex;
-      justify-content: center;
-      margin-top: 0.1rem; /* base */
-    }
-
-    #icd-site .bottom-cta {
-      margin: 0;
-      text-align: center;
-      font-size: 1.2rem; /* a little bigger */
-    }
-
-    #icd-site .bottom-cta a {
-      position: relative;
-      display: inline-block;
-      padding: 0.65rem 2.15rem 0.65rem 1.25rem; /* slightly larger hit area */
-      color: var(--ink);
-      text-decoration: none;
-    }
-
-    /* Single arrow-shaped purple swath (rectangle + triangular tip) */
-    #icd-site .bottom-cta a::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, var(--cta-purple-soft), var(--cta-purple));
-      clip-path: polygon(0 0, 87% 0, 100% 50%, 87% 100%, 0 100%);
-      border-radius: 6px;
-      transform-origin: left center;
-      transform: translateX(-60vw) scaleX(0); /* start off-screen left */
-      opacity: 0;
-      z-index: 0;
-      animation: ctaSwathIn 0.75s ease-out 0.35s forwards;
-    }
-
-    #icd-site .bottom-cta-label {
-      position: relative;
-      z-index: 1;
-      font-weight: 600;
-      opacity: 0;
-      transform: translateY(4px);
-      color: #f9fafb;
-      animation:
-        ctaTextIn 0.5s ease-out 0.75s forwards,
-        ctaPulse 1.8s ease-in-out 1.5s infinite;
-      white-space: nowrap;
-    }
-
-    @keyframes ctaSwathIn {
-      0% {
-        transform: translateX(-60vw) scaleX(0);
-        opacity: 0;
-      }
-      60% {
-        transform: translateX(0) scaleX(1.02);
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(0) scaleX(1);
-        opacity: 1;
-      }
-    }
-
-    @keyframes ctaTextIn {
-      0% {
-        opacity: 0;
-        transform: translateY(4px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes ctaPulse {
-      0% {
-        transform: translateY(0) scale(1);
-        text-shadow: 0 0 0 rgba(76, 29, 149, 0.0);
-      }
-      50% {
-        transform: translateY(0) scale(1.03);
-        text-shadow: 0 0 16px rgba(76, 29, 149, 0.35);
-      }
-      100% {
-        transform: translateY(0) scale(1);
-        text-shadow: 0 0 0 rgba(76, 29, 149, 0.0);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #icd-site .bottom-cta a::before,
-      #icd-site .bottom-cta-label {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-        text-shadow: none !important;
-      }
-    }
-
-    /* pull CTA a bit closer to hero on wider screens */
-    @media (min-width: 768px) {
-      #icd-site .bottom-cta-wrap {
-        margin-top: -1.2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      #icd-site .icd-header {
-        padding: 0.7rem 1rem;
-      }
-
-      #icd-site .icd-logo-icon {
-        width: 52px;
-        height: 16px;
-      }
-
-      #icd-site .icd-logo-text {
-        font-size: 0.7rem;
-        letter-spacing: 0.10em;
-      }
-
-      #icd-site .bottom-cta-wrap {
-        padding: 0 1.25rem 2.1rem;
-        margin-top: 0.25rem;
-      }
-
-      #icd-site .bottom-cta {
-        font-size: 1.16rem;
-      }
-    }
-  </style>
+    }(window.location));
+  </script>
 </head>
 <body>
-<div id="icd-site">
-
-  <h1 class="sr-only">Indian Country Development – Native-Led Tribal Consulting</h1>
-
-  <!-- FIXED HEADER + HAMBURGER -->
-  <header class="icd-header">
-    <a href="index.html" class="icd-logo" aria-label="Indian Country Development home">
-      <svg class="icd-logo-icon" viewBox="0 0 200 40" aria-hidden="true">
-        <path class="strand strand-1"
-          d="M 0 26
-             C 25 6, 55 6, 100 26
-             S 175 46, 200 26" />
-        <path class="strand strand-2"
-          d="M 0 20
-             C 30 40, 70 40, 100 20
-             S 170 0, 200 20" />
-        <path class="strand strand-3"
-          d="M 0 14
-             C 25 -6, 55 -6, 100 14
-             S 175 34, 200 14" />
-      </svg>
-      <div class="icd-logo-text">
-        Indian Country Development<span class="icd-logo-tm">™</span>
-      </div>
-    </a>
-    <button class="icd-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-
-  <!-- FULLSCREEN MENU -->
-  <nav class="icd-nav-drawer" aria-hidden="true">
-    <a href="index.html" class="active" aria-current="page">Home</a>
-    <a href="what-we-do.html">What We Do</a>
-    <a href="work.html">Who We Work With</a>
-    <a href="who-we-are.html">Who We Are</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <main role="main">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-inner">
-        <p class="hero-text">
-          A Native-led consulting firm for
-          <span class="hero-term">
-            <span class="hero-term-inner" id="rotateTerm">tribal governments</span>
-          </span>
-          and the partners working alongside them—<a href="what-we-do.html">strategy, operations, and data</a> for
-          <strong class="hero-highlight">Indian Country development.</strong>
-        </p>
-      </div>
-    </section>
-
-    <!-- BOTTOM CTA -->
-    <div class="bottom-cta-wrap">
-      <p class="bottom-cta">
-        <a href="contact.html">
-          <span class="bottom-cta-label">Start a conversation</span>
-        </a>
-      </p>
-    </div>
-  </main>
-
-</div>
-
-<script>
-(function() {
-  // JS is running, so remove no-js class for reveal fallbacks
-  document.documentElement.classList.remove('no-js');
-
-  const root = document.getElementById('icd-site');
-  if (!root) return;
-
-  /* ROTATING HERO TERMS (with pause on hover/focus ON THE TERM ONLY) */
-  const terms = [
-    'tribal governments',
-    'Native Hawaiian Organizations',
-    'Alaska Native Corporations',
-    'Tribal Colleges and Universities',
-    'Native-led organizations',
-    'state-recognized tribes',
-    'Alaska Native communities',
-    'tribal enterprises',
-    'Urban Indian communities'
-  ];
-
-  const termSpan = root.querySelector('#rotateTerm');
-  let idx = 0;
-  let intervalId = null;
-
-  function showTerm(newIdx) {
-    if (!termSpan) return;
-    termSpan.classList.remove('fade-in');
-    termSpan.classList.add('fade-out');
-
-    setTimeout(() => {
-      idx = newIdx;
-      termSpan.textContent = terms[idx];
-      termSpan.classList.remove('fade-out');
-      termSpan.classList.add('fade-in');
-    }, 260);
-  }
-
-  function startRotation() {
-    if (!termSpan || intervalId !== null) return;
-    intervalId = setInterval(() => {
-      const nextIdx = (idx + 1) % terms.length;
-      showTerm(nextIdx);
-    }, 3200); // faster rotation (3.2s)
-  }
-
-  function stopRotation() {
-    if (intervalId !== null) {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-  }
-
-  if (termSpan) {
-    termSpan.textContent = terms[0];
-    termSpan.classList.add('fade-in');
-    startRotation();
-
-    // Only pause if the user is directly on the rotating term,
-    // not just anywhere in the hero (fixes desktop "stuck" state)
-    termSpan.addEventListener('mouseenter', stopRotation);
-    termSpan.addEventListener('mouseleave', startRotation);
-    termSpan.addEventListener('focusin', stopRotation);
-    termSpan.addEventListener('focusout', startRotation);
-  }
-
-  /* HAMBURGER NAV TOGGLE */
-  const toggle = root.querySelector('.icd-nav-toggle');
-  const drawer = root.querySelector('.icd-nav-drawer');
-
-  function setNavOpen(open) {
-    if (!toggle || !drawer) return;
-    toggle.classList.toggle('open', open);
-    drawer.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
-    root.classList.toggle('nav-open', open);
-  }
-
-  if (toggle && drawer) {
-    toggle.addEventListener('click', () => {
-      const isOpen = drawer.classList.contains('open');
-      setNavOpen(!isOpen);
-    });
-
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => setNavOpen(false));
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      setNavOpen(false);
-    }
-  });
-})();
-</script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
