@@ -1,7 +1,10 @@
 import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import ScrollReveal from '../components/ScrollReveal';
 import './Contact.css';
+
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || 'contact@indiancountrydevelopment.com';
 
 const templates = {
   tribal: {
@@ -150,20 +153,31 @@ export default function Contact() {
         path="/contact"
         description="Get in touch with Indian Country Development. Contact Phil Gover or Elijah Moreno for tribal consulting, strategy, operations, and data services."
         keywords="contact Indian Country Development, Phil Gover contact, tribal consulting contact, Native American consulting, hire tribal consultants, Center for Indian Country Development"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' },
+        ]}
       />
 
       <ScrollReveal>
-        <section className="section contact-section" id="contact">
-          <h1 className="contact-heading">Let's talk about the work in front of you.</h1>
+        <section className="section contact-section" id="contact" aria-label="Contact information">
+          {/* #13: upgraded headline */}
+          <h1 className="contact-heading">We take on 4&ndash;6 projects a year. Here&rsquo;s how to become one.</h1>
           <p className="contact-tagline">
-            We keep our project load small on purpose. If you're navigating something complex&mdash;and want a team
+            We keep our project load small on purpose. If you&rsquo;re navigating something complex&mdash;and want a team
             that knows Indian Country and actually builds with you&mdash;reach out.
           </p>
 
+          {/* #37: Capacity badge */}
+          <div className="capacity-badge" aria-label="Currently accepting projects">
+            <span className="capacity-dot" aria-hidden="true"></span>
+            Currently accepting projects for Q3 2026
+          </div>
+
           <div className="contact-block">
             <p className="contact-desc">
-              Share a few lines about your team, what you're working on, and any timelines or deadlines you're facing.
-              We'll follow up to see whether we're a good fit and what a scoped engagement might look like.
+              Share a few lines about your team, what you&rsquo;re working on, and any timelines or deadlines you&rsquo;re facing.
+              We&rsquo;ll follow up to see whether we&rsquo;re a good fit and what a scoped engagement might look like.
             </p>
 
             <div className="contact-line">
@@ -173,13 +187,14 @@ export default function Contact() {
 
             <div className="contact-line contact-email">
               <span className="contact-label">Email</span>
-              <a href="mailto:contact@indiancountrydevelopment.com" className="contact-link">
-                contact@indiancountrydevelopment.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="contact-link">
+                {CONTACT_EMAIL}
               </a>
               <button
                 className="copy-email-btn"
                 type="button"
-                onClick={() => copyText('contact@indiancountrydevelopment.com', 'Email address copied')}
+                aria-label={`Copy email address ${CONTACT_EMAIL}`}
+                onClick={() => copyText(CONTACT_EMAIL, 'Email address copied')}
               >
                 <span className="copy-pill">Copy email</span>
               </button>
@@ -193,11 +208,13 @@ export default function Contact() {
             </p>
 
             <div className="templates-control">
-              <span className="templates-label">I'm reaching out from a</span>
+              <label htmlFor="templateSelect" className="templates-label">I&rsquo;m reaching out from a</label>
               <select
+                id="templateSelect"
                 className="templates-select"
                 value={templateKey}
                 onChange={handleTemplateChange}
+                aria-label="Select your organization type"
               >
                 <option value="tribal">Tribal government / enterprise</option>
                 <option value="nativeOrg">Native-led org / TCU / urban Indian</option>
@@ -206,13 +223,14 @@ export default function Contact() {
               </select>
             </div>
 
-            <article className={`template-current${switching ? ' switching' : ''}`}>
+            <article className={`template-current${switching ? ' switching' : ''}`} aria-live="polite">
               <h3 className="template-title">{tpl.title}</h3>
               <p className="template-desc">{tpl.desc}</p>
               <pre className="template-body">{tpl.body}</pre>
               <button
                 className="template-copy"
                 type="button"
+                aria-label="Copy email template to clipboard"
                 onClick={() => copyText(tpl.body, 'Template copied')}
               >
                 Copy template
@@ -222,7 +240,7 @@ export default function Contact() {
         </section>
       </ScrollReveal>
 
-      <div className={`copy-toast${toast ? ' show' : ''}`} aria-live="polite" aria-atomic="true">
+      <div className={`copy-toast${toast ? ' show' : ''}`} aria-live="polite" aria-atomic="true" role="status">
         {toast}
       </div>
     </>
