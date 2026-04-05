@@ -79,7 +79,7 @@ export function LogoFull({ className = '' }) {
     <Link to="/" className={`icd-logo ${className}`} aria-label="Indian Country Development home">
       <LogoIcon size={38} animate className="logo-responsive" />
       <span className="icd-logo-text">
-        Indian Country Development<span className="icd-logo-tm">&trade;</span>
+        Indian Country Development
       </span>
     </Link>
   );
@@ -92,7 +92,7 @@ export function LogoCompact({ className = '' }) {
     <Link to="/" className={`icd-logo ${className}`} aria-label="Indian Country Development home">
       <LogoIcon size={34} animate className="logo-responsive" />
       <span className="icd-logo-text">
-        Indian Country Development<span className="icd-logo-tm">&trade;</span>
+        Indian Country Development
       </span>
     </Link>
   );
