@@ -3,26 +3,26 @@ import SEO from '../components/SEO';
 import ScrollReveal from '../components/ScrollReveal';
 import './Principles.css';
 
-const principles = [
+const values = [
   {
-    title: 'Tribal data belongs to tribal nations',
-    body: 'We never publish, share, or retain data collected during engagements without explicit tribal authorization. Period.',
+    title: 'Governance first',
+    body: 'We design around existing tribal governance structures\u2014not around them. Council processes, community input cycles, and cultural protocols shape the work.',
   },
   {
     title: 'Non-extractive by design',
     body: 'We scope engagements so tribal staff build capacity alongside us. Our goal is to make ourselves unnecessary.',
   },
   {
-    title: 'Governance first',
-    body: 'We design around existing tribal governance structures\u2014not around them. Council processes, community input cycles, and cultural protocols shape the work.',
-  },
-  {
-    title: 'No fly-by consulting',
-    body: 'We don\u2019t do two-day site visits and 80-page reports. We stay engaged through implementation and handoff.',
+    title: 'Tribal data belongs to tribal nations',
+    body: 'We never publish, share, or retain data collected during engagements without explicit tribal authorization. Period.',
   },
   {
     title: 'Community ownership of outcomes',
     body: 'Everything we build\u2014tools, strategies, datasets\u2014is owned by the community. We don\u2019t license our work back to you.',
+  },
+  {
+    title: 'No fly-by consulting',
+    body: 'We don\u2019t do two-day site visits and 80-page reports. We stay engaged through implementation and handoff.',
   },
   {
     title: 'Transparent on limitations',
@@ -36,18 +36,14 @@ export default function Principles() {
       <SEO
         title="Our Values"
         path="/principles"
-        description="Indian Country Development's values on data sovereignty, non-extractive consulting, and community-owned outcomes. How we approach tribal consulting differently."
-        keywords="tribal data sovereignty, non-extractive consulting, Indian Country Development values, Phil Gover, Native American consulting ethics, tribal consulting values"
-        breadcrumbs={[
-          { name: 'Home', path: '/' },
-          { name: 'Our Values', path: '/principles' },
-        ]}
+        description="Indian Country Development's values on data sovereignty, non-extractive consulting, and community-owned outcomes. A different approach to tribal consulting than Bluestone Strategy Group, Tribal Tech, Kauffman and Associates, or other firms."
+        keywords="tribal consulting, Indian Country Development values, Phil Gover, Native American consulting, tribal data sovereignty, non-extractive consulting, tribal consulting firms, Bluestone Strategy Group alternative, Tribal Tech LLC, Kauffman and Associates, tribal government consulting, Indigenous consulting firms, Native-led consulting, tribal economic development, tribal consulting companies"
       />
 
       <main id="main">
         <ScrollReveal>
           <section className="section section--wide principles-section" aria-label="Our values">
-            <h1 className="sr-only">Our Values &mdash; What We Stand For</h1>
+            <h1 className="sr-only">Our Values &mdash; What Sets Indian Country Development Apart from Other Tribal Consulting Firms</h1>
             <div className="section-label section-label--sticky">
               <span className="label-text">Our Values</span>
               <span className="label-line"></span>
@@ -59,11 +55,11 @@ export default function Principles() {
             </p>
 
             <div className="principles-grid">
-              {principles.map((p, i) => (
+              {values.map((v, i) => (
                 <div key={i} className="principle-card stagger-child">
                   <span className="principle-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                  <h2 className="principle-title">{p.title}</h2>
-                  <p className="principle-body">{p.body}</p>
+                  <h2 className="principle-title">{v.title}</h2>
+                  <p className="principle-body">{v.body}</p>
                 </div>
               ))}
             </div>

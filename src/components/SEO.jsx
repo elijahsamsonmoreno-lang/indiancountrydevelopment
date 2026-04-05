@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const BASE_URL = 'https://indiancountrydevelopment.com';
 const SITE_NAME = 'Indian Country Development';
 const DEFAULT_DESCRIPTION = 'Indian Country Development is a Native American owned consulting firm providing strategy, operations, and data services for tribal governments, Native organizations, and their partners. Founded by Phil Gover and Elijah Moreno.';
-const DEFAULT_KEYWORDS = 'Phil Gover, Center for Indian Country Development, Indian Country Development, tribal consulting, Native American consulting, tribal economic development, tribal government consulting, Indigenous consulting, Native-led consulting';
+const DEFAULT_KEYWORDS = 'Phil Gover, Center for Indian Country Development, Indian Country Development, tribal consulting, Native American consulting, tribal economic development, tribal government consulting, Indigenous consulting, Native-led consulting, tribal consulting firms, Bluestone Strategy Group, Tribal Tech LLC, Kauffman and Associates, tribal consulting companies, Native American consulting firms';
 
 export default function SEO({ title, description, path = '/', keywords, noindex = false, breadcrumbs }) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Native American Owned Tribal Consulting`;
