@@ -12,8 +12,8 @@ export default function Footer() {
         &copy; 2026 Tribal Economic Development Partners L.L.C. All rights reserved.
       </p>
       <p className="footer-legal">
-        Indian Country Development&trade; is a trademark of Tribal Economic Development Partners L.L.C.
-        Unauthorized use is prohibited.
+        Tribal Economic Development Partners L.L.C.<br />
+        d/b/a Indian Country Development&trade;
       </p>
     </footer>
   );
