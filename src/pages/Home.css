@@ -190,7 +190,7 @@ main {
 }
 
 .how-do .how-heading { color: var(--accent); }
-.how-dont .how-heading { color: #dc2626; }
+.how-dont .how-heading { color: var(--red); }
 
 .how-toggle {
   width: 28px;
@@ -207,7 +207,7 @@ main {
   flex-shrink: 0;
 }
 
-.how-dont .how-toggle { color: #dc2626; }
+.how-dont .how-toggle { color: var(--red); }
 
 .how-panel.open .how-toggle {
   background: var(--accent);
@@ -215,7 +215,7 @@ main {
 }
 
 .how-dont.open .how-toggle {
-  background: #dc2626;
+  background: var(--red);
 }
 
 .how-body {
@@ -256,7 +256,7 @@ main {
 }
 
 .how-list--no li::before {
-  background: #dc2626;
+  background: var(--red);
   opacity: 0.5;
 }
 

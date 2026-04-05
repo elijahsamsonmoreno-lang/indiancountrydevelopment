@@ -1,40 +1,12 @@
-import { useRef, useState } from 'react';
 import SEO from '../components/SEO';
 import ScrollReveal from '../components/ScrollReveal';
+import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
 import './Contact.css';
 
 const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || 'contact@indiancountrydevelopment.com';
 
 export default function Contact() {
-  const [toast, setToast] = useState(null);
-  const toastTimer = useRef(null);
-
-  const showToast = (msg) => {
-    setToast(msg);
-    if (toastTimer.current) clearTimeout(toastTimer.current);
-    toastTimer.current = setTimeout(() => setToast(null), 2000);
-  };
-
-  const copyText = (text, msg) => {
-    if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(text).then(
-        () => showToast(msg || 'Copied'),
-        () => showToast('Unable to copy')
-      );
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand('copy');
-        showToast(msg || 'Copied');
-      } catch {
-        showToast('Unable to copy');
-      }
-      document.body.removeChild(ta);
-    }
-  };
+  const { copy, toast } = useCopyToClipboard();
 
   return (
     <>
@@ -81,7 +53,7 @@ export default function Contact() {
                 className="copy-email-btn"
                 type="button"
                 aria-label={`Copy email address ${CONTACT_EMAIL}`}
-                onClick={() => copyText(CONTACT_EMAIL, 'Email address copied')}
+                onClick={() => copy(CONTACT_EMAIL, 'Email address copied')}
               >
                 <span className="copy-pill">Copy email</span>
               </button>

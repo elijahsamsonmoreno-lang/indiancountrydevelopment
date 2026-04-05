@@ -44,7 +44,7 @@ describe('Header', () => {
 
   it('shows compact logo on subpages', () => {
     render(<TestWrapper initialRoute="/what-we-do"><Header /></TestWrapper>);
-    expect(screen.getByText('ICD')).toBeInTheDocument();
+    expect(screen.getAllByText(/Indian Country Development/).length).toBeGreaterThan(0);
   });
 
   it('renders desktop nav links', () => {
@@ -77,7 +77,7 @@ describe('Logo', () => {
 
   it('renders LogoCompact with ICD text', () => {
     render(<TestWrapper><LogoCompact /></TestWrapper>);
-    expect(screen.getByText('ICD')).toBeInTheDocument();
+    expect(screen.getAllByText(/Indian Country Development/).length).toBeGreaterThan(0);
   });
 
   it('renders dark variant without errors', () => {

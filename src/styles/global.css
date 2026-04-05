@@ -532,6 +532,48 @@ html, body {
   }
 }
 
+.page-main {
+  padding-top: var(--space-3xl);
+}
+
+/* ─── ERROR / NOT FOUND PAGES ─── */
+.error-page {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+
+.error-page h1,
+.error-page h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 1rem 0 0.5rem;
+}
+
+.error-page p {
+  color: var(--ink-soft);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.error-page-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  text-decoration: none;
+  display: inline-block;
+}
+
 /* ─── #2: LOADING SKELETON ─── */
 .loading-skeleton {
   position: relative;

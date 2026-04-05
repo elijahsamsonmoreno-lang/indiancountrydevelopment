@@ -66,25 +66,6 @@
   display: block;
 }
 
-.member-photo-placeholder {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--accent-soft-light);
-  border: 3px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.photo-initials {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: 0.05em;
-}
-
 .about-panel .panel-lead {
   font-size: 1.02rem;
   font-weight: 600;

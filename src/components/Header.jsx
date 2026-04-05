@@ -44,7 +44,6 @@ export default function Header() {
       <header className="icd-header" role="banner">
         {isHome ? <LogoFull /> : <LogoCompact />}
 
-        {/* #20: Desktop horizontal nav */}
         <nav className="icd-desktop-nav" aria-label="Main navigation">
           {navLinks.map(({ to, label }) => (
             <NavLink

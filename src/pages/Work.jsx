@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import ScrollReveal from '../components/ScrollReveal';
+import { useTabKeyboard } from '../hooks/useTabKeyboard';
 import './Work.css';
 
 const audiences = [
@@ -29,15 +30,7 @@ const audiences = [
 
 export default function Work() {
   const [activeTab, setActiveTab] = useState('tribal');
-
-  const handleKeyDown = (e, index) => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-      e.preventDefault();
-      const dir = e.key === 'ArrowRight' ? 1 : -1;
-      const nextIndex = (index + dir + audiences.length) % audiences.length;
-      setActiveTab(audiences[nextIndex].id);
-    }
-  };
+  const handleKeyDown = useTabKeyboard(audiences, setActiveTab);
 
   return (
     <>

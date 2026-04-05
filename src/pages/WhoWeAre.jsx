@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SEO from '../components/SEO';
 import ScrollReveal from '../components/ScrollReveal';
+import { useTabKeyboard } from '../hooks/useTabKeyboard';
 import './WhoWeAre.css';
 
 const team = [
@@ -36,15 +37,7 @@ const team = [
 
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState('phil');
-
-  const handleKeyDown = (e, index) => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-      e.preventDefault();
-      const dir = e.key === 'ArrowRight' ? 1 : -1;
-      const nextIndex = (index + dir + team.length) % team.length;
-      setActiveTab(team[nextIndex].id);
-    }
-  };
+  const handleKeyDown = useTabKeyboard(team, setActiveTab);
 
   return (
     <>

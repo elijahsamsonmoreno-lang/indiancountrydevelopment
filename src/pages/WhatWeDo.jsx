@@ -4,7 +4,6 @@ import SEO from '../components/SEO';
 import ScrollReveal from '../components/ScrollReveal';
 import './WhatWeDo.css';
 
-/* #9: Sharper copy */
 const services = [
   {
     id: 'strategy',
@@ -43,7 +42,7 @@ export default function WhatWeDo() {
         ]}
       />
 
-      <main id="main" style={{ paddingTop: '4.9rem' }}>
+      <main id="main" className="page-main">
         <ScrollReveal>
           <section className="section section--wide" id="services" aria-label="Our services">
             <div className="section-label section-label--sticky">

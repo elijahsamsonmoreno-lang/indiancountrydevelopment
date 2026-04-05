@@ -16,40 +16,36 @@ const terms = [
   'Urban Indian communities',
 ];
 
+const ROTATION_INTERVAL = 3200;
+const FADE_DURATION = 260;
+
 export default function Home() {
   const [idx, setIdx] = useState(0);
   const [fading, setFading] = useState(false);
   const [openPanel, setOpenPanel] = useState(null);
   const intervalRef = useRef(null);
-
-  const rotate = useCallback(() => {
-    setFading(true);
-    setTimeout(() => {
-      setIdx((prev) => (prev + 1) % terms.length);
-      setFading(false);
-    }, 260);
-  }, []);
-
-  const startRotation = useCallback(() => {
-    if (intervalRef.current) return;
-    intervalRef.current = setInterval(rotate, 3200);
-  }, [rotate]);
-
-  const stopRotation = useCallback(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  }, []);
+  const pausedRef = useRef(false);
 
   useEffect(() => {
-    startRotation();
-    return stopRotation;
-  }, [startRotation, stopRotation]);
+    const tick = () => {
+      if (pausedRef.current) return;
+      setFading(true);
+      setTimeout(() => {
+        setIdx((prev) => (prev + 1) % terms.length);
+        setFading(false);
+      }, FADE_DURATION);
+    };
 
-  const togglePanel = (panel) => {
-    setOpenPanel(openPanel === panel ? null : panel);
-  };
+    intervalRef.current = setInterval(tick, ROTATION_INTERVAL);
+    return () => clearInterval(intervalRef.current);
+  }, []);
+
+  const pauseRotation = useCallback(() => { pausedRef.current = true; }, []);
+  const resumeRotation = useCallback(() => { pausedRef.current = false; }, []);
+
+  const togglePanel = useCallback((panel) => {
+    setOpenPanel((prev) => prev === panel ? null : panel);
+  }, []);
 
   return (
     <>
@@ -68,10 +64,10 @@ export default function Home() {
               <span className="hero-term">
                 <span
                   className={`hero-term-inner ${fading ? 'fade-out' : 'fade-in'}`}
-                  onMouseEnter={stopRotation}
-                  onMouseLeave={startRotation}
-                  onFocus={stopRotation}
-                  onBlur={startRotation}
+                  onMouseEnter={pauseRotation}
+                  onMouseLeave={resumeRotation}
+                  onFocus={pauseRotation}
+                  onBlur={resumeRotation}
                   tabIndex={0}
                   role="status"
                   aria-live="polite"

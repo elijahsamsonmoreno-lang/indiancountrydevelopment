@@ -13,7 +13,7 @@ export default function FeaturedWork() {
         noindex
       />
 
-      <main id="main" style={{ paddingTop: '4.9rem' }}>
+      <main id="main" className="page-main">
         <ScrollReveal>
           <section className="section section--wide" aria-label="Featured work">
             <h1 className="sr-only">Featured Work &mdash; Indian Country Development</h1>

@@ -48,7 +48,6 @@ export default function SEO({ title, description, path = '/', keywords, noindex 
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={`${BASE_URL}/og-image.png`} />
 
-      {/* #29: Breadcrumb structured data */}
       {breadcrumbLD && (
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbLD)}
