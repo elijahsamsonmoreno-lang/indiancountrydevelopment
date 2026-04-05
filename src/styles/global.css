@@ -160,7 +160,7 @@ html, body {
 .icd-logo-tm {
   font-size: 0.62rem;
   vertical-align: super;
-  margin-left: 0.08rem;
+  margin-left: 0;
 }
 
 /* #20: Desktop horizontal nav at 768px+ */
