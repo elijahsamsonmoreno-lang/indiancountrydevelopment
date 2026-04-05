@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import ScrollReveal from '../components/ScrollReveal';
-import { LogoIcon } from '../components/Logo';
 import './FeaturedWork.css';
 
 export default function FeaturedWork() {
@@ -24,9 +23,6 @@ export default function FeaturedWork() {
             </div>
 
             <div className="featured-coming-soon">
-              <div className="coming-soon-icon">
-                <LogoIcon size={56} />
-              </div>
               <h2 className="coming-soon-heading">Coming Soon</h2>
               <p className="coming-soon-text">
                 Case studies and project highlights are on the way.

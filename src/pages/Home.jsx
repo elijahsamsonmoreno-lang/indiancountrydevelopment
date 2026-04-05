@@ -55,16 +55,16 @@ export default function Home() {
     <>
       <SEO
         path="/"
-        description="Indian Country Development is a Native-led consulting firm for tribal governments and their partners. Strategy, operations, and data by Phil Gover and Elijah Moreno."
+        description="Indian Country Development is a Native American owned consulting firm for tribal governments and their partners. Strategy, operations, and data by Phil Gover and Elijah Moreno."
         keywords="Phil Gover, Center for Indian Country Development, Indian Country Development, tribal consulting, Native American consulting, tribal economic development, Indian Country, tribal government consulting"
       />
 
       <main role="main">
         <section className="hero" aria-label="Introduction">
           <div className="hero-inner">
-            <h1 className="sr-only">Indian Country Development - Native-Led Tribal Consulting</h1>
+            <h1 className="sr-only">Indian Country Development - Native American Owned Tribal Consulting</h1>
             <p className="hero-text">
-              A Native-led consulting firm for{' '}
+              A Native American owned consulting firm for{' '}
               <span className="hero-term">
                 <span
                   className={`hero-term-inner ${fading ? 'fade-out' : 'fade-in'}`}

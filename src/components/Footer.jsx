@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom';
-import { LogoIconOnly } from './Logo';
 
 export default function Footer() {
   return (
     <footer className="site-footer" role="contentinfo">
-      <div className="footer-logo">
-        <LogoIconOnly size={28} />
-      </div>
       <p className="footer-tagline">Native-led. Evidence-built. Operationally real.</p>
       <nav className="footer-links" aria-label="Footer navigation">
         <Link to="/who-we-are">Who We Are</Link>
