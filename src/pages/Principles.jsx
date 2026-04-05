@@ -34,28 +34,28 @@ export default function Principles() {
   return (
     <>
       <SEO
-        title="Our Principles"
+        title="Our Values"
         path="/principles"
-        description="Indian Country Development's principles on data sovereignty, non-extractive consulting, and community-owned outcomes. How we approach tribal consulting differently."
-        keywords="tribal data sovereignty, non-extractive consulting, Indian Country Development principles, Phil Gover, Native American consulting ethics, tribal consulting values"
+        description="Indian Country Development's values on data sovereignty, non-extractive consulting, and community-owned outcomes. How we approach tribal consulting differently."
+        keywords="tribal data sovereignty, non-extractive consulting, Indian Country Development values, Phil Gover, Native American consulting ethics, tribal consulting values"
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'Our Principles', path: '/principles' },
+          { name: 'Our Values', path: '/principles' },
         ]}
       />
 
       <main id="main">
         <ScrollReveal>
-          <section className="section section--wide principles-section" aria-label="Our principles">
-            <h1 className="sr-only">Our Principles &mdash; Non-Extractive Tribal Consulting Standards</h1>
+          <section className="section section--wide principles-section" aria-label="Our values">
+            <h1 className="sr-only">Our Values &mdash; What We Stand For</h1>
             <div className="section-label section-label--sticky">
-              <span className="label-text">Our Principles</span>
+              <span className="label-text">Our Values</span>
               <span className="label-line"></span>
             </div>
 
             <p className="principles-intro">
-              These aren&rsquo;t marketing copy. They&rsquo;re the operating rules we hold ourselves to
-              on every engagement. If a project can&rsquo;t meet these standards, we don&rsquo;t take it.
+              These aren&rsquo;t marketing copy. They&rsquo;re the values we hold ourselves to
+              on every engagement. If a project can&rsquo;t meet them, we don&rsquo;t take it.
             </p>
 
             <div className="principles-grid">
