@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <!-- Logo mark -->
+  <g transform="translate(460, 120) scale(1.1)">
+    <path d="M 152 52 C 138 28, 112 12, 86 14 C 58 16, 34 32, 22 56 C 10 80, 12 110, 28 134 C 44 158, 72 168, 100 166 C 128 164, 150 150, 162 128 C 170 114, 174 96, 170 80" stroke="#e5e7eb" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 132 52 C 120 34, 100 26, 78 28 C 54 30, 36 46, 30 68 C 24 90, 28 114, 44 132 C 60 150, 84 154, 106 148 C 126 142, 142 126, 148 106 C 154 86, 148 64, 132 52 Z" stroke="#e5e7eb" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 92 66 C 72 62, 54 72, 50 90 C 46 108, 54 126, 74 132 C 90 136, 110 128, 118 112 C 126 96, 120 76, 104 68 C 100 66, 96 66, 92 66 Z" stroke="#e5e7eb" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 168 56 C 180 72, 182 94, 176 112" stroke="#49BDB1" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <!-- Text -->
+  <text x="600" y="420" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="800" letter-spacing="0.06em" fill="#ffffff">INDIAN COUNTRY</text>
+  <text x="600" y="472" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="800" letter-spacing="0.06em" fill="#ffffff">DEVELOPMENT</text>
+  <text x="600" y="530" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="500" letter-spacing="0.12em" fill="#9ca3af">NATIVE-LED TRIBAL CONSULTING</text>
+</svg>
